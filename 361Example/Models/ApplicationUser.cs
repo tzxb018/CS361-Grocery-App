@@ -7,16 +7,16 @@ using System.Transactions;
 
 namespace _361Example.Models
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser
     {
 
-        public ApplicationUser(string email, string password, int id)
+/*        public ApplicationUser(string email, string password, int id)
         {
             base.Email = email;
             string hashedPassword = password; //Here we would do encryption of password
             base.PasswordHash = hashedPassword;
             base.Id = id;
-        }
+        }*/
 
 
     }
