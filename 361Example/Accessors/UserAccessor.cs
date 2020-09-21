@@ -9,10 +9,10 @@ namespace _361Example.Accessors
 {
 	public class UserAccessor : IUserAccessor
 	{
-		private DbSet<User> Users { get; set; }
+		private DbSet<ApplicationUser> Users { get; set; }
 		public UserAccessor()
 		{
-			Users = DbSet<User>();
+			//Users = DbSet<ApplicationUser>();
 		}
 
         public IEnumerable<GroceryList> GetGroceryLists()
