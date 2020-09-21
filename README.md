@@ -11,7 +11,7 @@
 <details><summary>First Checkpoint </summary>
  
 ### Overview
-We have started preliminary work on getting started with our project. We have met a few times to disucss what the overall structure and organization of the project will look like. After downloading the starter code, we all split off into our own branches and worked on our seperate tasks. 
+We have started preliminary work on getting started with our project. We have met a few times to disucss what the overall structure and organization of the project will look like. After downloading the starter code, we all split off into our own branches and worked on our seperate tasks. We will be meeting more frequently in the future to discuss what tasks we need to do before the next checkpoint. 
 
 ### Tasks
 * Bryce Yong
