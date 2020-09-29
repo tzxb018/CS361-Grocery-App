@@ -1,36 +1,86 @@
 
 
   <style>
-    #rcorners1 {
+    #listbox {
       box-shadow: 3px 3px 7px #629c44;
       border-radius: 15px;
       background: #ffffff;
       padding: 20px;
-      width: 389px;
-      height: 552px;
-      position: fixed;
-      right: 300px;
-      top: 250px;
+      padding-top: 10px; 
+      width: 300px ; 
+      height: 250px;
+      font-family: 'Alata';
+      display: inline-block;
+      margin-right: 30px;
+      vertical-align: text-top;
     }
+    .flex-parent {
+      display: flex;
+    }
+
+    .jc-center {
+      justify-content: center;
+    }
+
+    .space {
+      min-width: 10px;
+      min-height: 10px;
+    }
+  
   </style>
 
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
- <h1>Grocery List</h1>
-  <!--<div id="rcorners1">
-    <div class="form-group align-items-center" style="text-align: center">
-      <br />
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" style="width: 348px; height: 65px; ">
-      <br />
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" style="width: 348px; height: 65px;">
-      <br />
-      <br />
-      <button style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 348px; height: 65px; border-radius: 7px; border:unset; background: #629c44; ">Log in</button>
-      <br />
-      <br />
-      <button style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 246px; height: 65px; border-radius: 7px; border:unset; background: #f06e9c; ">Create New Account</button>
-      
-    </div>
-  </div>-->
+ <h2 style="font-family:'Alata'; color: #629c44; margin-bottom: 20px;" >Grocery List</h2>
+ <div style="display: inline-block;">
+
+   <div id="listbox">
+     <div>
+       <h3 style=" color: #629c44; padding-top: 5px; padding-bottom: 10px;">List 1</h3>
+       <input style="width: 100%;" placeholder="New List Name" maxlength="20" />
+       <div class="space"></div>
+       <div class="space"></div>
+
+       <div class="flex-parent jc-center">
+         <button style="color: #ffffff; font-size: 18px;  border-radius: 5px; border:unset; background: #629c44;  width:100% ;height: 40px; ">Rename List</button>
+       </div>
+       <div class="space"></div>
+       <div class="flex-parent jc-center">
+         <button style="color: #ffffff;font-size: 18px;border-radius: 5px;border: unset;background: #ff5d55; width: 75%; height: 40px;">Delete List</button>
+       </div>
+     </div>
+   </div>
+
+   <div id="listbox">
+     <div>
+       <h3 style=" color: #629c44; padding-top: 5px; padding-bottom: 10px;">List 2</h3>
+       <input style="width: 100%;" placeholder="New List Name" maxlength="20" />
+       <div class="space"></div>
+       <div class="space"></div>
+       <div class="flex-parent jc-center">
+         <button style="color: #ffffff; font-size: 18px;  border-radius: 5px; border:unset; background: #629c44;  width:100% ;height: 40px; ">Rename List</button>
+       </div>
+       <div class="space"></div>
+       <div class="flex-parent jc-center">
+         <button style="color: #ffffff;font-size: 18px;border-radius: 5px;border: unset;background: #ff5d55; width: 75%; height: 40px;">Delete List</button>
+       </div>
+     </div>
+   </div>
+
+   <div id="listbox">
+     <div>
+       <h3 style=" color: #629c44; padding-top: 5px; padding-bottom: 10px;">Create New List</h3>
+       <input style="width: 100%;" placeholder="List Name" maxlength="20" />
+       <div class="space"></div>
+       <div class="space"></div>
+       <div class="flex-parent jc-center">
+         <button style="color: #ffffff; font-size: 18px;  border-radius: 5px; border:unset; background: #629c44;  width:100% ;height: 40px; ">Create List</button>
+       </div>
+     </div>
+   </div>
+
+
+ </div>
+  
 
 
 
