@@ -7,7 +7,7 @@ using System.Transactions;
 
 namespace _361Example.Models
 {
-    public class ApplicationUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser
     {
 
         public ApplicationUser(string email, string password, int id)
