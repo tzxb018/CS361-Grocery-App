@@ -1,170 +1,166 @@
-<script>
-  // Get the modal
-  var modal = document.getElementById("myModal");
+<html>
+<body>
+  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
 
-  // Get the button that opens the modal
-  var btn = document.getElementById("deleteList");
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks the button, open the modal
-  btn.onclick = function () {
-    modal.style.display = "block";
-  }
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-    modal.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>
-
-<style>
-  #listbox {
-    box-shadow: 3px 3px 7px #629c44;
-    border-radius: 15px;
-    background: #ffffff;
-    padding: 20px;
-    padding-top: 10px;
-    width: 300px;
-    height: 250px;
-    font-family: 'Alata';
-    display: inline-block;
-    margin-right: 30px;
-    vertical-align: text-top;
-  }
-
-  .flex-parent {
-    display: flex;
-  }
-
-  .jc-center {
-    justify-content: center;
-  }
-
-  .space {
-    min-width: 10px;
-    min-height: 10px;
-  }
-
-  /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal*/
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
+  <style>
+    #rcorners1 {
+      box-shadow: 0px 3px 7px #629c44;
+      border-radius: 15px 0px 0px 15px;
+      background: #629c4c;
+      text-align: center;
+      font-family: 'Text Me One';
+      color: #ffffff;
+      width: 400px;
+      height: 600px;
     }
 
-  .divider_delete_list_buttons {
-    width: 30px;
-    height: auto;
-    display: inline-block;
-  }
-</style>
+    #rcorners2 {
+      box-shadow: 0px 3px 7px #629c44;
+      border-radius: 15px 15px 15px 15px;
+      background: #ffffff;
+      width: 100%;
+      height: 600px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
 
-<link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
-<h2 style="font-family:'Alata'; color: #629c44; margin-bottom: 20px;">Grocery List</h2>
-<div style="display: inline-block;">
+    .parent {
+      display: flex;
+    }
 
-  <div id="listbox">
-    <div>
-      <h3 style=" color: #629c44; padding-top: 5px; padding-bottom: 10px;">List 1</h3>
-      <input style="width: 100%;" placeholder="New List Name" maxlength="20" />
-      <div class="space"></div>
-      <div class="space"></div>
+    #items {
+      font-family: 'Alata';
+      border-collapse: collapse;
+      width: 95%;
+      position: relative;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+    }
 
-      <div class="flex-parent jc-center">
-        <button style="color: #ffffff; font-size: 18px;  border-radius: 5px; border:unset; background: #629c44;  width:100% ;height: 40px; ">Rename List</button>
+      #items td, #items th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #items th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+    .custom-control-label:before {
+      background-color: white;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: #629c44;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+    }
+
+    .space {
+      min-width: 10px;
+      min-height: 10px;
+    }
+
+    .edit_list_button {
+      font-family: 'Alata';
+      color: #ffffff;
+      border-radius: 7px;
+      width: 90%;
+      border: unset;
+      background: #3f8ffc;
+    }
+  </style>
+
+  <table width="100%">
+    <tr>
+      <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold;">Grocery Lists</td>
+      <td style="text-align: right;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c; ">+Create New List</button>  </td>
+    </tr>
+  </table>
+
+  <div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
+    <div id="rcorners2">
+      <table class="table" style="margin-bottom: 0px;">
+        <thead>
+          <tr>
+
+            <th width=50% scope="col">Name</th>
+            <th width=15% scope="col" style="text-align:center;">Items</th>
+            <th width=20% scope="col" style="text-align:center;">Date</th>
+            <th width=20% scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div style="height:500px;" class="overflow-auto">
+        <table class="table">
+          <tbody>
+            <! –– dummy data––>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+
+
+
+
+
+          </tbody>
+        </table>
+
+
       </div>
-      <div class="space"></div>
-      <div class="flex-parent jc-center">
-        <button style="color: #ffffff;font-size: 18px;border-radius: 5px;border: unset;background: #ff5d55; width: 75%; height: 40px;" id="deleteList">Delete List</button>
-      </div>
+
+
     </div>
   </div>
 
-  <div id="listbox">
-    <div>
-      <h3 style=" color: #629c44; padding-bottom: 10px;">List 2</h3>
-      <div style="text-align: center;">
-        <a style="justify-content:center;">Are you sure you <br /> want to delete List 2?</a>
-        <br />
-        <a style="text-align: center; margin-bottom:5px;">You have -- items <br />that are unchecked.</a>
-        <div class="space"></div>
-        <div style="display:inline-block; width: 100%; text-align:center;">
-          <button style="color: #ffffff;font-size: 18px; border-radius: 5px;border: unset; background:#888; width: 30%; height: 40px;">
-            Cancel
-          </button>
-          <div class="divider_delete_list_buttons"></div>
-          <button style="color: #ffffff;font-size: 18px;border-radius: 5px;border: unset;background: #ff5d55; width: 30%; height: 40px;">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Creating a New List Box-->
-  <div id="listbox">
-    <div>
-      <h3 style=" color: #629c44; padding-top: 5px; padding-bottom: 10px;">Create New List</h3>
-      <input style="width: 100%;" placeholder="List Name" maxlength="20" />
-      <div class="space"></div>
-      <div class="space"></div>
-      <div class="flex-parent jc-center">
-        <button style="color: #ffffff; font-size: 18px;  border-radius: 5px; border:unset; background: #629c44;  width:100% ;height: 40px; ">Create List</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
-    </div>
-
-  </div>
 
 
 
-</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
