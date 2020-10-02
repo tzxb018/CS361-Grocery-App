@@ -2,6 +2,7 @@
 <body>
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     #rcorners1 {
@@ -77,12 +78,53 @@
       border: unset;
       background: #3f8ffc;
     }
+
+
+    /* Style the search field */
+    form.example input[type=text] {
+      padding: 5px;
+      border: 1px solid grey;
+      border-radius: 15px 0px 0px 15px;
+      float: left;
+      width: 80%;
+      background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+      float: left;
+      width: 12%;
+      padding: 5px;
+      background: #2196F3;
+      border-radius: 0px 15px 15px 0px;
+      color: white;
+      border: 1px solid grey;
+      border-left: none; /* Prevent double borders */
+      cursor: pointer;
+    }
+
+      form.example button:hover {
+        background: #0b7dda;
+      }
+
+    /* Clear floats */
+    form.example::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
   </style>
 
   <table width="100%">
     <tr>
-      <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold;">Grocery Lists</td>
-      <td style="text-align: right;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c; ">+Create New List</button>  </td>
+      <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold; width: 50%;">Grocery Lists</td>
+      <td style="text-align: right;">
+        <form class="example" action="action_page.php">
+          <input type="text" placeholder="Search for list.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </td>
+      <td style="text-align: right; width: 15%;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c;  ">+Create New List</button>  </td>
     </tr>
   </table>
 
