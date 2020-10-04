@@ -1,9 +1,13 @@
 ﻿using _361Example.Models;
+
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace _361Example.Engines
 {
-    public interface IUserEngine
+    interface IUserEngine
     {
         IEnumerable<GroceryList> GetGroceryLists();
         IEnumerable<GroceryList> SortGroceryLists();

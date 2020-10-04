@@ -1,45 +1,41 @@
 ﻿using _361Example.Models;
+using _361Example.Controllers;
 using System;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _361Example.Engines
+namespace _361Example.Controllers
 {
-    public class UserEngine : IUserEngine
+    public class GListEngine : IGListEngine
     {
-        public GroceryList Delete(int id)
+
+        public GList DeleteList(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<GroceryList> GetGroceryLists()
+        public IEnumerable<Item> GetAllLists()
         {
             throw new NotImplementedException();
         }
 
-        public GroceryList GetList(int id)
+        public GList GetList(int id)
         {
             throw new NotImplementedException();
         }
 
-        public GroceryList InsertList(GroceryList groceryList)
+        public GList InsertList(GList gList)
         {
             throw new NotImplementedException();
         }
 
-        public bool ListExists(int id)
+        public IEnumerable<GList> SortLists()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<GroceryList> SortGroceryLists()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateList(int id, GroceryList groceryList)
+        public GList UpdateList(int id, GList gList)
         {
             throw new NotImplementedException();
         }
