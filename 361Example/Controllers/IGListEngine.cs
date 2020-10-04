@@ -10,11 +10,11 @@ namespace _361Example.Controllers
 {
     public interface IGListEngine
     {
-        IEnumerable<Item> GetAllItems();
-        Item GetItem(int id);
-        IEnumerable<GroceryList> SortLists();
-        Item InsertItem(Item item);
-        Item UpdateItem(int id, Item item);
-        Item DeleteItem(int id);
+        IEnumerable<Item> GetAllLists();
+        GList GetList(int id);
+        IEnumerable<GList> SortLists();
+        GList InsertList(GList gList);
+        GList UpdateList(int id, GList gList);
+        GList DeleteList(int id);
     }
 }

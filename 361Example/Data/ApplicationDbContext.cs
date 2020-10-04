@@ -18,5 +18,6 @@ namespace _361Example.Data
         {
         }
         public DbSet<Item> Item { get; set; }
+        public DbSet<GList> GList { get; set; }
     }
 }
