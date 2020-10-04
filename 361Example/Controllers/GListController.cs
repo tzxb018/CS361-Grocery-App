@@ -1,10 +1,12 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
+using _361Example.Engines;
+using _361Example.Models;
 using System.Linq;
 using System.Web.Http;
 
 namespace _361Example.Controllers
 {
-    [RoutePrefix("api/glist")]
+    [RoutePrefix("api/glists")]
     public class GListController : ApiController
     {
         private readonly IGListEngine _gListEngine;
@@ -13,50 +15,50 @@ namespace _361Example.Controllers
             _gListEngine = gListEngine;
         }
 
-        // GET: api/glist
+        // GET: api/glists
         [Route("")]
         [HttpGet]
-        public IHttpActionResult GetAllItems()
+        public IHttpActionResult GetAllLists()
         {
-            return Ok(_gListEngine.GetAllItems());
+            return Ok(_gListEngine.GetAllLists());
         }
 
         // GET: api/glist/5
         [System.Web.Http.Route("{id}")]
         [System.Web.Http.HttpGet]
-        public IHttpActionResult getItem(string id)
+        public IHttpActionResult GetList(string id)
         {
             var parsedId = int.Parse(id);
-            Item item = _gListEngine.GetItem(parsedId);
+            GList glist = _gListEngine.GetList(parsedId);
 
-            if (item == null)
+            if (glist == null)
             {
                 return NotFound();
             }
 
-            return Ok(item);
+            return Ok(glist);
         }
 
 
-        // POST: api/Contacts
+        // POST: api/glists
         [Route("")]
         [HttpPost]
-        public IHttpActionResult PostContact(Item item)
+        public IHttpActionResult PostList(GList glist)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _gListEngine.InsertItem(item);
+            _gListEngine.InsertList(glist);
 
-            return Ok(item);
+            return Ok(glist);
         }
 
-        // PUT: api/Contacts/5
+        // PUT: api/glists/5
         [Route("{id}")]
         [HttpPut]
-        public IHttpActionResult PutContact(string id, Item item)
+        public IHttpActionResult PutList(string id, GList glist)
         {
             if (!ModelState.IsValid)
             {
@@ -64,12 +66,12 @@ namespace _361Example.Controllers
             }
             var parsedId = int.Parse(id);
 
-            if (parsedId != item.Id)
+            if (parsedId != glist.Id)
             {
                 return BadRequest();
             }
 
-            _gListEngine.UpdateItem(parsedId, item);
+            _gListEngine.UpdateList(parsedId, glist);
 
 
             return Ok();
@@ -77,21 +79,21 @@ namespace _361Example.Controllers
 
 
 
-        // DELETE: api/Contacts/5
+        // DELETE: api/glists/5
         [Route("{id}")]
         [HttpDelete]
-        public IHttpActionResult DeleteContact(string id)
+        public IHttpActionResult DeleteList(string id)
         {
             var parsedId = int.Parse(id);
 
-            Item item = _gListEngine.GetItem(parsedId);
-            if (item == null)
+            GList glist = _gListEngine.GetList(parsedId);
+            if (glist == null)
             {
                 return NotFound();
             }
-            _gListEngine.DeleteItem(item.Id);
+            _gListEngine.DeleteList(glist.Id);
 
-            return Ok(item);
+            return Ok(glist);
         }
 
         //protected override void Dispose(bool disposing)
@@ -103,9 +105,9 @@ namespace _361Example.Controllers
         //    base.Dispose(disposing);
         //}
 
-        private bool ItemExists(int id)
+        private bool ListExists(int id)
         {
-            return _gListEngine.GetAllItems().Count(e => e.Id == id) > 0;
+            return _gListEngine.GetAllLists().Count(e => e.Id == id) > 0;
         }
 
     }
