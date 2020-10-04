@@ -1,17 +1,15 @@
-﻿using System;
+﻿using _361Example.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace _361Example.Controllers
+namespace _361Example.Accessors
 {
     public interface IGListAccessor
     {
-        IEnumerable<Item> GetAllItems();
-        Item Find(int id);
-        Item Insert(Item item);
-        void Update(Item item);
-        Item Delete(Item item);
+        IEnumerable<GList> GetAllGLists();
+        GList Find(int id);
+        GList Insert(GList gList);
+        void Update(GList gList);
+        GList Delete(GList gList);
         bool Exists(int id);
     }
 }

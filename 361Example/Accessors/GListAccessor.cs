@@ -2,13 +2,11 @@
 using _361Example.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace _361Example.Controllers
+namespace _361Example.Accessors
 {
     public class GListAccessor : ControllerBase
     {
@@ -22,7 +20,7 @@ namespace _361Example.Controllers
 
         public GList Delete(GList gList)
         {
-            if(Exists(gList.Id))
+            if (Exists(gList.Id))
             {
                 _context.GList.Remove(gList);
                 _context.SaveChanges();
@@ -35,7 +33,7 @@ namespace _361Example.Controllers
         public bool Exists(int id)
         {
             var gList = Find(id);
-            if(gList == null)
+            if (gList == null)
             {
                 return false;
             }

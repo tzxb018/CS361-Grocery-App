@@ -1,11 +1,8 @@
 ﻿using _361Example.Models;
-using _361Example.Controllers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace _361Example.Controllers
+namespace _361Example.Engines
 {
     public class GListEngine : IGListEngine
     {
@@ -36,6 +33,11 @@ namespace _361Example.Controllers
         }
 
         public GList UpdateList(int id, GList gList)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<GList> IGListEngine.GetAllLists()
         {
             throw new NotImplementedException();
         }
