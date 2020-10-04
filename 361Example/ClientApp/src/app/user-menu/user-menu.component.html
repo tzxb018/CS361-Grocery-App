@@ -1,0 +1,208 @@
+<html>
+<body>
+  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    #rcorners1 {
+      box-shadow: 0px 3px 7px #629c44;
+      border-radius: 15px 0px 0px 15px;
+      background: #629c4c;
+      text-align: center;
+      font-family: 'Text Me One';
+      color: #ffffff;
+      width: 400px;
+      height: 600px;
+    }
+
+    #rcorners2 {
+      box-shadow: 0px 3px 7px #629c44;
+      border-radius: 15px 15px 15px 15px;
+      background: #ffffff;
+      width: 100%;
+      height: 600px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .parent {
+      display: flex;
+    }
+
+    #items {
+      font-family: 'Alata';
+      border-collapse: collapse;
+      width: 95%;
+      position: relative;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+    }
+
+      #items td, #items th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #items th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+    .custom-control-label:before {
+      background-color: white;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: #629c44;
+    }
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+    }
+
+    .space {
+      min-width: 10px;
+      min-height: 10px;
+    }
+
+    .edit_list_button {
+      font-family: 'Alata';
+      color: #ffffff;
+      border-radius: 7px;
+      width: 90%;
+      border: unset;
+      background: #3f8ffc;
+    }
+
+
+    /* Style the search field */
+    form.example input[type=text] {
+      padding: 5px;
+      border: 1px solid grey;
+      border-radius: 15px 0px 0px 15px;
+      float: left;
+      width: 80%;
+      background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+      float: left;
+      width: 12%;
+      padding: 5px;
+      background: #2196F3;
+      border-radius: 0px 15px 15px 0px;
+      color: white;
+      border: 1px solid grey;
+      border-left: none; /* Prevent double borders */
+      cursor: pointer;
+    }
+
+      form.example button:hover {
+        background: #0b7dda;
+      }
+
+    /* Clear floats */
+    form.example::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  </style>
+
+  <table width="100%">
+    <tr>
+      <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold; width: 50%;">Grocery Lists</td>
+      <td style="text-align: right;">
+        <form class="example" action="action_page.php">
+          <input type="text" placeholder="Search for list.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </td>
+      <td style="text-align: right; width: 15%;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c;  ">+Create New List</button>  </td>
+    </tr>
+  </table>
+
+  <div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
+    <div id="rcorners2">
+      <table class="table" style="margin-bottom: 0px;">
+        <thead>
+          <tr>
+
+            <th width=50% scope="col">Name</th>
+            <th width=15% scope="col" style="text-align:center;">Items</th>
+            <th width=20% scope="col" style="text-align:center;">Date</th>
+            <th width=20% scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div style="height:500px;" class="overflow-auto">
+        <table class="table">
+          <tbody>
+            <! –– dummy data––>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%">Grocery List for Walmart</td>
+              <td width="15%" style="text-align:center;">
+                2/4
+              </td>
+              <td width="20%" style="text-align:center;">10/1/2020</td>
+              <td>
+                <button class="edit_list_button">Edit List</button>
+              </td>
+            </tr>
+
+
+
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

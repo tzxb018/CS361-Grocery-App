@@ -1,109 +1,104 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using _361Example.Engines;
+using _361Example.Models;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using _361Example.Data;
+using System.Web.Http;
+
 
 namespace _361Example.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ItemsController : ControllerBase
+    [RoutePrefix("api/items")]
+    public class ItemsController : ApiController
     {
-        private readonly ApplicationDbContext _context;
-
-        public ItemsController(ApplicationDbContext context)
+        private readonly IItemsEngine _itemsEngine;
+        public ItemsController(IItemsEngine itemsEngine)
         {
-            _context = context;
+            _itemsEngine = itemsEngine;
         }
 
-        // GET: api/Items
+        // GET: api/items
+        [Route("")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItem()
+        public IHttpActionResult GetAllItems()
         {
-            return await _context.Item.ToListAsync();
+            return Ok(_itemsEngine.GetAllItems());
         }
 
-        // GET: api/Items/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Item>> GetItem(int id)
+        // GET: api/items/5
+        [System.Web.Http.Route("{id}")]
+        [System.Web.Http.HttpGet]
+        public IHttpActionResult GetItem(string id)
         {
-            var item = await _context.Item.FindAsync(id);
+            var parsedId = int.Parse(id);
+            Item item = _itemsEngine.GetItem(parsedId);
 
             if (item == null)
             {
                 return NotFound();
             }
 
-            return item;
+            return Ok(item);
         }
 
-        // PUT: api/Items/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, Item item)
+
+        // POST: api/items
+        [Route("")]
+        [HttpPost]
+        public IHttpActionResult PostItem(Item item)
         {
-            if (id != item.Id)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _itemsEngine.InsertItem(item);
+
+            return Ok(item);
+        }
+
+        // PUT: api/items/5
+        [Route("{id}")]
+        [HttpPut]
+        public IHttpActionResult PutList(string id, Item item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var parsedId = int.Parse(id);
+
+            if (parsedId != item.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(item).State = EntityState.Modified;
+            _itemsEngine.UpdateItem(parsedId, item);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+            return Ok();
         }
 
-        // POST: api/Items
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Item>> PostItem(Item item)
-        {
-            _context.Item.Add(item);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetItem", new { id = item.Id }, item);
-        }
 
-        // DELETE: api/Items/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Item>> DeleteItem(int id)
+        // DELETE: api/items/5
+        [Route("{id}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteItem(string id)
         {
-            var item = await _context.Item.FindAsync(id);
+            var parsedId = int.Parse(id);
+
+            Item item = _itemsEngine.GetItem(parsedId);
             if (item == null)
             {
                 return NotFound();
             }
+            _itemsEngine.DeleteItem(item.Id);
 
-            _context.Item.Remove(item);
-            await _context.SaveChangesAsync();
-
-            return item;
+            return Ok(item);
         }
 
         private bool ItemExists(int id)
         {
-            return _context.Item.Any(e => e.Id == id);
+            return _itemsEngine.GetAllItems().Count(e => e.Id == id) > 0;
         }
     }
 }
