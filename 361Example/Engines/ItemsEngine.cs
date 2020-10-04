@@ -32,7 +32,7 @@ namespace _361Example.Engines
         public Item InsertItem(Item item)
         {
             _itemsAccessor.Insert(item);
-            _itemsAccessor.saveChanges();
+            _itemsAccessor.SaveChanges();
 
             return item;
         }
@@ -40,7 +40,7 @@ namespace _361Example.Engines
         public Item UpdateItem(int id, Item item)
         {
             _itemsAccessor.Update(item);
-            _itemsAccessor.saveChanges();
+            _itemsAccessor.SaveChanges();
 
             return item;
         }
@@ -51,7 +51,7 @@ namespace _361Example.Engines
             if (item != null)
             {
                 _itemsAccessor.Delete(item);
-                _itemsAccessor.saveChanges();
+                _itemsAccessor.SaveChanges();
             }
             return item;
         }
