@@ -22,9 +22,9 @@ After getting our feet wet with the project, we started working on setting up th
   - updated the navigation bar UI
   - created FAQ page
 * Noah Anderson
-  -Implemented GListAccessor
-  -Designed GList object
-  -Re-designed Interfaces for GListAccessor/GListEngine
+  - Implemented GListAccessor
+  - Designed GList object
+  - Re-designed Interfaces for GListAccessor/GListEngine
 * Ryan Hruby
   - Created the database using a DDL script
   - Created test data and query scripts to ensure the database is working correctly
