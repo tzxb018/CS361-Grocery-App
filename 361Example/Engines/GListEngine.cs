@@ -1,11 +1,23 @@
-﻿using _361Example.Models;
+﻿using _361Example.Accessors;
+using _361Example.Models;
+using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Engines
 {
     public class GListEngine : IGListEngine
     {
+
+        private readonly IGListAccessor _gListAccessor;
+
+
+        public GListEngine(IGListAccessor gListAccessor)
+        {
+            _gListAccessor = gListAccessor;
+        }
+
 
         public GList DeleteList(int id)
         {
@@ -29,7 +41,18 @@ namespace _361Example.Engines
 
         public IEnumerable<GList> SortLists()
         {
-            throw new NotImplementedException();
+            IEnumerable<GList> sortedGLists = _gListAccessor.GetAllGLists();
+            foreach(GList gList in sortedGLists)
+            {
+                if (gList.ListName.IsNullOrEmpty())
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+
+            sortedGLists = sortedGLists.OrderBy(g => g.ListName);
+         
+            return sortedGLists;
         }
 
         public GList UpdateList(int id, GList gList)
