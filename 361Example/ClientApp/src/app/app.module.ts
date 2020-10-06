@@ -18,6 +18,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 
 import { CreateNewAccComponent } from './CreateNewAcc/CreateNewAcc.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 
@@ -31,6 +32,7 @@ import { ItemListComponent } from './item-list/item-list.component';
     FetchDataComponent,
     CreateNewAccComponent,
     ItemListComponent,
+    FaqComponent
 
   ],
   imports: [
@@ -44,7 +46,7 @@ import { ItemListComponent } from './item-list/item-list.component';
       { path: 'CreateNewAcc', component: CreateNewAccComponent },
       { path: 'item-list', component: ItemListComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-
+      { path: 'faq', component: FaqComponent },
     ])
   ],
   providers: [
