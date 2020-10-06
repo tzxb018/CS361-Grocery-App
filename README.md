@@ -8,6 +8,36 @@
 * Tomo Bessho - https://github.com/tzxb018
 
 ## Coding Checkpoints
+<details><summary>Second Checkpoint (10/5/2020)</summary>
+ 
+### Overview
+After getting our feet wet with the project, we started working on setting up the database, getting the UI written, and started implementing our main methods. We each worked on specific portions of the project. Our goal is to get the grocery list functionality running before the next release and have all the UI linked to each other in the flow they are designed to operate in. 
+
+### Tasks
+* Bryce Yong
+  - Created the main menu UI using cshtml
+  - Created the item list menu UI using cshtml
+  - Created paths for in app navigation using RouterLink from Angular
+* Alexis Linhardt
+  - updated the navigation bar UI
+  - created FAQ page
+* Noah Anderson
+  - Implemented GListAccessor
+  - Designed GList object
+  - Re-designed Interfaces for GListAccessor/GListEngine
+* Ryan Hruby
+  - Created the database using a DDL script
+  - Created test data and query scripts to ensure the database is working correctly
+  - Created a unit test class and mock accessor for testing the GListEngine
+  - Implemented unit test methods for the SortLists() method in the GListEngine
+* Tomo Bessho
+  * Created the UI for the list view of the different grocery lists
+  * Reorganized project architecture and files of the project
+  * Implemented accessor and engine methods of the items class
+  * Fixed up issues in all engine, controllers, and accessor methods
+</p>
+</details>
+
 <details><summary>First Checkpoint </summary>
  
 ### Overview

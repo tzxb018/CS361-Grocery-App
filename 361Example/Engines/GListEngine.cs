@@ -1,45 +1,77 @@
-﻿using _361Example.Models;
+﻿using _361Example.Accessors;
+using _361Example.Models;
+using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Engines
 {
     public class GListEngine : IGListEngine
     {
 
-        public GList DeleteList(int id)
+        private readonly IGListAccessor _gListAccessor;
+
+        public GListEngine(IGListAccessor gListAccessor)
         {
-            throw new NotImplementedException();
+            _gListAccessor = gListAccessor;
         }
 
-        public IEnumerable<Item> GetAllLists()
+        public IEnumerable<GList> GetAllLists()
         {
-            throw new NotImplementedException();
+            return _gListAccessor.GetAllGLists().ToList();
         }
 
         public GList GetList(int id)
         {
-            throw new NotImplementedException();
+            if (_gListAccessor.Exists(id))
+            {
+                return _gListAccessor.Find(id);
+            }
+            return null;
         }
 
-        public GList InsertList(GList gList)
+        public GList InsertList(GList glist)
         {
-            throw new NotImplementedException();
+            _gListAccessor.Insert(glist);
+
+            return glist;
         }
+
+        public GList UpdateList(int id, GList glist)
+        {
+            _gListAccessor.Update(glist);
+
+            return glist;
+        }
+
+        public GList DeleteList(int id)
+        {
+            var glist = _gListAccessor.Find(id);
+            if (glist != null)
+            {
+                _gListAccessor.Delete(glist);
+            }
+            return glist;
+        }
+
 
         public IEnumerable<GList> SortLists()
         {
-            throw new NotImplementedException();
+            IEnumerable<GList> sortedGLists = _gListAccessor.GetAllGLists();
+            foreach (GList gList in sortedGLists)
+            {
+                if (gList.ListName.IsNullOrEmpty())
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+
+            sortedGLists = sortedGLists.OrderBy(g => g.ListName);
+
+            return sortedGLists;
         }
 
-        public GList UpdateList(int id, GList gList)
-        {
-            throw new NotImplementedException();
-        }
 
-        IEnumerable<GList> IGListEngine.GetAllLists()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
