@@ -13,12 +13,11 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-
-
-
 import { CreateNewAccComponent } from './CreateNewAcc/CreateNewAcc.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { FaqComponent } from './faq/faq.component';
+
+import { ItemListService } from './item-list/item-list.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -52,7 +51,8 @@ const appRoutes: Routes = [
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    ItemListService,
   ],
   bootstrap: [AppComponent]
 })
