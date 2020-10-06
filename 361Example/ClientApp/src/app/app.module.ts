@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,8 +20,10 @@ import { CreateNewAccComponent } from './CreateNewAcc/CreateNewAcc.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { FaqComponent } from './faq/faq.component';
 
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent }
 
-
+];
 
 @NgModule({
   declarations: [
