@@ -42,13 +42,13 @@
         padding: 8px;
       }
 
-    #items th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #4CAF50;
-      color: white;
-    }
+      #items th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
 
     .custom-control-label:before {
       background-color: white;
@@ -61,13 +61,12 @@
     .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
     }
-
   </style>
 
   <table width="100%">
     <tr>
       <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold;">Items</td>
-      <td style="text-align: right;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c; ">+Create New Item</button>  </td>
+      <td style="text-align: right;"><button [routerLink]="['/add-item']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c; ">+ Create New Item</button>  </td>
     </tr>
   </table>
 
@@ -82,21 +81,21 @@
 
 
 
-    <div  id="rcorners2">
+    <div id="rcorners2">
 
       <table class="table">
         <thead>
           <tr>
-         
+
             <th width=60% scope="col">Name</th>
             <th width=15% scope="col">Checkoff</th>
             <th width=30% scope="col">Date</th>
           </tr>
         </thead>
         <tbody>
-          </tbody>
-        </table>
-      <div style="height:500px;"class="overflow-auto">
+        </tbody>
+      </table>
+      <div style="height:500px;" class="overflow-auto">
         <table class="table">
           <tbody>
             <! –– dummy data––>
@@ -261,9 +260,9 @@
           </tbody>
         </table>
 
-    
+
       </div>
-          
+
 
     </div>
   </div>
@@ -282,9 +281,3 @@
 
 </body>
 </html>
-
-
-
-
-
-

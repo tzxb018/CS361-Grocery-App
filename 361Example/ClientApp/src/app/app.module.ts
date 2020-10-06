@@ -18,6 +18,7 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { FaqComponent } from './faq/faq.component';
 
 import { ItemListService } from './item-list/item-list.service';
+import { AddItemComponent } from './add-item/add-item.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -33,7 +34,9 @@ const appRoutes: Routes = [
     FetchDataComponent,
     CreateNewAccComponent,
     ItemListComponent,
-    FaqComponent
+    FaqComponent,
+    AddItemComponent,
+    UserMenuComponent,
 
   ],
   imports: [
@@ -48,6 +51,8 @@ const appRoutes: Routes = [
       { path: 'item-list', component: ItemListComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'faq', component: FaqComponent },
+      { path: 'add-item', component: AddItemComponent },
+      { path: 'user-menu', component: UserMenuComponent },
     ])
   ],
   providers: [
