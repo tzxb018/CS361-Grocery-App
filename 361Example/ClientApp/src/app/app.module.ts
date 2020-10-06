@@ -32,7 +32,8 @@ import { FaqComponent } from './faq/faq.component';
     FetchDataComponent,
     CreateNewAccComponent,
     ItemListComponent,
-    FaqComponent
+    FaqComponent,
+    UserMenuComponent,
 
   ],
   imports: [
@@ -47,6 +48,7 @@ import { FaqComponent } from './faq/faq.component';
       { path: 'item-list', component: ItemListComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'faq', component: FaqComponent },
+      {path: 'user-menu', component: UserMenuComponent}
     ])
   ],
   providers: [
