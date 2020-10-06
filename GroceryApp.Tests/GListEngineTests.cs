@@ -100,42 +100,6 @@ namespace GroceryApp.Tests
         }
 
 
-        public IEnumerable<GList> GetAllGlists()
-        {
-            return mockedGListAccessor.GetAllGLists().ToList();
-        }
 
-        public GList GetList(int id)
-        {
-            if (mockedGListAccessor.Exists(id))
-            {
-                return mockedGListAccessor.Find(id);
-            }
-            return null;
-        }
-
-        public GList InsertGList(GList glist)
-        {
-            mockedGListAccessor.Insert(glist);
-
-            return glist;
-        }
-
-        public GList UpdateGList(int id, GList glist)
-        {
-            mockedGListAccessor.Update(glist);
-
-            return glist;
-        }
-
-        public GList DeleteGList(int id)
-        {
-            var glist = mockedGListAccessor.Find(id);
-            if (glist != null)
-            {
-                mockedGListAccessor.Delete(glist);
-            }
-            return glist;
-        }
     }
 }
