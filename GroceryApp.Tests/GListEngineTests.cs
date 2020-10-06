@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using _361Example.Engines;
+﻿using _361Example.Engines;
 using _361Example.Models;
 using GroceryApp.Tests.MockedAccessors;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GroceryApp.Tests
 {
@@ -48,10 +48,10 @@ namespace GroceryApp.Tests
 
             //Act: Calls the GListEngine SortLists() method and converts the return value to a list
             var result = gListEngine.SortLists().ToList();
-            
+
 
             //Assert: Checks whether the expected and result lists are ordered the same
-            Assert.AreEqual(expected.ElementAt(0).ListName, result.ElementAt(0).ListName,  "The GList was sorted incorrectly.");
+            Assert.AreEqual(expected.ElementAt(0).ListName, result.ElementAt(0).ListName, "The GList was sorted incorrectly.");
             Assert.AreEqual(expected.ElementAt(1).ListName, result.ElementAt(1).ListName, "The GList was sorted incorrectly.");
             Assert.AreEqual(expected.ElementAt(2).ListName, result.ElementAt(2).ListName, "The GList was sorted incorrectly.");
         }
@@ -98,5 +98,8 @@ namespace GroceryApp.Tests
                 }
             });
         }
+
+       //Test comment
+       //Test comment
     }
 }
