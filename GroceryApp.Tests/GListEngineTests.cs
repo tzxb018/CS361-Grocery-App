@@ -155,6 +155,45 @@ namespace GroceryApp.Tests
             });
         }
 
+
+
+        [TestMethod]
+        public void GListEngine_DeleteList()
+        {
+
+            //Arrange: Seeds the Mocked Accessor's list of GLists
+            SeedGLists();
+
+            //Act: Calls the GListEngine DeleteList() method, which should delete the GList with the given id from the lists of GLists
+            var deletedList = gListEngine.DeleteList(3);
+
+            //Assert: Checks if a GList was deleted, if the correct GList was returned, and if the list of GLists does not contain the deleted GList
+            Assert.IsNotNull(deletedList, "The deleted list is null."); 
+            Assert.AreEqual(2, mockedGListAccessor.GetState().Count(), "A GList was not deleted from the list of GLists.");
+            Assert.AreEqual(3, deletedList.Id, "An incorrect list was returned or no list was returned.");
+            Assert.AreEqual("MyList", deletedList.ListName, "An incorrect list was returned or no list was returned.");
+            CollectionAssert.DoesNotContain(mockedGListAccessor.GetState(), deletedList, "The list still contains the GList that needed to be deleted.");
+
+        }
+
+
+        [TestMethod]
+        public void GListEngine_DeleteList_InvalidId()
+        {
+
+            //Arrange: Seeds the Mocked Accessor's list of GLists
+            SeedGLists();
+
+            //Act: Calls the GListEngine DeleteList() method with a given id for a non-existent GList
+            var deletedList = gListEngine.DeleteList(0);
+
+            //Assert: Checks that no GLists were deleted from the list of GLists
+            Assert.IsNull(deletedList, "The deleted list is not null.");
+            Assert.AreEqual(3, mockedGListAccessor.GetState().Count(), "A GList was deleted from the list of GLists.");
+
+        }
+
+
         [TestMethod]
         public void GListEngine_GetList()
         {
@@ -218,6 +257,7 @@ namespace GroceryApp.Tests
             //Assert: Checks if the Name was successfully updated
             Assert.AreEqual(expected.ListName, results.ElementAt(2).ListName, "The GList wasn't updated correctly.");
         }
+
     }
 
 
