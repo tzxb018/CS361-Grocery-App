@@ -19,6 +19,8 @@ namespace _361Example.Engines
 
         public IEnumerable<GList> GetAllLists()
         {
+            IEnumerable < GList > gListList = _gListAccessor.GetAllGLists().ToList();
+
             return _gListAccessor.GetAllGLists().ToList();
         }
 
