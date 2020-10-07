@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
@@ -28,8 +29,16 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\NewFolder3\**" />
+    <Compile Remove="ClientApp\src\app\NewFolder4\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\NewFolder3\**" />
+    <Content Remove="ClientApp\src\app\NewFolder4\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\NewFolder3\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\NewFolder4\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\NewFolder3\**" />
+    <None Remove="ClientApp\src\app\NewFolder4\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
