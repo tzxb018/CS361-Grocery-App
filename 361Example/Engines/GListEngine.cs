@@ -4,11 +4,11 @@ using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlTypes;
 using System.Linq;
 
 namespace _361Example.Engines
 {
+    // This is the engine we used to unit test
     public class GListEngine : IGListEngine
     {
 
@@ -21,7 +21,7 @@ namespace _361Example.Engines
 
         public IEnumerable<GList> GetAllLists()
         {
-            IEnumerable < GList > gListList = _gListAccessor.GetAllGLists().ToList();
+            IEnumerable<GList> gListList = _gListAccessor.GetAllGLists().ToList();
 
             return _gListAccessor.GetAllGLists().ToList();
         }
@@ -37,20 +37,25 @@ namespace _361Example.Engines
 
         public GList InsertList(GList glist)
         {
-            if(glist == null){
+            if (glist == null)
+            {
                 throw new NullReferenceException();
             }
-           
+
             IEnumerable<GList> allLists = _gListAccessor.GetAllGLists();
 
-            foreach (GList groceryList in allLists){
-                if (glist.Equals(groceryList)){
+            foreach (GList groceryList in allLists)
+            {
+                if (glist.Equals(groceryList))
+                {
                     throw new DuplicateNameException();
                 }
-                else if (glist.ListName.Equals(groceryList.ListName)){
+                else if (glist.ListName.Equals(groceryList.ListName))
+                {
                     throw new DuplicateNameException();
                 }
-                else if (glist.Id.Equals(groceryList.Id)){
+                else if (glist.Id.Equals(groceryList.Id))
+                {
                     throw new ArgumentException();
                 }
             }

@@ -4,8 +4,8 @@ using GroceryApp.Tests.MockedAccessors;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
+using System.Linq;
 
 namespace GroceryApp.Tests
 {
@@ -85,8 +85,8 @@ namespace GroceryApp.Tests
             SeedGLists();
             var expected = new List<GList>
             {
-                
-           
+
+
                 new GList
                 {
                     Id = 1,
@@ -102,7 +102,7 @@ namespace GroceryApp.Tests
                     Id = 3,
                     ListName = "MyList"
                 }
-           
+
         };
 
             //Act: Calls the GListEngine GetAllLists() method and converts the return value to a list
@@ -131,7 +131,7 @@ namespace GroceryApp.Tests
             var result = gListEngine.GetAllLists();
 
             //Assert is handled by the ExpectedException attribute on the test method
-          
+
         }
 
         public void SeedGLists()
@@ -169,7 +169,7 @@ namespace GroceryApp.Tests
             var deletedList = gListEngine.DeleteList(3);
 
             //Assert: Checks if a GList was deleted, if the correct GList was returned, and if the list of GLists does not contain the deleted GList
-            Assert.IsNotNull(deletedList, "The deleted list is null."); 
+            Assert.IsNotNull(deletedList, "The deleted list is null.");
             Assert.AreEqual(2, mockedGListAccessor.GetState().Count(), "A GList was not deleted from the list of GLists.");
             Assert.AreEqual(3, deletedList.Id, "An incorrect list was returned or no list was returned.");
             Assert.AreEqual("MyList", deletedList.ListName, "An incorrect list was returned or no list was returned.");
@@ -260,18 +260,19 @@ namespace GroceryApp.Tests
         }
 
 
-    }
+
 
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GListEngine_InsertList_ExpectNullException(){
+        public void GListEngine_InsertList_ExpectNullException()
+        {
             //Arrange: Seeds the Mocked Accessors
             SeedGLists();
 
             //Act: Insert a null list
             var result = gListEngine.InsertList(null);
-              //  gListEngine.Insert(null);
+            //  gListEngine.Insert(null);
 
             //Assert: Handled by the Expected Exception attribute
         }
@@ -282,7 +283,7 @@ namespace GroceryApp.Tests
         {
             //Arrange: Seeds the Mocked Accessors
             SeedGLists();
-            GList gListNameDup = new GList(){ Id = 4, ListName = "MyList"};
+            GList gListNameDup = new GList() { Id = 4, ListName = "MyList" };
 
             //Act: Insert list with duplicate name
             var result = gListEngine.InsertList(gListNameDup);
@@ -326,7 +327,7 @@ namespace GroceryApp.Tests
             SeedGLists();
             GList gList = new GList() { Id = 4, ListName = "Brand New List" };
             var expected = gList;
-            
+
 
             //Act: Insert list with duplicate name and retrieve the list of lists
             var result = gListEngine.InsertList(gList);
