@@ -99,7 +99,71 @@ namespace GroceryApp.Tests
             });
         }
 
-       //Test comment
-       //Test comment
+        [TestMethod]
+        public void GListEngine_GetList()
+        {
+            // Arrange: Seeds the Mocked Accessor's list of GLists and retrives the expected list
+            SeedGLists();
+            var expected = new GList { Id = 2, ListName = "Wednesday Groceries" };
+
+            // Act: Calls the GList Engine GetList() method
+            var result = gListEngine.GetList(2);
+
+            // Assert: Checks whether expected and result list are the same
+            Assert.AreEqual(expected.ListName, result.ListName, result.Id + " was returned. " + expected.Id + " was expected.");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GListEngine_GetList_EmptyList()
+        {
+            //Arrange: Seed the Mocked Accessor's list of GLists
+            mockedGListAccessor.SetState(new List<GList> { null });
+
+            // Act: Calls the GListEngine GetList() method
+            var result = gListEngine.GetList(3);
+
+            // Assert is handled by the ExpectedException attribute on the test method
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GListEngine_GetList_ElementDoesntExist()
+        {
+            // Arrange: Seeds the Mocked Accessor's list of GLists
+            SeedGLists();
+
+            // Act: Calls the GList Engine GetList() method on a GList that doesn't exist
+            var result = gListEngine.GetList(5);
+
+            // Assert checks if the reseult is null
+            Assert.AreEqual(null, result.ListName, result.Id + " was returned. ");
+
+        }
+
+        // Implemeted by Noah
+        [TestMethod]
+        public void GListEngine_UpdateList()
+        {
+            //Arrange
+            SeedGLists();
+            var expected = new GList()
+            {
+                Id = 2,
+                ListName = "Updated"
+            };
+
+            //Act: mockedGListAccessor.gLists isn't accessible outside of the class so a simple method from MockedGListAccessor is employed
+            //to grab the GLists after they're updated.
+            gListEngine.UpdateList(2, expected);
+            List<GList> results = mockedGListAccessor.GetAllGLists().ToList();
+
+            //Assert: Checks if the Name was successfully updated
+            Assert.AreEqual(expected.ListName, results.ElementAt(2).ListName, "The GList wasn't updated correctly.");
+        }
     }
+
+
+
 }
