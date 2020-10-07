@@ -24,7 +24,8 @@
       </button>
 
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-           [ngClass]="{ show: isExpanded }">
+           [ngClass]="{ show: isExpanded }"
+           style="font-family: 'Alata'; color: #7a7a7a">
         <app-login-menu></app-login-menu>
         <ul class="navbar-nav flex-grow">
           <li class="nav-item"
@@ -35,9 +36,11 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/CreateNewAcc']">Create New Account</a>
           </li>
-          <!--           <li class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-  </li>-->
+          <!-- this is the weather tab
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+          </li>
+            -->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/user-menu']">User Menu</a>
           </li>

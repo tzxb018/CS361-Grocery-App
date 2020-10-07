@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 
 namespace GroceryApp.Tests
 {
@@ -232,7 +233,7 @@ namespace GroceryApp.Tests
             // Act: Calls the GList Engine GetList() method on a GList that doesn't exist
             var result = gListEngine.GetList(5);
 
-            // Assert checks if the reseult is null
+            // Assert checks if the result is null
             Assert.AreEqual(null, result.ListName, result.Id + " was returned. ");
 
         }
@@ -258,8 +259,81 @@ namespace GroceryApp.Tests
             Assert.AreEqual(expected.ListName, results.ElementAt(2).ListName, "The GList wasn't updated correctly.");
         }
 
+
     }
 
 
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GListEngine_InsertList_ExpectNullException(){
+            //Arrange: Seeds the Mocked Accessors
+            SeedGLists();
+
+            //Act: Insert a null list
+            var result = gListEngine.InsertList(null);
+              //  gListEngine.Insert(null);
+
+            //Assert: Handled by the Expected Exception attribute
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DuplicateNameException))]
+        public void GListEngine_InsertList_DuplicateNameException()
+        {
+            //Arrange: Seeds the Mocked Accessors
+            SeedGLists();
+            GList gListNameDup = new GList(){ Id = 4, ListName = "MyList"};
+
+            //Act: Insert list with duplicate name
+            var result = gListEngine.InsertList(gListNameDup);
+
+
+            //Assert: Handled by the Expected Exception attribute
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GListEngine_InsertList_DuplicateIdException()
+        {
+            //Arrange: Seeds the Mocked Accessors
+            SeedGLists();
+            GList gListIdDup = new GList() { Id = 3, ListName = "DuplicateIdList" };
+
+            //Act: Insert list with duplicate name
+            var result = gListEngine.InsertList(gListIdDup);
+
+            //Assert: Handled by the Expected Exception attribute
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DuplicateNameException))]
+        public void GListEngine_InsertList_DuplicateListException()
+        {
+            //Arrange: Seeds the Mocked Accessors
+            SeedGLists();
+            GList gListDup = new GList() { Id = 3, ListName = "MyList" };
+
+            //Act: Insert list with duplicate name
+            var result = gListEngine.InsertList(gListDup);
+
+            //Assert: Handled by the Expected Exception attribute
+        }
+
+        [TestMethod]
+        public void GListEngine_InsertList()
+        {
+            //Arrange: Seeds the Mocked Accessors
+            SeedGLists();
+            GList gList = new GList() { Id = 4, ListName = "Brand New List" };
+            var expected = gList;
+            
+
+            //Act: Insert list with duplicate name and retrieve the list of lists
+            var result = gListEngine.InsertList(gList);
+
+            //Assert: Checks whether the Brand New List has been added to the list of lists
+            Assert.AreEqual(expected.ListName, result.ListName, "The item wasn't inserted.");
+        }
+    }
 
 }
