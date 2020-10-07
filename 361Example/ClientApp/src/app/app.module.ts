@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -13,15 +13,17 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-
-
-
 import { CreateNewAccComponent } from './CreateNewAcc/CreateNewAcc.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { FaqComponent } from './faq/faq.component';
 
+import { ItemListService } from './item-list/item-list.service';
+import { AddItemComponent } from './add-item/add-item.component';
 
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent }
 
+];
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FaqComponent } from './faq/faq.component';
     CreateNewAccComponent,
     ItemListComponent,
     FaqComponent,
+    AddItemComponent,
     UserMenuComponent,
 
   ],
@@ -48,11 +51,13 @@ import { FaqComponent } from './faq/faq.component';
       { path: 'item-list', component: ItemListComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'faq', component: FaqComponent },
-      {path: 'user-menu', component: UserMenuComponent}
+      { path: 'add-item', component: AddItemComponent },
+      { path: 'user-menu', component: UserMenuComponent },
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    ItemListService,
   ],
   bootstrap: [AppComponent]
 })
