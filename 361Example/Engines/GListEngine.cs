@@ -21,11 +21,6 @@ namespace _361Example.Engines
         {
             IEnumerable < GList > gListList = _gListAccessor.GetAllGLists().ToList();
 
-            if (gListList.IsNullOrEmpty())
-            {
-                throw new ArgumentNullException();
-            }
-
             return _gListAccessor.GetAllGLists().ToList();
         }
 

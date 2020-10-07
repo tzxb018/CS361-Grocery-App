@@ -14,6 +14,7 @@ namespace GroceryApp.Tests
 
         private readonly IGListEngine gListEngine;
         private readonly MockedGListAccessor mockedGListAccessor;
+        private object expected;
 
         public GListEngineTests()
         {
@@ -124,10 +125,12 @@ namespace GroceryApp.Tests
             mockedGListAccessor.SetState(null);
 
 
+
             //Act: Calls the GListEngine GetAllLists() method
             var result = gListEngine.GetAllLists();
 
             //Assert is handled by the ExpectedException attribute on the test method
+          
         }
 
         public void SeedGLists()
