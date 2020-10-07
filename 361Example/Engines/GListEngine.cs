@@ -3,6 +3,8 @@ using _361Example.Models;
 using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 
 namespace _361Example.Engines
@@ -35,6 +37,24 @@ namespace _361Example.Engines
 
         public GList InsertList(GList glist)
         {
+            if(glist == null){
+                throw new NullReferenceException();
+            }
+           
+            IEnumerable<GList> allLists = _gListAccessor.GetAllGLists();
+
+            foreach (GList groceryList in allLists){
+                if (glist.Equals(groceryList)){
+                    throw new DuplicateNameException();
+                }
+                else if (glist.ListName.Equals(groceryList.ListName)){
+                    throw new DuplicateNameException();
+                }
+                else if (glist.Id.Equals(groceryList.Id)){
+                    throw new ArgumentException();
+                }
+            }
+
             _gListAccessor.Insert(glist);
 
             return glist;
