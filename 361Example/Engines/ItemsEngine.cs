@@ -1,34 +1,59 @@
-﻿using _361Example.Models;
+﻿using _361Example.Accessors;
+using _361Example.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Engines
 {
     public class ItemsEngine : IItemsEngine
     {
 
+        private readonly IItemAccessor _itemsAccessor;
+
+        public ItemsEngine(IItemAccessor itemAccessor)
+        {
+            _itemsAccessor = itemAccessor;
+        }
+
         public IEnumerable<Item> GetAllItems()
         {
-            throw new System.NotImplementedException();
+            return _itemsAccessor.GetAllItems().ToList();
         }
 
         public Item GetItem(int id)
         {
-            throw new System.NotImplementedException();
+            if (_itemsAccessor.Exists(id))
+            {
+                return _itemsAccessor.Find(id);
+            }
+            return null;
         }
 
         public Item InsertItem(Item item)
         {
-            throw new System.NotImplementedException();
+            _itemsAccessor.Insert(item);
+            _itemsAccessor.SaveChanges();
+
+            return item;
         }
 
         public Item UpdateItem(int id, Item item)
         {
-            throw new System.NotImplementedException();
+            _itemsAccessor.Update(item);
+            _itemsAccessor.SaveChanges();
+
+            return item;
         }
 
         public Item DeleteItem(int id)
         {
-            throw new System.NotImplementedException();
+            var item = _itemsAccessor.Find(id);
+            if (item != null)
+            {
+                _itemsAccessor.Delete(item);
+                _itemsAccessor.SaveChanges();
+            }
+            return item;
         }
     }
 }
