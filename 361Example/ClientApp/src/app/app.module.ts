@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -13,17 +13,19 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-
-
-
 import { NewAccountComponent } from './new-account/new-account.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { FaqComponent } from './faq/faq.component';
 import { NewListComponent } from './new-list/new-list.component';
 
+import { ItemListService } from './item-list/item-list.service';
+import { AddItemComponent } from './add-item/add-item.component';
 
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent }
 
+];
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { NewListComponent } from './new-list/new-list.component';
     FaqComponent,
     UserMenuComponent,
     NewListComponent,
+
 
   ],
   imports: [
@@ -53,10 +56,12 @@ import { NewListComponent } from './new-list/new-list.component';
       { path: 'faq', component: FaqComponent },
       { path: 'user-menu', component: UserMenuComponent },
       { path: 'new-list', component: NewListComponent },
+
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    ItemListService,
   ],
   bootstrap: [AppComponent]
 })

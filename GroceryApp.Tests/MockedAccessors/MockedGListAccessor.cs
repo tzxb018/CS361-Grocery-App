@@ -66,5 +66,10 @@ namespace GroceryApp.Tests.MockedAccessors
             gLists = newState;
         }
 
+        public List<GList> GetState()
+        {
+            return gLists;
+        }
+
     }
 }
