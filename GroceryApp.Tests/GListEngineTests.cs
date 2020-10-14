@@ -133,6 +133,8 @@ namespace GroceryApp.Tests
           
         }
 
+        [ExpectedException]
+
         public void SeedGLists()
         {
             mockedGListAccessor.SetState(new List<GList>
