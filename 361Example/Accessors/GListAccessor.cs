@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace _361Example.Accessors
 {
-    public class GListAccessor : DbContext
+    public class GListAccessor : DbContext, IGListAccessor
     {
 
         private DbSet<GList> GLists { get; set; }
 
-        public GListAccessor(String ConnectionString) : base(GetOptions(ConnectionString))
+        public GListAccessor() : base(GetOptions("ApplicationDBContext"))
         {
             GLists = Set<GList>();
         }
