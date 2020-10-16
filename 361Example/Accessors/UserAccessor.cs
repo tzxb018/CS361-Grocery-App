@@ -60,6 +60,7 @@ namespace _361Example.Accessors
         public void update(User user)
         {
             Entry(user).State = EntityState.Modified;
+            base.SaveChanges();
         }
     }
 }

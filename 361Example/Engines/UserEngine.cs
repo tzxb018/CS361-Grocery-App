@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace _361Example.Engines
 {
-    public class UserEngine
+    public class UserEngine : IUserEngine
     {
         private readonly IUserAccessor _userAccessor;
 
