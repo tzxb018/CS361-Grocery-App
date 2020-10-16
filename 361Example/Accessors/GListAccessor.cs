@@ -2,28 +2,34 @@
 using _361Example.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace _361Example.Accessors
 {
-    public class GListAccessor : ControllerBase
+    public class GListAccessor : DbContext, IGListAccessor
     {
 
-        private readonly ApplicationDbContext _context;
+        private DbSet<GList> GLists { get; set; }
 
-        GListAccessor(ApplicationDbContext context)
+        public GListAccessor() : base(GetOptions("ApplicationDBContext"))
         {
-            _context = context;
+            GLists = Set<GList>();
+        }
+
+        private static DbContextOptions GetOptions(String ConnectionString)
+        {
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
 
         public GList Delete(GList gList)
         {
             if (Exists(gList.Id))
             {
-                _context.GList.Remove(gList);
-                _context.SaveChanges();
+                GLists.Remove(gList);
+                base.SaveChanges();
                 return gList;
             }
 
@@ -42,30 +48,24 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
-            return _context.GList.Find(id);
+            return GLists.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
-            return _context.GList;
+            return GLists;
         }
 
         public GList Insert(GList gList)
         {
-            _context.GList.Add(gList);
-            _context.SaveChanges();
+            GLists.Add(gList);
+            base.SaveChanges();
             return gList;
         }
 
         public void Update(GList gList)
         {
-            throw new NotImplementedException();
-        }
-
-        //don't test until database is connected
-        public IEnumerable<Item> GetGListItems(int id)
-        {
-            return _context.Item.FromSqlRaw("SELECT * FROM Item WHERE ListId = @id", id).ToList();
+            Entry(gList).State = EntityState.Modified;
         }
     }
 }
