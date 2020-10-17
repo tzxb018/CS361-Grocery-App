@@ -134,7 +134,7 @@ namespace GroceryApp.Tests
 
         }
 
-        [ExpectedException]
+        //[ExpectedException]
 
         public void SeedGLists()
         {
@@ -157,12 +157,6 @@ namespace GroceryApp.Tests
                 }
             });
         }
-
-        public void GListEngine_GetList()
-        {
-
-        }
-
 
 
         [TestMethod]
@@ -209,7 +203,7 @@ namespace GroceryApp.Tests
             SeedGLists();
             var expected = new GList { Id = 2, ListName = "Wednesday Groceries" };
 
-            // Act: Calls the GList Engine GetList() method
+            // Act: Calls the G                                      List Engine GetList() method
             var result = gListEngine.GetList(2);
 
             // Assert: Checks whether expected and result list are the same

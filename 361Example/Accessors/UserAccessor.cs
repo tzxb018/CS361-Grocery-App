@@ -9,10 +9,12 @@ namespace _361Example.Accessors
 {
     public class UserAccessor : DbContext, IUserAccessor
     {
-        private DbSet<User> Users { get; set; }
-        public UserAccessor() : base(GetOptions("ApplicationDBContext"))
+        private DbSet<User> Account { get; set; }
+
+        //For testing purposes change the connection string to your personal DB's
+        public UserAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
-            Users = Set<User>();
+            Account = Set<User>();
         }
         private static DbContextOptions GetOptions(String ConnectionString)
         {
@@ -22,7 +24,7 @@ namespace _361Example.Accessors
         {
             if (Exists(user.Id))
             {
-                Users.Remove(user);
+                Account.Remove(user);
                 base.SaveChanges();
                 return user;
             }
@@ -42,17 +44,17 @@ namespace _361Example.Accessors
 
         public User Find(int id)
         {
-            return Users.Find(id);
+            return Account.Find(id);
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return Users;
+            return Account;
         }
 
         public User Insert(User user)
         {
-            Users.Add(user);
+            Account.Add(user);
             base.SaveChanges();
             return user;
         }

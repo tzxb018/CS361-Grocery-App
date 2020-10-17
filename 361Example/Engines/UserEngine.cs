@@ -50,7 +50,7 @@ namespace _361Example.Engines
 
         public User UpdateUser(User user)
         {
-            _userAccessor.update(user);
+            _userAccessor.Update(user);
 
             if(GetUser(user.Id) != user)
             {
