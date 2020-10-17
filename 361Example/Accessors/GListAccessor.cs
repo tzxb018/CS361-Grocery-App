@@ -12,11 +12,12 @@ namespace _361Example.Accessors
     public class GListAccessor : DbContext, IGListAccessor
     {
 
-        private DbSet<GList> GLists { get; set; }
+        private DbSet<GList> GroceryList { get; set; }
 
-        public GListAccessor() : base(GetOptions("ApplicationDBContext"))
+        //For testing purposes change the connection string to your personal DB's
+        public GListAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
-            GLists = Set<GList>();
+            GroceryList = Set<GList>();
         }
 
         private static DbContextOptions GetOptions(String ConnectionString)
@@ -28,7 +29,7 @@ namespace _361Example.Accessors
         {
             if (Exists(gList.Id))
             {
-                GLists.Remove(gList);
+                GroceryList.Remove(gList);
                 base.SaveChanges();
                 return gList;
             }
@@ -48,17 +49,17 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
-            return GLists.Find(id);
+            return GroceryList.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
-            return GLists;
+            return GroceryList;
         }
 
         public GList Insert(GList gList)
         {
-            GLists.Add(gList);
+            GroceryList.Add(gList);
             base.SaveChanges();
             return gList;
         }
