@@ -12,6 +12,18 @@ namespace _361Example.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public bool Checkoff { get; set; }
-        public int GroceryListId { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Item item = (Item)obj;
+                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) && (Checkoff == item.Checkoff);
+            }
+        }
     }
 }
