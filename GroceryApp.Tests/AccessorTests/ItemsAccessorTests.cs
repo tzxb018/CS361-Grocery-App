@@ -2,6 +2,7 @@
 using _361Example.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace GroceryApp.Tests
 {
@@ -71,6 +72,69 @@ namespace GroceryApp.Tests
 
         }
 
+        [TestMethod]
+        public void ItemsAccessor_GetAllItems()
+        {
+            var expected = new List<Item>
+            {
+                new Item
+                {
+                    Id = 1,
+                    Name = "Bread",
+                    Checkoff = false,
+                    Date = DateTime.Parse("2020-09-29")
+                },
+                new Item
+                {
+                    Id = 2,
+                    Name = "Milk",
+                    Checkoff = false,
+                    Date = DateTime.Parse("2020-09-14")
+                },
+                new Item
+                {
+                    Id = 3,
+                    Name = "Toilet Paper",
+                    Checkoff = false,
+                    Date = DateTime.Parse("2020-09-06")
+                },
+                new Item
+                {
+                    Id = 4,
+                    Name = "Butter",
+                    Checkoff = false,
+                    Date = DateTime.Parse("2020-09-02")
+                },
+                new Item
+                {
+                    Id = 5,
+                    Name = "Bagels",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-16")
+                },
+                new Item
+                {
+                    Id = 6,
+                    Name = "Lettuce",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-18")
+                },
+                new Item
+                {
+                    Id = 7,
+                    Name = "Apples",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-22")
+                },
+                new Item
+                {
+                    Id = 8,
+                    Name = "Carrots",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-24")
+                }
+            };
+        }
 
 
     }
