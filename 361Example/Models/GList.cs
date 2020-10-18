@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _361Example.Models
 {
@@ -15,6 +13,19 @@ namespace _361Example.Models
         [Column("Name")]
         public String ListName { get; set; }
         public IEnumerable<Item> items { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                GList glist = (GList)obj;
+                return (Id == glist.Id) && (ListName == glist.ListName) && (items == glist.items);
+            }
+        }
 
     }
 }
