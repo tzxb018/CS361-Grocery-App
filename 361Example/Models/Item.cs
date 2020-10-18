@@ -12,5 +12,6 @@ namespace _361Example.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public bool Checkoff { get; set; }
+        public int GroceryListId { get; set; }
     }
 }

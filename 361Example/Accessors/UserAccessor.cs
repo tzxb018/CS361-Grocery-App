@@ -12,7 +12,7 @@ namespace _361Example.Accessors
         private DbSet<User> Account { get; set; }
 
         //For testing purposes change the connection string to your personal DB's
-        public UserAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public UserAccessor() : base(GetOptions("Data Source=DESKTOP-5G4TK7O\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
             Account = Set<User>();
         }
