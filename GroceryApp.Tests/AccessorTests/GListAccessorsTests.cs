@@ -2,6 +2,8 @@
 using _361Example.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GroceryApp.Tests
 {
@@ -72,6 +74,47 @@ namespace GroceryApp.Tests
 
         }
 
+        [TestMethod]
+        public void GListAccessor_GetAllGLists()
+        {
+            var expected = new List<GList>
+            {
+                new GList
+                {
+                    Id = 1,
+                    ListName = "First List"
+
+                },
+                 new GList
+                {
+                    Id = 2,
+                    ListName = "Sunday List"
+                },
+                 new GList
+                {
+                    Id = 3,
+                    ListName = "Groceries"
+                },
+                 new GList
+                {
+                    Id = 4,
+                    ListName = "Food"
+                }
+            };
+
+            var list = gListAccessor.GetAllGLists();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Assert.AreEqual(expected.ElementAt(i).ListName, list.ElementAt(i).ListName, "The GList was retrieved incorrectly.");
+                Assert.AreEqual(expected.ElementAt(i).Id, list.ElementAt(i).Id, "The GList was retrieved incorrectly.");
+            }
+
+        }
+
+
     }
 
 }
+
+
