@@ -77,7 +77,7 @@ namespace _361Example.Engines
             var glist = _gListAccessor.Find(id);
             if (glist != null)
             {
-                _gListAccessor.Delete(glist);
+                _gListAccessor.Delete(id);
             }
             return glist;
         }

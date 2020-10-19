@@ -9,13 +9,15 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { UserMenuComponent } from './user-menu/user-menu.component';
+
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
-import { CreateNewAccComponent } from './CreateNewAcc/CreateNewAcc.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 import { FaqComponent } from './faq/faq.component';
+import { NewListComponent } from './new-list/new-list.component';
 
 import { ItemListService } from './item-list/item-list.service';
 import { AddItemComponent } from './add-item/add-item.component';
@@ -32,11 +34,12 @@ const appRoutes: Routes = [
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    CreateNewAccComponent,
+    NewAccountComponent,
     ItemListComponent,
     FaqComponent,
-    AddItemComponent,
     UserMenuComponent,
+    NewListComponent,
+
 
   ],
   imports: [
@@ -47,12 +50,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'CreateNewAcc', component: CreateNewAccComponent },
+      { path: 'new-account', component: NewAccountComponent },
       { path: 'item-list', component: ItemListComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'faq', component: FaqComponent },
-      { path: 'add-item', component: AddItemComponent },
       { path: 'user-menu', component: UserMenuComponent },
+      { path: 'new-list', component: NewListComponent },
+
     ])
   ],
   providers: [

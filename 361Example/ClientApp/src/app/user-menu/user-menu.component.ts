@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'user-menu-component',
+  selector: 'app-user-menu',
   templateUrl: './user-menu.component.html'
 })
+<<<<<<< HEAD
 export class UserMenuComponent implements OnInit {
   public currentCount = 0;
 
@@ -40,4 +41,8 @@ export class UserMenuComponent implements OnInit {
     document.getElementById("table-body").innerHTML = "<tr><td>Name of List 1</td><td>2/4</td><td>10/16/2020</td><tr> ";
 
   }
+=======
+export class UserMenuComponent {
+  
+>>>>>>> Group10CSCE361Fall2020Assignment5
 }

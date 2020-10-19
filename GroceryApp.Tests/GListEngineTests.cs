@@ -134,6 +134,8 @@ namespace GroceryApp.Tests
 
         }
 
+        //[ExpectedException]
+
         public void SeedGLists()
         {
             mockedGListAccessor.SetState(new List<GList>
@@ -155,7 +157,6 @@ namespace GroceryApp.Tests
                 }
             });
         }
-
 
 
         [TestMethod]
@@ -202,7 +203,7 @@ namespace GroceryApp.Tests
             SeedGLists();
             var expected = new GList { Id = 2, ListName = "Wednesday Groceries" };
 
-            // Act: Calls the GList Engine GetList() method
+            // Act: Calls the G                                      List Engine GetList() method
             var result = gListEngine.GetList(2);
 
             // Assert: Checks whether expected and result list are the same
