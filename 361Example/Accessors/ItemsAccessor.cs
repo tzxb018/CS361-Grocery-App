@@ -14,7 +14,11 @@ namespace _361Example.Accessors
         // https://stackoverflow.com/questions/58159293/c-sharp-problem-with-dbcontext-argument-1-cannot-convert-string-to-microsof
 
         //For testing purposes change the connection string to your personal DB's
+<<<<<<< HEAD
         public ItemsAccessor() : base(GetOptions("Data Source=LAPTOP-33INMG0M\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+=======
+        public ItemsAccessor() : base(GetOptions("Data Source=DESKTOP-5G4TK7O\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+>>>>>>> 5660c945e3a2dad94099f8ecbc2379c180bc21e1
         {
             Item = Set<Item>();
         }
