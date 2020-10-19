@@ -139,6 +139,19 @@ namespace GroceryApp.Tests
 
         }
 
+        [TestMethod]
+        public void GListAccessor_Insert()
+        {
+            //Arrange: Create a new list to be inserted
+            GList expected = new GList { ListName = "Inserted List", accountId = 1 };
+
+            //Act: Insert the list
+            var result = gListAccessor.Insert(expected);
+
+            //Assert:
+            Assert.AreEqual(result, expected, "The grocery list was inserted incorrectly");
+        }
+
     }
 
 }
