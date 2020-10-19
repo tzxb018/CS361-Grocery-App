@@ -131,7 +131,21 @@ namespace GroceryApp.Tests
             }
         }
 
+        [TestMethod]
+        public void UserAccessor_Insert()
+        {
+            //Arrange: Create a new user to be inserted
+            User expected = new User { email = "insertuser@gmail.com", password = "asdfghjkl" };
+
+            //Act: Insert the User
+            var result = userAccessor.Insert(expected);
+
+            //Assert
+            Assert.AreEqual(expected, result, "The user was inserted incorrectly");
+        }
     }
+
+
 
 }
 

@@ -143,7 +143,7 @@ namespace GroceryApp.Tests
             var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false };
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
-            var result = itemsAccessor.Delete(1);
+            var result = itemsAccessor.Delete(9);
 
             //Assert: Checks that the correct account was returned
             Assert.AreEqual(item, result, "The incorrect item was deleted.");
@@ -163,6 +163,23 @@ namespace GroceryApp.Tests
 
         }
 
+        [TestMethod]
+        public void ItemsAccessor_Insert()
+        {
+            //Arrange: Create new Item to be inserted
+            Item expected = new Item
+            {
+                Name = "Water Bottles",
+                Checkoff = false,
+                Date = DateTime.Parse("2020-10-06")
+            };
+
+            //Act: Insert the item into the database
+            var result = itemsAccessor.Insert(expected);
+
+            //Assert:
+            Assert.AreEqual(expected, result, "The item was not inserted correctly");
+        }
     }
 
 }

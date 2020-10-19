@@ -15,11 +15,9 @@ namespace _361Example.Accessors
         private DbSet<GList> GroceryList { get; set; }
 
         //For testing purposes change the connection string to your personal DB's
-<<<<<<< HEAD
-        public GListAccessor() : base(GetOptions("Data Source=LAPTOP-33INMG0M\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
-=======
-        public GListAccessor() : base(GetOptions("Data Source=DESKTOP-5G4TK7O\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
->>>>>>> 5660c945e3a2dad94099f8ecbc2379c180bc21e1
+
+        public GListAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+
         {
             GroceryList = Set<GList>();
         }

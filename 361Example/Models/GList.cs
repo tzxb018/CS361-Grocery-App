@@ -13,6 +13,7 @@ namespace _361Example.Models
         [Column("Name")]
         public String ListName { get; set; }
         public IEnumerable<Item> items { get; set; }
+        public int accountId { get; set; }
 
         public override bool Equals(object obj)
         {
