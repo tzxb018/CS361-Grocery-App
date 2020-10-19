@@ -143,7 +143,7 @@ namespace GroceryApp.Tests
             var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false };
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
-            var result = itemsAccessor.Delete(1);
+            var result = itemsAccessor.Delete(9);
 
             //Assert: Checks that the correct account was returned
             Assert.AreEqual(item, result, "The incorrect item was deleted.");
