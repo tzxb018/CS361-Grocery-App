@@ -63,7 +63,7 @@ namespace _361Example.Engines
         //Returns null if the User doesn't exist and can't be deleted
         public User DeleteUser(User user)
         {
-            return _userAccessor.Delete(user);
+            return _userAccessor.Delete(user.Id);
         }
     }
 }

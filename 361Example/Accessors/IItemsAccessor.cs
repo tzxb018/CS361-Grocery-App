@@ -9,7 +9,7 @@ namespace _361Example.Accessors
         Item Find(int id);
         Item Insert(Item item);
         void Update(Item item);
-        Item Delete(Item item);
+        Item Delete(int id);
         bool Exists(int id);
         int SaveChanges();
     }

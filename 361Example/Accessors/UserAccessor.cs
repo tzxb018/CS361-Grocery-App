@@ -12,7 +12,7 @@ namespace _361Example.Accessors
         private DbSet<User> Account { get; set; }
 
         //For testing purposes change the connection string to your personal DB's
-        public UserAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public UserAccessor() : base(GetOptions("Data Source=LAPTOP-33INMG0M\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
             Account = Set<User>();
         }
@@ -20,10 +20,11 @@ namespace _361Example.Accessors
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
-        public User Delete(User user)
+        public User Delete(int id)
         {
-            if (Exists(user.Id))
+            if (Exists(id))
             {
+                var user = Find(id);
                 Account.Remove(user);
                 base.SaveChanges();
                 return user;

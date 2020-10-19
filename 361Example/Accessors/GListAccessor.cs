@@ -15,7 +15,7 @@ namespace _361Example.Accessors
         private DbSet<GList> GroceryList { get; set; }
 
         //For testing purposes change the connection string to your personal DB's
-        public GListAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public GListAccessor() : base(GetOptions("Data Source=LAPTOP-33INMG0M\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
             GroceryList = Set<GList>();
         }
@@ -25,10 +25,11 @@ namespace _361Example.Accessors
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
 
-        public GList Delete(GList gList)
+        public GList Delete(int id)
         {
-            if (Exists(gList.Id))
+            if (Exists(id))
             {
+                var gList = Find(id);
                 GroceryList.Remove(gList);
                 base.SaveChanges();
                 return gList;

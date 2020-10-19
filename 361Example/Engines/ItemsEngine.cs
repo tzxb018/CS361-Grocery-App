@@ -50,7 +50,7 @@ namespace _361Example.Engines
             var item = _itemsAccessor.Find(id);
             if (item != null)
             {
-                _itemsAccessor.Delete(item);
+                _itemsAccessor.Delete(id);
                 _itemsAccessor.SaveChanges();
             }
             return item;

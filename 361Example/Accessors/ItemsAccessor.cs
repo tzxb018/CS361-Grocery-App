@@ -14,7 +14,7 @@ namespace _361Example.Accessors
         // https://stackoverflow.com/questions/58159293/c-sharp-problem-with-dbcontext-argument-1-cannot-convert-string-to-microsof
 
         //For testing purposes change the connection string to your personal DB's
-        public ItemsAccessor() : base(GetOptions("Data Source=SHEILA;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public ItemsAccessor() : base(GetOptions("Data Source=LAPTOP-33INMG0M\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
         {
             Item = Set<Item>();
         }
@@ -51,9 +51,17 @@ namespace _361Example.Accessors
             Entry(item).State = EntityState.Modified;
         }
 
-        public Item Delete(Item item)
+        public Item Delete(int id)
         {
-            return Item.Remove(item).Entity;
+            if (Exists(id))
+            {
+                var item = Find(id);
+                Item.Remove(item);
+                base.SaveChanges();
+                return item;
+            }
+
+            return null;
         }
 
         public override int SaveChanges()

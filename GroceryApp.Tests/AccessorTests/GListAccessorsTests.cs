@@ -59,7 +59,7 @@ namespace GroceryApp.Tests
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GListEngine_GetList_ElementDoesntExist()
+        public void GListAccessor_GetList_ElementDoesntExist()
         {
             // Arrange: The expected result should be null, since there is no list with ID = 5
 
@@ -69,6 +69,33 @@ namespace GroceryApp.Tests
 
             // Assert checks if the result is null
             Assert.AreEqual(null, result.ListName, result.Id + " was returned. ");
+
+        }
+
+        
+        [TestMethod]
+        public void GListAccessor_Delete()
+        {
+            //Arrange: The GList to be deleted is within the database
+
+            //Act: Calls the GListAccessor Delete() method to delete the GList from the database
+            var result = gListAccessor.Delete(5);
+
+            //Assert: Checks that the correct GList was returned
+            Assert.AreEqual("Another List", result.ListName, "The incorrect GList was deleted.");
+
+        }
+
+        [TestMethod]
+        public void GListAccessor_Delete_GListNotInDB()
+        {
+            //Arrange: The GList id 0 is not within the database
+
+            //Act: Calls the GListAccessor Delete() method to delete the GList from the database
+            var result = gListAccessor.Delete(0);
+
+            //Assert: Checks that null was returned
+            Assert.IsNull(result, "A GList was unexpectedly deleted.");
 
         }
 

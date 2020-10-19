@@ -58,7 +58,7 @@ namespace GroceryApp.Tests
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GListEngine_GetList_ElementDoesntExist()
+        public void ItemsAccessor_GetList_ElementDoesntExist()
         {
             // Arrange: The expected result should be null, since there is no item with ID = 10
 
@@ -72,6 +72,32 @@ namespace GroceryApp.Tests
         }
 
 
+        [TestMethod]
+        public void ItemsAccessor_Delete()
+        {
+            //Arrange: The item to be deleted is within the database
+            var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false };
+
+            //Act: Calls the UserAccessor Delete() method to delete the account from the database
+            var result = itemsAccessor.Delete(1);
+
+            //Assert: Checks that the correct account was returned
+            Assert.AreEqual(item, result, "The incorrect item was deleted.");
+
+        }
+
+        [TestMethod]
+        public void ItemsAccessor_Delete_AccountNotInDB()
+        {
+            //Arrange: The item id 0 is not within the database
+
+            //Act: Calls the ItemsAccessor Delete() method to delete the item from the database
+            var result = itemsAccessor.Delete(0);
+
+            //Assert: Checks that null was returned
+            Assert.IsNull(result, "An item was unexpectedly deleted.");
+
+        }
 
     }
 

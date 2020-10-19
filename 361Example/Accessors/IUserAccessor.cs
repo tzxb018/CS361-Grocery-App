@@ -12,7 +12,7 @@ namespace _361Example.Accessors
         User Find(int id);
         User Insert(User user);
         void Update(User user);
-        User Delete(User user);
+        User Delete(int id);
         bool Exists(int id);
     }
 }

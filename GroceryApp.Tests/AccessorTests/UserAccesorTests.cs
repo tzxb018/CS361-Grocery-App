@@ -54,12 +54,12 @@ namespace GroceryApp.Tests
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GListEngine_GetList_ElementDoesntExist()
+        public void UserAccessor_GetList_ElementDoesntExist()
         {
             // Arrange: The expected result should be null, since there is no user with ID = 10
 
 
-            // Act: Calls the userAccessor Find() method on a item that doesn't exist
+            // Act: Calls the userAccessor Find() method on a user that doesn't exist
             var result = userAccessor.Find(10);
 
             // Assert checks if the result is null
@@ -67,6 +67,32 @@ namespace GroceryApp.Tests
 
         }
 
+        [TestMethod]
+        public void UserAccessor_Delete()
+        {
+            //Arrange: The account to be deleted is within the database
+
+            //Act: Calls the UserAccessor Delete() method to delete the account from the database
+            var result = userAccessor.Delete(4);
+
+            //Assert: Checks that the correct account was returned
+            Assert.AreEqual("ihavenolists@gmail.com", result.email, "The incorrect user was deleted.");
+            Assert.AreEqual("sfljrred2", result.password, "The incorrect user was deleted.");
+
+        }
+
+        [TestMethod]
+        public void UserAccessor_Delete_AccountNotInDB()
+        {
+            //Arrange: The account id 0 is not within the database
+
+            //Act: Calls the UserAccessor Delete() method to delete the account from the database
+            var result = userAccessor.Delete(0);
+
+            //Assert: Checks that null was returned
+            Assert.IsNull(result, "A user was unexpectedly deleted.");
+
+        }
 
 
     }
