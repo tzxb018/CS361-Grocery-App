@@ -22,18 +22,23 @@
   <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="gLists">
     <thead>
       <tr>
-        <th>Date</th>
+        <th>ID</th>
         <th>List Name</th>
+        <th>Items</th>
+        <th>Account ID</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let gList of gLists">
-        <td>{{ gList.Date }}</td>
-        <td>{{ gList.ListName }}</td>
+        <td>{{ gList.id }}</td>
+        <td>{{ gList.listName }}</td>
+        <td>{{ gList.items}}</td>
+        <td>{{ gList.accountId}} </td>
       </tr>
     </tbody>
   </table>
 
+  <!--<input type="checkbox" [(ngModel)]="item.isSelected" (ngModelChange)="tick = tick+1">-->
   <!--<div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
     <div id="rcorners2">
       <table class="table" style="margin-bottom: 0px;">

@@ -14,13 +14,14 @@ export class UserMenuComponent {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<GList[]>(baseUrl + 'glist').subscribe(result => {
       this.gLists = result;
+      console.log(result);
     }, error => console.error(error));
   }
 }
 
 interface GList {
-  Id: number;
-  ListName: string;
-  Items: any;
-  AccountId: number;
+  id: number;
+  listName: string;
+  items: any;
+  accountId: number;
 }

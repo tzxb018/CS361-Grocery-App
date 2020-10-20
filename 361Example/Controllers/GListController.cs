@@ -23,7 +23,7 @@ namespace _361Example.Controllers
         [HttpGet]
         public IEnumerable<GList> GetAllLists()
         {
-            return _gListEngine.GetAllLists();
+            return _gListEngine.GetAllLists().ToArray();
         }
 
         // GET: api/glist/5
