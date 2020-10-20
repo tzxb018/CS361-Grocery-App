@@ -18,25 +18,30 @@
   </table>
 
   <p *ngIf="!gLists"><em>Loading...</em></p>
+  <div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
+    <div id="rcorners2">
+      <table class='table' aria-labelledby="tableLabel" *ngIf="gLists">
+        <thead>
+          <tr>
+            <th>List Name</th>
+            <th>Last Updated</th>
+            <th>Items Left</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gList of gLists">
+            <td>{{ gList.listName }}</td>
+            <td> {{gList.date | date:'medium'}} </td>
+            <td>{{ gList.items?.length || 0 }}</td>
+            <td><button class="btn btn-warning">Edit</button><button class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="gLists">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>List Name</th>
-        <th>Items</th>
-        <th>Account ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let gList of gLists">
-        <td>{{ gList.id }}</td>
-        <td>{{ gList.listName }}</td>
-        <td>{{ gList.items}}</td>
-        <td>{{ gList.accountId}} </td>
-      </tr>
-    </tbody>
-  </table>
+
 
   <!--<input type="checkbox" [(ngModel)]="item.isSelected" (ngModelChange)="tick = tick+1">-->
   <!--<div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
