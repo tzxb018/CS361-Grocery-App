@@ -1,13 +1,17 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
 using _361Example.Engines;
 using _361Example.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
 namespace _361Example.Controllers
 {
-    [RoutePrefix("api/glists")]
-    public class GListController : ApiController
+    [Authorize]
+    [ApiController]
+    [Route("[controller]")]
+    public class GListController : ControllerBase
     {
         private readonly IGListEngine _gListEngine;
         public GListController(IGListEngine gListEngine)
@@ -16,65 +20,64 @@ namespace _361Example.Controllers
         }
 
         // GET: api/glists
-        [Route("")]
         [HttpGet]
-        public IHttpActionResult GetAllLists()
+        public IEnumerable<GList> GetAllLists()
         {
-            return Ok(_gListEngine.GetAllLists());
+            return _gListEngine.GetAllLists();
         }
 
         // GET: api/glist/5
-        [System.Web.Http.Route("{id}")]
-        [System.Web.Http.HttpGet]
-        public IHttpActionResult GetList(string id)
+        [Route("{id}")]
+        [HttpGet]
+        public GList GetList(string id)
         {
             var parsedId = int.Parse(id);
             GList glist = _gListEngine.GetList(parsedId);
 
             if (glist == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(glist);
+            return glist;
         }
 
 
         // POST: api/glists
         [Route("")]
         [HttpPost]
-        public IHttpActionResult PostList(GList glist)
+        public void PostList(GList glist)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
 
             _gListEngine.InsertList(glist);
 
-            return Ok(glist);
+            //return Ok(glist);
         }
 
         // PUT: api/glists/5
         [Route("{id}")]
         [HttpPut]
-        public IHttpActionResult PutList(string id, GList glist)
+        public void PutList(string id, GList glist)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
             var parsedId = int.Parse(id);
 
             if (parsedId != glist.Id)
             {
-                return BadRequest();
+                //return BadRequest();
             }
 
             _gListEngine.UpdateList(parsedId, glist);
 
 
-            return Ok();
+            //return Ok();
         }
 
 
@@ -82,18 +85,18 @@ namespace _361Example.Controllers
         // DELETE: api/glists/5
         [Route("{id}")]
         [HttpDelete]
-        public IHttpActionResult DeleteList(string id)
+        public void DeleteList(string id)
         {
             var parsedId = int.Parse(id);
 
             GList glist = _gListEngine.GetList(parsedId);
             if (glist == null)
             {
-                return NotFound();
+                //return NotFound();
             }
             _gListEngine.DeleteList(glist.Id);
 
-            return Ok(glist);
+            //return Ok(glist);
         }
 
         //protected override void Dispose(bool disposing)
