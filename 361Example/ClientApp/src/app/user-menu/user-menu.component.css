@@ -6,7 +6,7 @@
   font-family: 'Text Me One';
   color: #ffffff;
   width: 400px;
-  height: 600px;
+  height: 400px;
 }
 
 #rcorners2 {
@@ -14,9 +14,11 @@
   border-radius: 15px 15px 15px 15px;
   background: #ffffff;
   width: 100%;
-  height: 600px;
+  height: 100%;
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 5px;
+  overflow: auto;
 }
 
 .parent {
@@ -63,11 +65,10 @@
   min-height: 10px;
 }
 
-.edit_list_button {
+#edit_list_button {
   font-family: 'Alata';
   color: #ffffff;
   border-radius: 7px;
-  width: 90%;
   border: unset;
   background: #3f8ffc;
 }
