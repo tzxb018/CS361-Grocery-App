@@ -22,6 +22,7 @@ export class UserMenuComponent {
 interface GList {
   id: number;
   listName: string;
+  date: Date;
   items: any;
   accountId: number;
 }

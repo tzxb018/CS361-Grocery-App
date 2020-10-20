@@ -12,6 +12,8 @@ namespace _361Example.Models
         public int Id { get; set; }
         [Column("Name")]
         public String ListName { get; set; }
+
+        public DateTime Date { get; set; }
         public IEnumerable<Item> Items { get; set; }
         public int AccountId { get; set; }
 
@@ -24,7 +26,7 @@ namespace _361Example.Models
             else
             {
                 GList glist = (GList)obj;
-                return (Id == glist.Id) && (ListName == glist.ListName) && (Items == glist.Items);
+                return (Id == glist.Id) && (ListName == glist.ListName) && (Items == glist.Items) && (Date == glist.Date);
             }
         }
 
