@@ -15,7 +15,7 @@ namespace _361Example.Accessors
 
         //For testing purposes change the connection string to your personal DB's
 
-        public ItemsAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public ItemsAccessor() : base(GetOptions("Data Source=LAPTOP-FSV798M4;Initial Catalog=GroceryWebAppDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
 
         {
             Item = Set<Item>();
