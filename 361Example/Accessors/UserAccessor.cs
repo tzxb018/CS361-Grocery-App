@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _361Example.Accessors
 {
@@ -13,7 +11,7 @@ namespace _361Example.Accessors
 
         //For testing purposes change the connection string to your personal DB's
 
-        public UserAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public UserAccessor() : base(GetOptions("Data Source=LAPTOP-FSV798M4;Initial Catalog=GroceryWebAppDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
 
         {
             Account = Set<User>();
@@ -38,7 +36,7 @@ namespace _361Example.Accessors
         public bool Exists(int id)
         {
             var user = Find(id);
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }

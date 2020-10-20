@@ -143,7 +143,7 @@ namespace GroceryApp.Tests
         public void GListAccessor_Insert()
         {
             //Arrange: Create a new list to be inserted
-            GList expected = new GList { ListName = "Inserted List", accountId = 1 };
+            GList expected = new GList { ListName = "Inserted List", AccountId = 1 };
 
             //Act: Insert the list
             var result = gListAccessor.Insert(expected);

@@ -1,13 +1,12 @@
+﻿using _361Example.Accessors;
+using _361Example.Data;
+using _361Example.Engines;
+using _361Example.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
-using _361Example.Data;
-using _361Example.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -51,6 +50,9 @@ namespace _361Example
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
+
+            services.AddTransient<IGListEngine, GListEngine>();
+            services.AddTransient<IGListAccessor, GListAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
