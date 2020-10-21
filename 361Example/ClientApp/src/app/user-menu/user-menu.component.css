@@ -21,6 +21,31 @@
   overflow: auto;
 }
 
+#page-header {
+  font-family: 'Text Me One';
+  color: #629c44;
+  font-size: 30px;
+  text-align: left;
+  font-weight: bold;
+  width: 50%;
+}
+
+#table-formatter {
+  font-family: 'Alata';
+  font-size: 16px;
+}
+
+#new-list-button {
+  font-family: 'Alata';
+  color: #ffffff;
+  font-size: 14px;
+  width: 150px;
+  height: 32px;
+  border-radius: 7px;
+  border: unset;
+  background: #f06e9c;
+}
+
 .parent {
   display: flex;
 }
@@ -108,9 +133,6 @@ form.example::after {
   display: table;
 }
 
-table {
-  margin-top: 1.5em;
-}
 
 tbody td {
   text-align: left;

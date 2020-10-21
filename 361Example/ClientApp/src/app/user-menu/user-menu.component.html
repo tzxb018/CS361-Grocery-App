@@ -4,21 +4,21 @@
   <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <table width="100%">
+  <table width="100%" style="margin-bottom: 10px;">
     <tr>
-      <td style="font-family: 'Text Me One'; color: #629c44; font-size: 30px; text-align: left; font-weight: bold; width: 50%;">Grocery Lists</td>
+      <td id="page-header">Grocery Lists</td>
       <td style="text-align: right;">
         <form class="example">
           <input type="text" placeholder=" Search for list.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </td>
-      <td style="text-align:right; width: 15%;"><button [routerLink]="['/new-list']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 150px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c;  ">Create New List</button>  </td>
+      <td style="text-align:right; width: 15%;"><button [routerLink]="['/new-list']" id="new-list-button">Create New List</button>  </td>
     </tr>
   </table>
 
   <p *ngIf="!gLists"><em>Loading...</em></p>
-  <div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
+  <div class=parent id="table-formatter">
     <div id="rcorners2">
       <table class='table' aria-labelledby="tableLabel" *ngIf="gLists">
         <thead>
@@ -36,7 +36,6 @@
             <td style="text-align:center">{{ gList.items?.length || 0 }}</td>
             <td style="text-align:center; ">
               <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']">View</button>
-
               <button class="btn btn-danger" style="margin-left: 10px;">Delete</button>
             </td>
           </tr>
@@ -44,37 +43,5 @@
       </table>
     </div>
   </div>
-
-
-
-  <!--<input type="checkbox" [(ngModel)]="item.isSelected" (ngModelChange)="tick = tick+1">-->
-  <!--<div class=parent style="margin-top: 10px; font-family: 'Alata'; font-size:16px;">
-    <div id="rcorners2">
-      <table class="table" style="margin-bottom: 0px;">
-        <thead>
-          <tr>
-
-            <th width=50% scope="col">Name</th>
-            <th width=15% scope="col" style="text-align:center;">Items</th>
-            <th width=20% scope="col" style="text-align:center;">Date</th>
-            <th width=20% scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      <div style="height:500px;" class="overflow-auto">
-        <table class="table">
-
-          <tbody id="table-body">
-          </tbody>
-        </table>
-
-
-      </div>
-
-
-    </div>
-  </div>-->
 </body>
 </html>
