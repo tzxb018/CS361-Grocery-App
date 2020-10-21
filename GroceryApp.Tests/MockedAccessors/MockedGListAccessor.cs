@@ -43,8 +43,9 @@ namespace GroceryApp.Tests.MockedAccessors
             gLists.Add(gList);
         }
 
-        public GList Delete(GList gList)
+        public GList Delete(int id)
         {
+            var gList = Find(id);
             gLists.Remove(gList);
             return gList;
         }

@@ -1,22 +1,21 @@
-﻿using _361Example.Data;
-using _361Example.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using _361Example.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace _361Example.Accessors
 {
     public class GListAccessor : DbContext, IGListAccessor
     {
 
-        private DbSet<GList> GLists { get; set; }
+        private DbSet<GList> GroceryList { get; set; }
 
-        public GListAccessor() : base(GetOptions("ApplicationDBContext"))
+        //For testing purposes change the connection string to your personal DB's
+
+        public GListAccessor() : base(GetOptions("Data Source=LAPTOP-FSV798M4;Initial Catalog=GroceryWebAppDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+
         {
-            GLists = Set<GList>();
+            GroceryList = Set<GList>();
         }
 
         private static DbContextOptions GetOptions(String ConnectionString)
@@ -24,11 +23,12 @@ namespace _361Example.Accessors
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
 
-        public GList Delete(GList gList)
+        public GList Delete(int id)
         {
-            if (Exists(gList.Id))
+            if (Exists(id))
             {
-                GLists.Remove(gList);
+                var gList = Find(id);
+                GroceryList.Remove(gList);
                 base.SaveChanges();
                 return gList;
             }
@@ -48,17 +48,17 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
-            return GLists.Find(id);
+            return GroceryList.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
-            return GLists;
+            return GroceryList;
         }
 
         public GList Insert(GList gList)
         {
-            GLists.Add(gList);
+            GroceryList.Add(gList);
             base.SaveChanges();
             return gList;
         }

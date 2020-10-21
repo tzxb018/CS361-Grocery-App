@@ -50,7 +50,7 @@ namespace _361Example.Engines
 
         public User UpdateUser(User user)
         {
-            _userAccessor.update(user);
+            _userAccessor.Update(user);
 
             if(GetUser(user.Id) != user)
             {
@@ -63,7 +63,7 @@ namespace _361Example.Engines
         //Returns null if the User doesn't exist and can't be deleted
         public User DeleteUser(User user)
         {
-            return _userAccessor.Delete(user);
+            return _userAccessor.Delete(user.Id);
         }
     }
 }

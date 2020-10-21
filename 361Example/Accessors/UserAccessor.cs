@@ -2,27 +2,30 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace _361Example.Accessors
 {
     public class UserAccessor : DbContext, IUserAccessor
     {
-        private DbSet<User> Users { get; set; }
-        public UserAccessor() : base(GetOptions("ApplicationDBContext"))
+        private DbSet<User> Account { get; set; }
+
+        //For testing purposes change the connection string to your personal DB's
+
+        public UserAccessor() : base(GetOptions("Data Source=LAPTOP-FSV798M4;Initial Catalog=GroceryWebAppDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"))
+
         {
-            Users = Set<User>();
+            Account = Set<User>();
         }
         private static DbContextOptions GetOptions(String ConnectionString)
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
-        public User Delete(User user)
+        public User Delete(int id)
         {
-            if (Exists(user.Id))
+            if (Exists(id))
             {
-                Users.Remove(user);
+                var user = Find(id);
+                Account.Remove(user);
                 base.SaveChanges();
                 return user;
             }
@@ -33,7 +36,7 @@ namespace _361Example.Accessors
         public bool Exists(int id)
         {
             var user = Find(id);
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }
@@ -42,22 +45,22 @@ namespace _361Example.Accessors
 
         public User Find(int id)
         {
-            return Users.Find(id);
+            return Account.Find(id);
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            return Users;
+            return Account;
         }
 
         public User Insert(User user)
         {
-            Users.Add(user);
+            Account.Add(user);
             base.SaveChanges();
             return user;
         }
 
-        public void update(User user)
+        public void Update(User user)
         {
             Entry(user).State = EntityState.Modified;
             base.SaveChanges();

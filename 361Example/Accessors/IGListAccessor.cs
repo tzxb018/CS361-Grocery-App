@@ -9,7 +9,7 @@ namespace _361Example.Accessors
         GList Find(int id);
         GList Insert(GList gList);
         void Update(GList gList);
-        GList Delete(GList gList);
+        GList Delete(int id);
         bool Exists(int id);
     }
 }

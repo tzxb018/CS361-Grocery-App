@@ -11,8 +11,8 @@ namespace _361Example.Accessors
         IEnumerable<User> GetAllUsers();
         User Find(int id);
         User Insert(User user);
-        void update(User user);
-        User Delete(User user);
+        void Update(User user);
+        User Delete(int id);
         bool Exists(int id);
     }
 }
