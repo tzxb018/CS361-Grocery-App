@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace _361Example.Accessors
 {
@@ -56,6 +58,11 @@ namespace _361Example.Accessors
             return GroceryList;
         }
 
+        public IEnumerable<GList> GetGLists(int userId)
+        {
+            return GroceryList.Where(g => g.AccountId == userId).ToArray();
+        }
+
         public GList Insert(GList gList)
         {
             GroceryList.Add(gList);
@@ -67,5 +74,7 @@ namespace _361Example.Accessors
         {
             Entry(gList).State = EntityState.Modified;
         }
+
+        
     }
 }
