@@ -75,6 +75,20 @@
     <div id="rcorners1">
       <div style="font-size: 30px; font-weight: bold; padding: 15px; text-align: left">
         List 2
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div [routerLink]="['/user-menu']" style="font-family: 'Alata'; font-size: 20px; font-weight: normal">Back to list</div>
+
       </div>
 
     </div>
@@ -99,47 +113,35 @@
         <table class="table">
           <tbody>
             <! –– dummy data––>
-            <tr *ngFor="let listInfo of joggingData">
-              <td width="60%">{{ listInfo.name }}</td>
-              <td width="15%" align="center">
-                <div class="custom-control form-control-lg custom-checkbox" style="height:10px;">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
 
-                  <label class="custom-control-label" for="customCheck1" style="position:absolute; bottom:100%;">
-                  </label>
+            <tr>
+              <td width="60%">Onion</td>
+              <td width="15%" align="center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
                 </div>
               </td>
-              <td width="30%">{{ listInfo.date}}</td>
-              <td>
-                <a href="#" (click)="editRecord(this)">Edit</a>
-                <a href="#" (click)="deleteRecord(this)">Delete</a>
-              </td>
+              <td width="30%">10/1/2020</td>
             </tr>
 
+            <tr>
+              <td width="60%">Onion</td>
+              <td width="15%" align="center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 
 
+                </div>
+              </td>
 
+              <td width="30%">10/1/2020</td>
+
+            </tr>
           </tbody>
         </table>
-
-
       </div>
-
-
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

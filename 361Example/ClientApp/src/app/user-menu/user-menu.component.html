@@ -124,7 +124,7 @@
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </td>
-      <td style="text-align: right; width: 15%;"><button [routerLink]="['/CreateNewAcc']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c;  ">+Create New List</button>  </td>
+      <td style="text-align: right; width: 15%;"><button [routerLink]="['/new-list']" style="font-family: 'Alata'; color: #ffffff; font-size: 14px; width: 139px; height: 32px; border-radius: 7px; border:unset; background: #f06e9c;  ">+Create New List</button>  </td>
     </tr>
   </table>
 
@@ -148,7 +148,7 @@
           <tbody>
             <! –– dummy data––>
             <tr>
-              <td width="50%">Grocery List for Walmart</td>
+              <td [routerLink]="['/item-list']" width="50%">Grocery List for Walmart</td>
               <td width="15%" style="text-align:center;">
                 2/4
               </td>
