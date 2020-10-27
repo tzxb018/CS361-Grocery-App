@@ -27,7 +27,6 @@
   font-size: 30px;
   text-align: left;
   font-weight: bold;
-  width: 50%;
 }
 
 #table-formatter {
@@ -44,6 +43,26 @@
   border-radius: 7px;
   border: unset;
   background: #f06e9c;
+  float: right;
+  position: relative;
+}
+
+  #new-list-button.hover {
+    background: #5d2237;
+    cursor: pointer;
+  }
+
+#refresh {
+  font-family: 'Alata';
+  color: #ffffff;
+  font-size: 14px;
+  width: 100px;
+  height: 32px;
+  border-radius: 7px;
+  border: unset;
+  background: #f06e9c;
+  position: relative;
+  margin-right: 10px;
 }
 
 .parent {
@@ -72,6 +91,13 @@
     background-color: #4CAF50;
     color: white;
   }
+
+#top-row {
+  display: inline-flex;
+  width: 100%;
+  border-bottom-width: 1px;
+  justify-content: space-between;
+}
 
 .custom-control-label:before {
   background-color: white;
@@ -105,14 +131,14 @@ form.example input[type=text] {
   border: 1px solid grey;
   border-radius: 15px 0px 0px 15px;
   float: left;
-  width: 80%;
   background: #f1f1f1;
+  width: 350px;
 }
 
 /* Style the submit button */
 form.example button {
   float: left;
-  width: 12%;
+  width: 45px;
   padding: 5px;
   background: #2196F3;
   border-radius: 0px 15px 15px 0px;
@@ -120,6 +146,7 @@ form.example button {
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
+  margin-right: 20px;
 }
 
   form.example button:hover {

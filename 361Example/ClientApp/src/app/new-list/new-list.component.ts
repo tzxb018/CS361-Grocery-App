@@ -1,6 +1,8 @@
 import { Component, Inject, Input, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserMenuService } from '../user-menu.service';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
 
 @Component({
   selector: 'app-new-list',
@@ -10,32 +12,20 @@ import { Observable } from 'rxjs';
 })
 export class NewListComponent {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private userMenuService: UserMenuService, private userMenuComponent: UserMenuComponent) { }
 
-  addGList() {
+  async addGList() {
+
     const newListName = (document.getElementById('new-list-name') as HTMLInputElement).value;
-    console.log('new list name', newListName);
     let todayUTC = new Date().getTime();
     let overlap = -5 * 60 * 60000;
     let todayCST = new Date(todayUTC + overlap);
     const newList = { listName: newListName, date: todayCST, items: null, accountId: 1 };
 
-    this.http.post<GList>(this.baseUrl + 'glist', newList).subscribe(
-      res => console.log('http response', res),
-      err => console.log('http error', err.error),
-      () => console.log('http request complete')
-    );
+    await this.userMenuService.addGList(newList).toPromise().then();
 
-
+    await this.userMenuComponent.refreshTable();
   }
 
 
-}
-
-interface GList {
-  id: number;
-  listName: string;
-  date: Date;
-  items: any;
-  accountId: number;
 }

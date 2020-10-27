@@ -20,6 +20,7 @@ import { FaqComponent } from './faq/faq.component';
 import { NewListComponent } from './new-list/new-list.component';
 
 import { AddItemComponent } from './add-item/add-item.component';
+import { UserMenuService } from './user-menu.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -61,6 +62,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    UserMenuComponent,
+    UserMenuService,
   ],
   bootstrap: [AppComponent]
 })
