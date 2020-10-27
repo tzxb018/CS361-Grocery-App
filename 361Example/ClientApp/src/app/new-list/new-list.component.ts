@@ -25,6 +25,8 @@ export class NewListComponent {
       err => console.log('http error', err.error),
       () => console.log('http request complete')
     );
+
+
   }
 
 

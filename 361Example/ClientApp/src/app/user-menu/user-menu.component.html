@@ -29,14 +29,14 @@
             <th style="text-align:center">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="table-body">
           <tr *ngFor="let gList of gLists">
             <td style="min-width: 40%;">{{ gList.listName }}</td>
             <td> {{gList.date | date:'medium'}}</td>
             <td style="text-align:center">{{ gList.items?.length || 0 }}</td>
             <td style="text-align:center; ">
               <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}">View</button>
-              <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}">Delete</button>
+              <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}" (click)="deleteGList(gList.id, gList.listName)">Delete</button>
             </td>
           </tr>
         </tbody>
