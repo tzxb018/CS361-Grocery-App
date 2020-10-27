@@ -12,6 +12,7 @@ DROP TABLE Account
 
 GO
 
+
 --Table Creation
 
 --Account Table which stores information for each user account
@@ -25,7 +26,7 @@ CREATE TABLE Account
 --GroceryList Table which stores information for a list associated with an account
 CREATE TABLE GroceryList
 (
-	GroceryListId	INT		IDENTITY(1,1)	NOT NULL	PRIMARY KEY,
+	GroceryListId	INT		IDENTITY(1,1)	NOT NULL	 PRIMARY KEY,
 	Name			[NVARCHAR](50)			NOT NULL,
 	AccountId		INT						NOT NULL,
 	Date			DATETIME				NOT NULL,
@@ -42,5 +43,6 @@ CREATE TABLE Item
    GroceryListId	INT							NOT NULL,
    CONSTRAINT FK_ListItem FOREIGN KEY (GroceryListId) REFERENCES GroceryList(GroceryListId)
 );
+
 
 GO
