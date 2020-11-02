@@ -13,12 +13,12 @@ INSERT Account (Username, EncryptedPassword)
 
 
 --GroceryList Test Data
-INSERT GroceryList (Name, Date, AccountId)
-	VALUES	('First List', '2020-10-02 10:12:32', 1),
-			('Sunday List', '2020-10-04 12:23:02', 1),
-			('Groceries','2020-10-20 02:40:42', 2),
-			('Food', '2020-10-12 15:23:21', 3),
-			('Another List', '2020-10-10 23:12:12', 3)
+INSERT GroceryList (Name, Date, AccountId, AspId)
+	VALUES	('First List', '2020-10-02 10:12:32', 1, '68192210-fa24-4c6c-8f80-630955695874'),
+			('Sunday List', '2020-10-04 12:23:02', 1, '68192210-fa24-4c6c-8f80-630955695874'),
+			('Groceries','2020-10-20 02:40:42', 2, '68192210-fa24-4c6c-8f80-630955695874'),
+			('Food', '2020-10-12 15:23:21', 3, '68192210-fa24-4c6c-8f80-630955695874'),
+			('Another List', '2020-10-10 23:12:12', 3, '68192210-fa24-4c6c-8f80-630955695874')
 
 
 --Item Test Data
