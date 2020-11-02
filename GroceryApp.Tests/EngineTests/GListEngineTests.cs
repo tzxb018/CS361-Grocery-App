@@ -134,7 +134,6 @@ namespace GroceryApp.Tests
 
         }
 
-        //[ExpectedException]
 
         public void SeedGLists()
         {
@@ -273,7 +272,6 @@ namespace GroceryApp.Tests
 
             //Act: Insert a null list
             var result = gListEngine.InsertList(null);
-            //  gListEngine.Insert(null);
 
             //Assert: Handled by the Expected Exception attribute
         }
