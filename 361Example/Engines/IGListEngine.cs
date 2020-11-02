@@ -6,6 +6,7 @@ namespace _361Example.Engines
     public interface IGListEngine
     {
         IEnumerable<GList> GetAllLists();
+        IEnumerable<GList> GetUserLists(int userId);
         GList GetList(int id);
         IEnumerable<GList> SortLists();
         GList InsertList(GList gList);

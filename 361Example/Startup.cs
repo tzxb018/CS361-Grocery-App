@@ -53,6 +53,10 @@ namespace _361Example
 
             services.AddTransient<IGListEngine, GListEngine>();
             services.AddTransient<IGListAccessor, GListAccessor>();
+
+            services.AddTransient<IItemAccessor, ItemsAccessor>();
+            services.AddTransient<IItemsEngine, ItemsEngine>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

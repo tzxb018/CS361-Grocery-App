@@ -1,17 +1,6 @@
 <html>
 <body>
   <style>
-    #rcorners1 {
-      box-shadow: 3px 3px 7px #629c44;
-      border-radius: 15px;
-      background: #ffffff;
-      padding: 20px;
-      width: 389px;
-      height: 552px;
-      position: fixed;
-      right: 300px;
-      top: 250px;
-    }
   </style>
 
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
@@ -20,17 +9,14 @@
       <br />
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="List Name" style="width: 348px; height: 65px; ">
       <br />
-      
-     
       <br />
-      <button style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 246px; height: 65px; border-radius: 7px; border:unset; background: #f06e9c; ">Create New List </button>
+      <button id="create-list-button">Create New List </button>
       <br />
       <br />
       <br />
       <br />
       <br />
-
-      <div [routerLink]="['/user-menu']" style="font-family: 'Alata'; font-size: 18px; font-weight: normal; position:relative; right:150px;">Back</div>
+      <div [routerLink]="['/user-menu']" id="back-button">Back</div>
     </div>
   </div>
 </body>

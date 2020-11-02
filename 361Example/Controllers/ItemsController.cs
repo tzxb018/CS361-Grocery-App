@@ -1,13 +1,17 @@
 ﻿using _361Example.Engines;
 using _361Example.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
 
 namespace _361Example.Controllers
 {
-    [RoutePrefix("api/items")]
-    public class ItemsController : ApiController
+    [Authorize]
+    [ApiController]
+    [Route("[controller]")]
+    public class ItemsController : ControllerBase
     {
         private readonly IItemsEngine _itemsEngine;
         public ItemsController(IItemsEngine itemsEngine)
@@ -16,65 +20,64 @@ namespace _361Example.Controllers
         }
 
         // GET: api/items
-        [Route("")]
         [HttpGet]
-        public IHttpActionResult GetAllItems()
+        public IEnumerable<Item> GetAllItems()
         {
-            return Ok(_itemsEngine.GetAllItems());
+            return _itemsEngine.GetAllItems().ToArray();
         }
 
         // GET: api/items/5
-        [System.Web.Http.Route("{id}")]
-        [System.Web.Http.HttpGet]
-        public IHttpActionResult GetItem(string id)
+        [Route("{id}")]
+        [HttpGet]
+        public Item GetItem(string id)
         {
             var parsedId = int.Parse(id);
             Item item = _itemsEngine.GetItem(parsedId);
 
             if (item == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(item);
+            return item;
         }
 
 
         // POST: api/items
         [Route("")]
         [HttpPost]
-        public IHttpActionResult PostItem(Item item)
+        public void PostItem(Item item)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
 
             _itemsEngine.InsertItem(item);
 
-            return Ok(item);
+            //return item;
         }
 
         // PUT: api/items/5
         [Route("{id}")]
         [HttpPut]
-        public IHttpActionResult PutList(string id, Item item)
+        public void PutList(string id, Item item)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
             var parsedId = int.Parse(id);
 
             if (parsedId != item.Id)
             {
-                return BadRequest();
+                //return BadRequest();
             }
 
             _itemsEngine.UpdateItem(parsedId, item);
 
 
-            return Ok();
+            //return Ok();
         }
 
 
@@ -82,18 +85,18 @@ namespace _361Example.Controllers
         // DELETE: api/items/5
         [Route("{id}")]
         [HttpDelete]
-        public IHttpActionResult DeleteItem(string id)
+        public void DeleteItem(string id)
         {
             var parsedId = int.Parse(id);
 
             Item item = _itemsEngine.GetItem(parsedId);
             if (item == null)
             {
-                return NotFound();
+                //return NotFound();
             }
             _itemsEngine.DeleteItem(item.Id);
 
-            return Ok(item);
+            //return Ok(item);
         }
 
         private bool ItemExists(int id)

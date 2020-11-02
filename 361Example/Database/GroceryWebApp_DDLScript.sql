@@ -28,7 +28,7 @@ CREATE TABLE GroceryList
 	GroceryListId	INT		IDENTITY(1,1)	NOT NULL	PRIMARY KEY,
 	Name			[NVARCHAR](50)			NOT NULL,
 	AccountId		INT						NOT NULL,
-	Date			DATETIME					NOT NULL,
+	Date			DATETIME				NOT NULL,
 	CONSTRAINT FK_ListAccount FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE Item
    ItemId			INT		IDENTITY(1,1)		NOT NULL   PRIMARY KEY, 
    Name				[NVARCHAR](50)				NOT NULL,
    Checkoff			BIT							NOT NULL	DEFAULT(0),
-   Date				DATETIME						NOT NULL,
+   Date				DATETIME					NOT NULL,
    GroceryListId	INT							NOT NULL,
    CONSTRAINT FK_ListItem FOREIGN KEY (GroceryListId) REFERENCES GroceryList(GroceryListId)
 );

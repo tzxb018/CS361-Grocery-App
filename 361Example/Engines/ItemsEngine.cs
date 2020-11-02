@@ -20,6 +20,11 @@ namespace _361Example.Engines
             return _itemsAccessor.GetAllItems().ToList();
         }
 
+        public IEnumerable<Item> GetListItems(int groceryListId)
+        {
+            return _itemsAccessor.GetItems(groceryListId);
+        }
+
         public Item GetItem(int id)
         {
             if (_itemsAccessor.Exists(id))
@@ -55,5 +60,7 @@ namespace _361Example.Engines
             }
             return item;
         }
+
+
     }
 }
