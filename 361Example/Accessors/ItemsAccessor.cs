@@ -9,16 +9,16 @@ namespace _361Example.Accessors
 {
     public class ItemsAccessor : DbContext, IDisposable, IItemAccessor
     {
-        private DbSet<Item> Item { get; set; }
+        private DbSet<Item> Items { get; set; }
 
         // https://stackoverflow.com/questions/58159293/c-sharp-problem-with-dbcontext-argument-1-cannot-convert-string-to-microsof
 
         //For testing purposes change the connection string to your personal DB's
 
-        public ItemsAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public ItemsAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#Group10361;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
-            Item = Set<Item>();
+            Items = Set<Item>();
         }
 
         private static DbContextOptions GetOptions(string connectionString)
@@ -29,23 +29,28 @@ namespace _361Example.Accessors
 
         public bool Exists(int id)
         {
-            return Item.Any(c => c.Id == id);
+            return Items.Any(c => c.Id == id);
         }
 
         public Item Find(int id)
         {
-            return Item.Find(id);
+            return Items.Find(id);
         }
 
         public IEnumerable<Item> GetAllItems()
         {
-            return Item;
+            return Items;
+        }
+
+        public IEnumerable<Item> GetItems(int groceryListId)
+        {
+            return Items.Where(i => i.GroceryListId == groceryListId).ToArray();
         }
 
         // https://stackoverflow.com/questions/48363894/where-is-idbsett-in-entity-core
         public Item Insert(Item item)
         {
-            return Item.Add(item).Entity;
+            return Items.Add(item).Entity;
         }
 
         public void Update(Item item)
@@ -58,7 +63,7 @@ namespace _361Example.Accessors
             if (Exists(id))
             {
                 var item = Find(id);
-                Item.Remove(item);
+                Items.Remove(item);
                 base.SaveChanges();
                 return item;
             }
@@ -70,5 +75,6 @@ namespace _361Example.Accessors
         {
             return base.SaveChanges();
         }
+
     }
 }

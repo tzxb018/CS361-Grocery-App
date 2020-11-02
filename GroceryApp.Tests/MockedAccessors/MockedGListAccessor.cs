@@ -72,5 +72,9 @@ namespace GroceryApp.Tests.MockedAccessors
             return gLists;
         }
 
+        IEnumerable<GList> IGListAccessor.GetGLists(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,12 +12,10 @@ namespace GroceryApp.Tests
     {
 
         private readonly GListAccessor gListAccessor;
-        private object expected;
 
         public GListAccessorTests()
         {
             gListAccessor = new GListAccessor();
-
         }
 
         [TestMethod]
@@ -74,7 +72,6 @@ namespace GroceryApp.Tests
 
         }
 
-        
         [TestMethod]
         public void GListAccessor_Delete()
         {
@@ -143,7 +140,7 @@ namespace GroceryApp.Tests
         public void GListAccessor_Insert()
         {
             //Arrange: Create a new list to be inserted
-            GList expected = new GList { ListName = "Inserted List", accountId = 1 };
+            GList expected = new GList { ListName = "Inserted List", AccountId = 1 };
 
             //Act: Insert the list
             var result = gListAccessor.Insert(expected);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _361Example.Accessors
 {
-    interface IUserAccessor
+    public interface IUserAccessor
     {
         IEnumerable<User> GetAllUsers();
         User Find(int id);

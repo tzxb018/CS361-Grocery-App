@@ -3,6 +3,7 @@ using _361Example.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GroceryApp.Tests
 {
@@ -11,7 +12,6 @@ namespace GroceryApp.Tests
     {
 
         private readonly ItemsAccessor itemsAccessor;
-        private object expected;
 
         public ItemsAccessorTests()
         {
@@ -38,10 +38,10 @@ namespace GroceryApp.Tests
         public void ItemsAccessor_GetItem()
         {
             // Arrange: setting the objects of all the expected lists in the database (the database is seeded with data from SQL script)
-            var expected1 = new Item { Id = 1, Name = "Bread", Date = DateTime.Parse("2020-09-29"), Checkoff = false };
-            var expected2 = new Item { Id = 2, Name = "Milk", Date = DateTime.Parse("2020-09-14"), Checkoff = false };
-            var expected3 = new Item { Id = 7, Name = "Apples", Date = DateTime.Parse("2020-09-22"), Checkoff = true };
-            var expected4 = new Item { Id = 8, Name = "Carrots", Date = DateTime.Parse("2020-09-24"), Checkoff = true };
+            var expected1 = new Item { Id = 1, Name = "Bread", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 3};
+            var expected2 = new Item { Id = 2, Name = "Milk", Date = DateTime.Parse("2020-09-14"), Checkoff = false, Quantity = 1};
+            var expected3 = new Item { Id = 7, Name = "Apples", Date = DateTime.Parse("2020-09-22"), Checkoff = true, Quantity = 6};
+            var expected4 = new Item { Id = 8, Name = "Carrots", Date = DateTime.Parse("2020-09-24"), Checkoff = true, Quantity = 2};
 
             // Act: get the lists from the database by their IDs
             var result1 = itemsAccessor.Find(1);
@@ -82,65 +82,81 @@ namespace GroceryApp.Tests
                     Id = 1,
                     Name = "Bread",
                     Checkoff = false,
-                    Date = DateTime.Parse("2020-09-29")
+                    Date = DateTime.Parse("2020-09-29"),
+                    Quantity = 3
                 },
                 new Item
                 {
                     Id = 2,
                     Name = "Milk",
                     Checkoff = false,
-                    Date = DateTime.Parse("2020-09-14")
+                    Date = DateTime.Parse("2020-09-14"),
+                    Quantity = 1
                 },
                 new Item
                 {
                     Id = 3,
                     Name = "Toilet Paper",
                     Checkoff = false,
-                    Date = DateTime.Parse("2020-09-06")
+                    Date = DateTime.Parse("2020-09-06"),
+                    Quantity = 1
                 },
                 new Item
                 {
                     Id = 4,
                     Name = "Butter",
                     Checkoff = false,
-                    Date = DateTime.Parse("2020-09-02")
+                    Date = DateTime.Parse("2020-09-02"),
+                    Quantity = 2
                 },
                 new Item
                 {
                     Id = 5,
                     Name = "Bagels",
                     Checkoff = true,
-                    Date = DateTime.Parse("2020-09-16")
+                    Date = DateTime.Parse("2020-09-16"),
+                    Quantity = 2
                 },
                 new Item
                 {
                     Id = 6,
                     Name = "Lettuce",
                     Checkoff = true,
-                    Date = DateTime.Parse("2020-09-18")
+                    Date = DateTime.Parse("2020-09-18"),
+                    Quantity = 4
                 },
                 new Item
                 {
                     Id = 7,
                     Name = "Apples",
                     Checkoff = true,
-                    Date = DateTime.Parse("2020-09-22")
+                    Date = DateTime.Parse("2020-09-22"),
+                    Quantity = 6
                 },
                 new Item
                 {
                     Id = 8,
                     Name = "Carrots",
                     Checkoff = true,
-                    Date = DateTime.Parse("2020-09-24")
+                    Date = DateTime.Parse("2020-09-24"),
+                    Quantity = 2
                 }
             };
+
+            var list = itemsAccessor.GetAllItems();
+
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.AreEqual(expected.ElementAt(i), list.ElementAt(i), $"Item with id = {i} was not retrieved correctly.");
+            }
+
         }
 
         [TestMethod]
         public void ItemsAccessor_Delete()
         {
             //Arrange: The item to be deleted is within the database
-            var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false };
+            var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 1};
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
             var result = itemsAccessor.Delete(9);
@@ -171,7 +187,8 @@ namespace GroceryApp.Tests
             {
                 Name = "Water Bottles",
                 Checkoff = false,
-                Date = DateTime.Parse("2020-10-06")
+                Date = DateTime.Parse("2020-10-06"),
+                Quantity = 10
             };
 
             //Act: Insert the item into the database

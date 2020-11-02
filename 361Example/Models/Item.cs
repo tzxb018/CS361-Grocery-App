@@ -12,6 +12,8 @@ namespace _361Example.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public bool Checkoff { get; set; }
+        public int Quantity { get; set; }
+        public int GroceryListId { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -22,7 +24,7 @@ namespace _361Example.Models
             else
             {
                 Item item = (Item)obj;
-                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) && (Checkoff == item.Checkoff);
+                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) && (Checkoff == item.Checkoff) && (Quantity == item.Quantity);
             }
         }
     }
