@@ -18,6 +18,7 @@ We were able to get our UI's linked together in a cohesive flow. We are now work
 * Bryce Yong
   - Worked on Login functionality
   - Figure out how starter code implemented login
+  - Added AspId field to GList table from IdentityUser library
 * Alexis Linhardt
 * Noah Anderson
   - Designed UserAccessor.c and UserEngine.c
