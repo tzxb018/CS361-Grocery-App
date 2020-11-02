@@ -18,6 +18,5 @@ namespace _361Example.Models
             base.Id = id;
         }*/
 
-
     }
 }
