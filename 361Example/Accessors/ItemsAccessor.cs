@@ -42,6 +42,11 @@ namespace _361Example.Accessors
             return Item;
         }
 
+        public IEnumerable<Item> GetItems(int groceryListId)
+        {
+            return Item.Where(i => i.GroceryListId == groceryListId).ToArray();
+        }
+
         // https://stackoverflow.com/questions/48363894/where-is-idbsett-in-entity-core
         public Item Insert(Item item)
         {
@@ -70,5 +75,6 @@ namespace _361Example.Accessors
         {
             return base.SaveChanges();
         }
+
     }
 }
