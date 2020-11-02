@@ -20,6 +20,9 @@ We were able to get our UI's linked together in a cohesive flow. We are now work
   - Figure out how starter code implemented login
 * Alexis Linhardt
 * Noah Anderson
+  - Designed UserAccessor.c and UserEngine.c
+  - Tweaked the models and accessors so they're compatible with the database
+  - Implemented methods in the Accessors/Engines for accessing Items and Lists by foreign keys
 * Ryan Hruby
   - Transferred database from local hosting to Azure hosting and updated connection strings
   - Added a quantity column to the Item table and updated test data and Item accessor unit tests to account for this
