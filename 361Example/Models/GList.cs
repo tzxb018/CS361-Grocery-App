@@ -12,7 +12,6 @@ namespace _361Example.Models
         public int Id { get; set; }
         [Column("Name")]
         public String ListName { get; set; }
-
         public DateTime Date { get; set; }
         public IEnumerable<Item> Items { get; set; }
         public int AccountId { get; set; }

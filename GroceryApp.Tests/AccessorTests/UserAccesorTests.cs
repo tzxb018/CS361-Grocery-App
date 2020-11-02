@@ -11,7 +11,6 @@ namespace GroceryApp.Tests
     public class UserAccessorTests
     {
         private readonly UserAccessor userAccessor;
-        private object expected;
 
         public UserAccessorTests()
         {
