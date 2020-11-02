@@ -19,7 +19,7 @@ namespace _361Example.Controllers
             _gListEngine = gListEngine;
         }
 
-        // GET: api/glists
+        // GET: api/glist
         [HttpGet]
         public IEnumerable<GList> GetAllLists()
         {
@@ -43,7 +43,7 @@ namespace _361Example.Controllers
         }
 
 
-        // POST: api/glists
+        // POST: api/glist
         [Route("")]
         [HttpPost]
         public void PostList(GList glist)
@@ -58,7 +58,7 @@ namespace _361Example.Controllers
             //return Ok(glist);
         }
 
-        // PUT: api/glists/5
+        // PUT: api/glist/5
         [Route("{id}")]
         [HttpPut]
         public void PutList(string id, GList glist)

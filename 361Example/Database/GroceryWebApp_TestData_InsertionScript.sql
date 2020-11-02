@@ -18,7 +18,7 @@ INSERT GroceryList (Name, Date, AccountId)
 			('Sunday List', '2020-10-04 12:23:02', 1),
 			('Groceries','2020-10-20 02:40:42', 2),
 			('Food', '2020-10-12 15:23:21', 3),
-			('Another List', '2020-10-10 23:12:12', 3)
+			('Another List', '2020-10-10 10:12:12', 3)
 
 
 --Item Test Data

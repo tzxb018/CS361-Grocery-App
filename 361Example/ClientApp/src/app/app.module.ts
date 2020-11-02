@@ -19,8 +19,8 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { FaqComponent } from './faq/faq.component';
 import { NewListComponent } from './new-list/new-list.component';
 
-import { ItemListService } from './item-list/item-list.service';
 import { AddItemComponent } from './add-item/add-item.component';
+import { UserMenuService } from './user-menu.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -39,6 +39,7 @@ const appRoutes: Routes = [
     FaqComponent,
     UserMenuComponent,
     NewListComponent,
+    AddItemComponent,
 
 
   ],
@@ -56,12 +57,13 @@ const appRoutes: Routes = [
       { path: 'faq', component: FaqComponent },
       { path: 'user-menu', component: UserMenuComponent },
       { path: 'new-list', component: NewListComponent },
-
+      { path: 'add-item', component: AddItemComponent },
     ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
-    ItemListService,
+    UserMenuComponent,
+    UserMenuService,
   ],
   bootstrap: [AppComponent]
 })
