@@ -41,6 +41,7 @@ CREATE TABLE Item
    Name				[NVARCHAR](50)				NOT NULL,
    Checkoff			BIT							NOT NULL	DEFAULT(0),
    Date				DATETIME					NOT NULL,
+   Quantity			INT							NOT NULL,
    GroceryListId	INT							NOT NULL,
    CONSTRAINT FK_ListItem FOREIGN KEY (GroceryListId) REFERENCES GroceryList(GroceryListId)
 );

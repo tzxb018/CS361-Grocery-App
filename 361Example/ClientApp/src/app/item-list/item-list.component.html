@@ -34,7 +34,7 @@
         <tbody id="table-body">
           <tr *ngFor="let item of items">
             <td style="min-width: 40%;">{{ item.name }}</td>
-            <td> {{item.date | date:'short'}}</td>
+            <td> {{item.date | date:'medium'}}</td>
             <td style="text-align:center">
               <input type="checkbox" [checked]="item.checkoff" />
             </td>

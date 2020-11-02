@@ -12,12 +12,10 @@ namespace GroceryApp.Tests
     {
 
         private readonly GListAccessor gListAccessor;
-        private object expected;
 
         public GListAccessorTests()
         {
             gListAccessor = new GListAccessor();
-
         }
 
         [TestMethod]
@@ -74,7 +72,6 @@ namespace GroceryApp.Tests
 
         }
 
-        
         [TestMethod]
         public void GListAccessor_Delete()
         {

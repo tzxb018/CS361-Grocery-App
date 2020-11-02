@@ -8,6 +8,32 @@
 * Tomo Bessho - https://github.com/tzxb018
 
 ## Coding Checkpoints
+
+<details><summary>Third Checkpoint (11/2/2020)</summary>
+ 
+### Overview
+We were able to get our UI's linked together in a cohesive flow. We are now working on getting the main functionalities of the program working and getting our database connected to an Azure database instead of a local one. 
+
+### Tasks
+* Bryce Yong
+  - Worked on Login functionality
+  - Figure out how starter code implemented login
+* Alexis Linhardt
+* Noah Anderson
+  - Designed UserAccessor.c and UserEngine.c
+  - Tweaked the models and accessors so they're compatible with the database
+  - Implemented methods in the Accessors/Engines for accessing Items and Lists by foreign keys
+* Ryan Hruby
+  - Transferred database from local hosting to Azure hosting and updated connection strings
+  - Added a quantity column to the Item table and updated test data and Item accessor unit tests to account for this
+  - Updated and cleaned up MockedGListAccessor and GListEngine tests
+* Tomo Bessho
+  - Updated UI for the user menu page that shows all the grocery lists
+  - Implemented POST, DELETE, and GET http methods for grocery lists
+  - Started implementing PUT http method, but that still has some bugs
+</p>
+</details>
+
 <details><summary>Second Checkpoint (10/5/2020)</summary>
  
 ### Overview
