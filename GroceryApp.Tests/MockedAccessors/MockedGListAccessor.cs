@@ -25,7 +25,8 @@ namespace GroceryApp.Tests.MockedAccessors
 
         public GList Find(int id)
         {
-            return gLists.FirstOrDefault(g => g.Id == id);
+            var gList = gLists.FirstOrDefault(g => g.Id == id);
+            return gList;
         }
 
         public GList Insert(GList gList)
@@ -51,7 +52,14 @@ namespace GroceryApp.Tests.MockedAccessors
 
         public bool Exists(int id)
         {
-            return gLists.Exists(g => g.Id == id);
+            for (int i = 0; i < gLists.Count; i = i + 1)
+            {
+                if (gLists.ElementAt(i).Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void SetState(List<GList> newState)
@@ -64,9 +72,9 @@ namespace GroceryApp.Tests.MockedAccessors
             return gLists;
         }
 
-        public IEnumerable<GList> GetGLists(int userId)
+        IEnumerable<GList> IGListAccessor.GetGLists(int userId)
         {
-            return gLists.Where(g => g.AccountId == userId).ToArray();
+            throw new NotImplementedException();
         }
     }
 }
