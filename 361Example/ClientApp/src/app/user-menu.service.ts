@@ -13,7 +13,7 @@ export class UserMenuService {
   // public list to hold all the glist instances
   public gLists: GList[];
 
-  const httpOptions = {
+  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'my-auth-token'
