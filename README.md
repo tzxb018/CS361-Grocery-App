@@ -18,7 +18,11 @@ We were able to get our UI's linked together in a cohesive flow. We are now work
 * Bryce Yong
   - Worked on Login functionality
   - Figure out how starter code implemented login
+  - Added AspId field to GList table from IdentityUser library
 * Alexis Linhardt
+  - Updated the Test class to include mocked accessors for the user accessor and the items accessor
+  - Implemented the ItemsEngine class
+  - Had to update some of the elements in the stack to make sure the tests were working properly
 * Noah Anderson
   - Designed UserAccessor.c and UserEngine.c
   - Tweaked the models and accessors so they're compatible with the database

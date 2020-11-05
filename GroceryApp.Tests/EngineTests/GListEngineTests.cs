@@ -15,6 +15,7 @@ namespace GroceryApp.Tests
 
         private readonly IGListEngine gListEngine;
         private readonly MockedGListAccessor mockedGListAccessor;
+        private object expected;
 
         public GListEngineTests()
         {
@@ -50,6 +51,7 @@ namespace GroceryApp.Tests
             //Act: Calls the GListEngine SortLists() method and converts the return value to a list
             var result = gListEngine.SortLists().ToList();
 
+
             //Assert: Checks whether the expected and result lists are ordered the same
             Assert.AreEqual(expected.ElementAt(0).ListName, result.ElementAt(0).ListName, "The GList was sorted incorrectly.");
             Assert.AreEqual(expected.ElementAt(1).ListName, result.ElementAt(1).ListName, "The GList was sorted incorrectly.");
@@ -71,7 +73,7 @@ namespace GroceryApp.Tests
             });
 
             //Act: Calls the GListEngine SortLists() method
-            gListEngine.SortLists();
+            var result = gListEngine.SortLists();
 
             //Assert is handled by the ExpectedException attribute on the test method
         }
@@ -83,6 +85,8 @@ namespace GroceryApp.Tests
             SeedGLists();
             var expected = new List<GList>
             {
+
+
                 new GList
                 {
                     Id = 1,
@@ -98,13 +102,15 @@ namespace GroceryApp.Tests
                     Id = 3,
                     ListName = "MyList"
                 }
-            };
+
+        };
 
             //Act: Calls the GListEngine GetAllLists() method and converts the return value to a list
             var result = gListEngine.GetAllLists();
 
+
             //Assert: Checks whether the expected and result lists are the exact same
-            for (int i = 0; i < expected.Count; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Assert.AreEqual(expected.ElementAt(i).ListName, result.ElementAt(i).ListName, "The GList was retrieved incorrectly.");
                 Assert.AreEqual(expected.ElementAt(i).Id, result.ElementAt(i).Id, "The GList was retrieved incorrectly.");
@@ -119,13 +125,16 @@ namespace GroceryApp.Tests
             SeedGLists();
             mockedGListAccessor.SetState(null);
 
+
+
             //Act: Calls the GListEngine GetAllLists() method
-            gListEngine.GetAllLists();
+            var result = gListEngine.GetAllLists();
 
             //Assert is handled by the ExpectedException attribute on the test method
+
         }
 
-        //Helper method that seeds the Mocked Accessor with test GList data
+
         public void SeedGLists()
         {
             mockedGListAccessor.SetState(new List<GList>
@@ -185,6 +194,7 @@ namespace GroceryApp.Tests
 
         }
 
+
         [TestMethod]
         public void GListEngine_GetList()
         {
@@ -192,7 +202,7 @@ namespace GroceryApp.Tests
             SeedGLists();
             var expected = new GList { Id = 2, ListName = "Wednesday Groceries" };
 
-            // Act: Calls the GList Engine GetList() method
+            // Act: Calls the G                                      List Engine GetList() method
             var result = gListEngine.GetList(2);
 
             // Assert: Checks whether expected and result list are the same
@@ -207,9 +217,10 @@ namespace GroceryApp.Tests
             mockedGListAccessor.SetState(new List<GList> { null });
 
             // Act: Calls the GListEngine GetList() method
-            gListEngine.GetList(3);
+            var result = gListEngine.GetList(3);
 
             // Assert is handled by the ExpectedException attribute on the test method
+
         }
 
         [TestMethod]
@@ -239,13 +250,18 @@ namespace GroceryApp.Tests
                 ListName = "Updated"
             };
 
-            //Act: Calls the GListEngine UpdateList() method and then uses the GetState() method to retrieve the GLists in the mocked accessor
+            //Act: mockedGListAccessor.gLists isn't accessible outside of the class so a simple method from MockedGListAccessor is employed
+            //to grab the GLists after they're updated.
             gListEngine.UpdateList(2, expected);
-            List<GList> results = mockedGListAccessor.GetState();
+            List<GList> results = mockedGListAccessor.GetAllGLists().ToList();
 
             //Assert: Checks if the Name was successfully updated
             Assert.AreEqual(expected.ListName, results.ElementAt(2).ListName, "The GList wasn't updated correctly.");
         }
+
+
+
+
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
@@ -255,7 +271,7 @@ namespace GroceryApp.Tests
             SeedGLists();
 
             //Act: Insert a null list
-            gListEngine.InsertList(null);
+            var result = gListEngine.InsertList(null);
 
             //Assert: Handled by the Expected Exception attribute
         }
@@ -269,7 +285,8 @@ namespace GroceryApp.Tests
             GList gListNameDup = new GList() { Id = 4, ListName = "MyList" };
 
             //Act: Insert list with duplicate name
-            gListEngine.InsertList(gListNameDup);
+            var result = gListEngine.InsertList(gListNameDup);
+
 
             //Assert: Handled by the Expected Exception attribute
         }
@@ -283,7 +300,7 @@ namespace GroceryApp.Tests
             GList gListIdDup = new GList() { Id = 3, ListName = "DuplicateIdList" };
 
             //Act: Insert list with duplicate name
-            gListEngine.InsertList(gListIdDup);
+            var result = gListEngine.InsertList(gListIdDup);
 
             //Assert: Handled by the Expected Exception attribute
         }
@@ -297,7 +314,7 @@ namespace GroceryApp.Tests
             GList gListDup = new GList() { Id = 3, ListName = "MyList" };
 
             //Act: Insert list with duplicate name
-            gListEngine.InsertList(gListDup);
+            var result = gListEngine.InsertList(gListDup);
 
             //Assert: Handled by the Expected Exception attribute
         }
@@ -309,6 +326,7 @@ namespace GroceryApp.Tests
             SeedGLists();
             GList gList = new GList() { Id = 4, ListName = "Brand New List" };
             var expected = gList;
+
 
             //Act: Insert list with duplicate name and retrieve the list of lists
             var result = gListEngine.InsertList(gList);
