@@ -30,7 +30,6 @@ CREATE TABLE GroceryList
 	Name			[NVARCHAR](50)			NOT NULL,
 	AccountId		INT						NOT NULL,
 	Date			DATETIME				NOT NULL,
-	AspId			[NVARCHAR](100)			NOT NULL,
 	CONSTRAINT FK_ListAccount FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
 );
 

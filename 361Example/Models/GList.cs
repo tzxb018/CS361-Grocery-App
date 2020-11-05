@@ -15,7 +15,6 @@ namespace _361Example.Models
         public DateTime Date { get; set; }
         public IEnumerable<Item> Items { get; set; }
         public int AccountId { get; set; }       
-        public String AspId { get; set; }
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
