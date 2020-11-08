@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace _361Example.Accessors
@@ -50,11 +49,13 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
+
             return GroceryList.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
+
             return GroceryList;
         }
 
@@ -75,6 +76,6 @@ namespace _361Example.Accessors
             Entry(gList).State = EntityState.Modified;
         }
 
-        
+
     }
 }

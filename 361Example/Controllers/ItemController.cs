@@ -9,10 +9,10 @@ namespace _361Example.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ItemsController : ControllerBase
+    public class ItemController : ControllerBase
     {
         private readonly IItemsEngine _itemsEngine;
-        public ItemsController(IItemsEngine itemsEngine)
+        public ItemController(IItemsEngine itemsEngine)
         {
             _itemsEngine = itemsEngine;
         }
