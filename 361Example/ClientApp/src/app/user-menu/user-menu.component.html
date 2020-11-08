@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <div id="top-row">
-    <h2 id="page-header">Grocery Lists</h2>
+    <h2 id="page-header">Your Grocery Lists</h2>
     <div style="display: inline-flex">
       <form class="example">
         <input type="text" placeholder=" Search for list.." name="search" id="search">
@@ -37,7 +37,7 @@
             <td> {{gList.date | date:'medium'}}</td>
             <td style="text-align:center">{{ gList.items?.length || 0 }}</td>
             <td style="text-align:center; ">
-              <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}">View</button>
+              <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}" (click)="selectGList(gList.id, gList.listName)">View</button>
               <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}" (click)="deleteGList(gList.id, gList.listName)">Delete</button>
             </td>
           </tr>

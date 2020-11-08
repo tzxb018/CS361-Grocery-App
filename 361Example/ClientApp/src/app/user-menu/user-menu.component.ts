@@ -1,7 +1,7 @@
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserMenuService } from '../user-menu.service';
-
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-user-menu',
   templateUrl: './user-menu.component.html',
@@ -18,10 +18,17 @@ export class UserMenuComponent {
   public gLists: GList[];
   public allGLists: GList[];
 
+
   // constructor that populates the tables after injecting the http client and the base url 
-  constructor(private userMenuService: UserMenuService) {
+  constructor(private userMenuService: UserMenuService, private dataService: DataService) {
     this.refreshTable();
   }
+
+  selectGList(id: number, listName: string) {
+    this.dataService.selectedGListId = id;
+    this.dataService.selectedGListName = listName;
+  }
+
 
   // function to reload the table
   refreshTable() {

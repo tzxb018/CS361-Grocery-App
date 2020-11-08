@@ -50,8 +50,16 @@ export class ItemListService {
       );
   }
 
-  public get() {
-    return this.http.get(this.baseUrl, { headers: this.headers });
+  // getting all the items for a specific list
+  public get(id: number) {
+
+    // gets the url of the deleted item with the ID (defined in the ItemController headers)
+    const url = this.baseUrl + `item\\${id}`;
+    return this.http.get<Item[]>(url)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
   addItem(newList) {
