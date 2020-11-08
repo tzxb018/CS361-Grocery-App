@@ -2,15 +2,21 @@
 <body>
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <table width="100%" style="margin-bottom: 10px; ">
-    <tr>
-      <td id="header">Items</td>
-      <td style="text-align: right;">
-        <button [routerLink]="['/add-item']" id="new-item-button">+ Create New Item</button>
-      </td>
-    </tr>
-  </table>
+  <div id="top-row">
+    <h2 id="page-header">Grocery List</h2>
+    <div style="display: inline-flex">
+      <form class="example">
+        <input type="text" placeholder=" Search for item.." name="search" id="search">
+        <button type="submit" (click)="searchGList()"><i class="fa fa-search"></i></button>
+      </form>
+      <div>
+        <button id="refresh" (click)="refreshTable()">Refresh</button>
+        <button [routerLink]="['/add-item']" id="new-item-button">Create New Item</button>
+      </div>
+    </div>
+  </div>
 
 
   <div class=parent>
@@ -26,15 +32,17 @@
         <thead>
           <tr>
             <th style="min-width: 40%;">Name</th>
-            <th>Date Added</th>
-            <th style="text-align:center">Checkoff</th>
+            <th style="text-align:center">Quantity</th>
+            <th style="text-align:center">Date Added</th>
+            <th style="text-align:center">Completed</th>
             <th style="text-align:center">Actions</th>
           </tr>
         </thead>
         <tbody id="table-body">
           <tr *ngFor="let item of items">
             <td style="min-width: 40%;">{{ item.name }}</td>
-            <td> {{item.date | date:'medium'}}</td>
+            <td style="text-align:center">{{item.quantity}}</td>
+            <td style="text-align:center"> {{item.date | date:'medium'}}</td>
             <td style="text-align:center">
               <input type="checkbox" [checked]="item.checkoff" />
             </td>
