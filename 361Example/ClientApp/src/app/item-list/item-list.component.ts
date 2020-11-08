@@ -1,6 +1,7 @@
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component, Inject, Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemListService } from '../item-list.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-item-list',
@@ -16,18 +17,23 @@ export class ItemListComponent {
   public items: Item[];
   public allItems: Item[];
 
+
   // constructor that populates the tables after injecting the http client and the base url 
-  constructor(private itemListService: ItemListService) {
+  constructor(private itemListService: ItemListService, private dataService: DataService) {
     this.refreshTable();
   }
 
   // function to reload the table
   refreshTable() {
-    this.itemListService.getAllItems().subscribe(result => {
-      this.items = result;
-      this.allItems = result;
-      console.log(result);
-    }, error => console.error(error));
+    if (this.dataService.selectedGListId) {
+      console.log(this.dataService.selectedGListId);
+      this.itemListService.get(this.dataService.selectedGListId).subscribe(result => {
+        this.items = result;
+        this.allItems = result;
+        document.getElementById("page-header").innerHTML = this.dataService.selectedGListName;
+        console.log(result);
+      }, error => console.error(error));
+    }
   }
 
   // function to search for items
