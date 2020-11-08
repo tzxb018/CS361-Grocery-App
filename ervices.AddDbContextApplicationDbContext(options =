@@ -1,0 +1,498 @@
+[33mcommit 610318e15e65c150fe43fd217a120d3a6ba1285b[m[33m ([m[1;36mHEAD -> [m[1;32mtomo-dev[m[33m, [m[1;31morigin/tomo-dev[m[33m)[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Sun Nov 8 10:55:15 2020 -0600
+
+    possible fix to not getting data due to authorization
+
+[33mcommit 969f02069306983f1943cc013c2b00403569bd44[m[33m ([m[1;31morigin/ryan-dev[m[33m)[m
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Thu Nov 5 15:30:48 2020 -0600
+
+    Azure connection string
+
+[33mcommit d0cbcbb4ce13658b2cbd42a4b1468e6993cd2d5b[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Merge: 98cdb09 36800a5
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Wed Nov 4 21:45:23 2020 -0600
+
+    Merge pull request #77 from tzxb018/bryce-dev2
+
+[33mcommit 36800a549152e467cef20aae8c32ca20bf16c4b6[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Wed Nov 4 21:43:59 2020 -0600
+
+    Fixed Json issue with merge conflict
+
+[33mcommit 2cac1f75d7c9878ea5f455609ed4423ad88d96bd[m
+Merge: 37335e7 98cdb09
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Wed Nov 4 19:52:27 2020 -0600
+
+    Merge pull request #76 from tzxb018/dev
+    
+    Dev
+
+[33mcommit 98cdb099538fb17e3f7f5e15b03957518a9eea87[m
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Nov 2 14:15:49 2020 -0600
+
+    Update README.md
+
+[33mcommit 5fc26636e9fec1cb6f29ae65f95b574e4d18a8f4[m
+Merge: 2af19d5 342f0ab
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Nov 2 14:09:46 2020 -0600
+
+    Updated the testing files
+
+[33mcommit 342f0ab8f27096384340883066bbfd1f34257a07[m
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Nov 2 13:59:41 2020 -0600
+
+    Updated the testing folder with two new mocked accessors and all the tests for the Items Engine
+
+[33mcommit 2af19d544521434962339d7de5e090a12b736261[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:55:51 2020 -0600
+
+    Update README.md
+
+[33mcommit 37c48b476764b40a7273d066f94d544ed03e275d[m
+Merge: 6dfebc7 37335e7
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:54:45 2020 -0600
+
+    Merge pull request #73 from tzxb018/bryce-dev2
+    
+    Added CreationScript for AspID in GList
+
+[33mcommit 37335e71bb136af3888dd616096d0a03254b7ad6[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:53:38 2020 -0600
+
+    Added CreationScript for AspID in GList
+
+[33mcommit 6dfebc7e526dab0d70590026c1970bb1907411cd[m
+Merge: 55b1360 121c569
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:48:18 2020 -0600
+
+    Merge pull request #72 from tzxb018/bryce-dev2
+    
+    Added AspID field to groceryList
+
+[33mcommit 121c56936ec18338d377c3d410371dc209b648d3[m
+Merge: 4ab987b 55b1360
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:47:39 2020 -0600
+
+    Merge branch 'dev' into bryce-dev2
+
+[33mcommit 4ab987b1813612c63aaedf37aebf645c21c7c2f6[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 12:44:29 2020 -0600
+
+    Added AspId field to replace AccountId
+
+[33mcommit 55b1360ae771743656371b4573d27f07d8fff924[m
+Merge: 6ccf45a eacfc46
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Mon Nov 2 11:42:08 2020 -0600
+
+    Merge branch 'ryan-dev' into dev
+
+[33mcommit 6ccf45a9cf42961873b53baddb6698370c2c0a2e[m
+Merge: 65b9dc6 f176814
+Author: MindOverGame <42360536+MindOverGame@users.noreply.github.com>
+Date:   Mon Nov 2 11:18:45 2020 -0600
+
+    Merge pull request #71 from tzxb018/Noah_Dev
+    
+    Update README.md
+
+[33mcommit f1768143b69d8710415001c0d455b7a9d52232eb[m
+Author: MindOverGame <42360536+MindOverGame@users.noreply.github.com>
+Date:   Mon Nov 2 11:18:02 2020 -0600
+
+    Update README.md
+    
+    Added contributions for checkpoint 3
+
+[33mcommit 65b9dc651e32d5288010578396e7c7343afc2afd[m
+Merge: 1dab463 db01b1d
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Mon Nov 2 11:07:00 2020 -0600
+
+    Merge pull request #70 from tzxb018/tomo-dev
+    
+    Merging tomo-dev into dev
+
+[33mcommit db01b1d3bef05fade86950d1618dc1f0fd041c6f[m
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Mon Nov 2 11:05:50 2020 -0600
+
+    Update README.md
+
+[33mcommit 4f292dd414a27e8c17690f403f11420c03386c00[m
+Merge: 8e97a88 4d976ec
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 09:27:35 2020 -0600
+
+    Merge branch 'bryce-dev2' of https://github.com/tzxb018/CS361-Group10-Grocery-App into bryce-dev2
+
+[33mcommit 4d976ec29ae0cb7b2db63b4cd581c3bb5934c941[m
+Merge: 27b258a 1dab463
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Nov 2 09:25:23 2020 -0600
+
+    Merge pull request #69 from tzxb018/dev
+    
+    Dev
+
+[33mcommit eacfc4643eddd0de0c3984a677ab7e108453aa29[m
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Mon Nov 2 00:04:27 2020 -0600
+
+    Modified connection string
+
+[33mcommit c6dbc7785e2268e9e3d306c044b5f92bb8568718[m
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Sun Nov 1 23:39:48 2020 -0600
+
+    Updated SQL scripts, updated test classes
+
+[33mcommit eb3065e27a001bdc50dcb24bcf2502b9394a10e0[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 27 15:07:32 2020 -0500
+
+    added in refresh to g lists
+
+[33mcommit b9cd35eda3f18f01a4202795a58ba7ae36d300c5[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 27 11:06:40 2020 -0500
+
+    delete lists after confirmation
+
+[33mcommit d668c845444a1e705b13c4044cead82b4d6d292c[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Mon Oct 26 20:46:19 2020 -0500
+
+    able to add lists!
+
+[33mcommit 1dab4636e7e5300e6a35ea49414f34e2afff6084[m
+Merge: 5d87f92 caecce2
+Author: MindOverGame <42360536+MindOverGame@users.noreply.github.com>
+Date:   Fri Oct 23 15:16:49 2020 -0500
+
+    Merge pull request #67 from tzxb018/Noah_Dev
+    
+    Modified the engines and accessors  to allow for accessing GLists and…
+
+[33mcommit caecce2fe28bf273fe6fb382123c0b42a24100a0[m
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Fri Oct 23 15:13:40 2020 -0500
+
+    Modified the engines and accessors  to allow for accessing GLists and Items by their foreign keys
+
+[33mcommit 5d87f92f03227a48ea9760fc96f37033a19880c2[m
+Merge: 085145d 0779e06
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Wed Oct 21 11:50:00 2020 -0500
+
+    Merge pull request #66 from tzxb018/tomo-dev
+    
+    Implemented in database connection with front end
+
+[33mcommit 0779e06cb0a9634960f72fd25227f5708ea7d5d1[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Wed Oct 21 11:37:57 2020 -0500
+
+    revamped UI for grocery items list, checkboxes work.
+
+[33mcommit 714fd88ef294555086c437b2159f59e2524c836f[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Wed Oct 21 10:43:09 2020 -0500
+
+    items show up on page, but not by list
+
+[33mcommit 5069b29e063b93e0fddc310c22cc613b7ca7b45c[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Wed Oct 21 10:23:13 2020 -0500
+
+    small UI changes to create new list
+
+[33mcommit c45707d6149ce17ae1cc9f9cb3fe2e8ddf3662b3[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 20 16:30:59 2020 -0500
+
+    updated UI for GLists
+
+[33mcommit 199220f6a14f614fd46a10cb4f8bb340793edb1d[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 20 15:38:55 2020 -0500
+
+    forgot to add in DDL script for timestamps
+
+[33mcommit 8e97a881a2d890d056d51a97686f739a0ac1e1b9[m
+Merge: 85ab6d2 27b258a
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Tue Oct 20 15:33:28 2020 -0500
+
+    Merge branch 'bryce-dev2' of https://github.com/tzxb018/CS361-Group10-Grocery-App into bryce-dev2
+
+[33mcommit 27b258a3466aa3073057b986312ff950035f076e[m
+Merge: 355f8e8 2c34c53
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Tue Oct 20 15:32:37 2020 -0500
+
+    Merge pull request #65 from tzxb018/tomo-dev
+    
+    items and lists now have time stamps down to the second
+
+[33mcommit 2c34c53d70d97a204211e271504f54cacdfdd1b5[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 20 15:30:18 2020 -0500
+
+    items and lists now have time stamps down to the second
+
+[33mcommit 85ab6d26a8664ee66942405e3c0bc7f44f0c4c90[m
+Merge: 27b7c48 355f8e8
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Tue Oct 20 14:47:14 2020 -0500
+
+    Item list database
+
+[33mcommit 355f8e82be8b40c8b217825e14ed4fa9f3440c0c[m
+Merge: 5c3b298 6a44389
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Tue Oct 20 14:46:00 2020 -0500
+
+    Merge pull request #63 from tzxb018/tomo-dev
+    
+    Tomo dev
+
+[33mcommit 6a44389cf319be373b8b350cc86aafb4b8809984[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 20 14:41:03 2020 -0500
+
+    data is showing! Need to match capitalization in component.html with that of the database's tables column names. Need to organzie UI
+
+[33mcommit 39bec345cffa156486f7d6561c17aca0f67df369[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Tue Oct 20 14:17:28 2020 -0500
+
+    able to get table to show, but no data in it
+
+[33mcommit 27b7c486f05fe3c0b62b88bfcf7e8f41c0395519[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Mon Oct 19 15:52:41 2020 -0500
+
+    changed connection string
+
+[33mcommit b3066ba57a8836b996d5d670c25437f3b548560a[m[33m ([m[1;32mtomo-savepoint[m[33m)[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Mon Oct 19 14:07:59 2020 -0500
+
+    updated with my local connection strings
+
+[33mcommit 5fc6d0410b48cbb2dbc2fa59b5ac18b2699fc265[m
+Merge: 4369178 5c3b298
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Mon Oct 19 14:02:35 2020 -0500
+
+    merge with assigment 5
+
+[33mcommit 5c3b298711f6d918db4cd69c68bd449983772348[m[33m ([m[1;31morigin/Group10CSCE361Fall2020Assignment5[m[33m, [m[1;32mGroup10CSCE361Fall2020Assignment5[m[33m)[m
+Merge: e6f049f 51bc8e7
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Oct 19 12:11:22 2020 -0500
+
+    Merge pull request #61 from tzxb018/alexis-dev
+    
+    Alexis dev
+
+[33mcommit 51bc8e7c82baa1d30b5e4628b0ccfa04889da67e[m
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Oct 19 12:08:43 2020 -0500
+
+    Fixed minor error
+
+[33mcommit 2c3d27a0ea5896fb61386a38be1baeb5c45f5982[m
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Mon Oct 19 11:47:41 2020 -0500
+
+    Accessor Insert Tests completed
+
+[33mcommit e6f049ffd26041403e15eb96d38fdca476affcd2[m
+Merge: a5b3d76 5660c94
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Sun Oct 18 21:02:26 2020 -0500
+
+    Fixed merge conflict
+
+[33mcommit a5b3d7607b342863aee9497214fdeab39268227d[m
+Author: ryanhruby <ryanhruby549@gmail.com>
+Date:   Sun Oct 18 20:59:13 2020 -0500
+
+    Added unit tests for Accessor Delete() methods
+
+[33mcommit 5660c945e3a2dad94099f8ecbc2379c180bc21e1[m
+Merge: fd75c64 5390183
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Sun Oct 18 16:00:37 2020 -0500
+
+    Merge pull request #59 from tzxb018/bryce-a5
+    
+    getAll() test cases pass
+
+[33mcommit 5390183e361cb2c4167e6b0c7b1b6815825fa601[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Sun Oct 18 15:15:02 2020 -0500
+
+    getAll() test cases pass
+
+[33mcommit fd75c6443c018d0bddab2c58b6f47c3e4ebb072c[m
+Merge: f744faa 786f9ee
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Sun Oct 18 14:50:10 2020 -0500
+
+    GetAll() test casses for Accessors
+
+[33mcommit f744faa97f7f5eb41e879804531b4384ac8914ef[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Sun Oct 18 14:24:13 2020 -0500
+
+    GetAll() test cases passed
+
+[33mcommit 786f9eef521c51c0b0c734da1e64ee4b80a0e5fd[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Sun Oct 18 13:01:34 2020 -0500
+
+    updated database insertion to have checked off as a boolean value
+
+[33mcommit 7c93659b2e871a434a77c1aa27a44cb925724dfd[m[33m ([m[1;31morigin/tomo-a5[m[33m, [m[1;32mtomo-a5[m[33m)[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Sun Oct 18 12:58:29 2020 -0500
+
+    all tests pass with flying colors!
+
+[33mcommit 4725b5b0f486b9cf6ba3905846f6ddebbe26214c[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Sun Oct 18 12:50:35 2020 -0500
+
+    added in passing unit tests for items and glists
+
+[33mcommit 063ca18f894e4a79313e572d013292448a1f75fe[m
+Author: Tomo Bessho <tbessho2@unl.edu>
+Date:   Sun Oct 18 12:47:02 2020 -0500
+
+    override equals method
+
+[33mcommit 6d0ab7dea25b921eae56a94192034e5ec702ebe2[m
+Merge: 9969b4e 63e89c3
+Author: MindOverGame <42360536+MindOverGame@users.noreply.github.com>
+Date:   Sat Oct 17 14:22:43 2020 -0500
+
+    Merge pull request #58 from tzxb018/Noah_Assignment5
+    
+    -Added Exists() unit test for all accessors
+
+[33mcommit 63e89c37eacebcfe38419e69facbcc95f90da13d[m[33m ([m[1;31morigin/Noah_Assignment5[m[33m)[m
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Sat Oct 17 14:14:08 2020 -0500
+
+    -Added Exists() unit test for all accessors
+    -Fixed models to be compatible with DB
+    -Fixed Accessors to be compatible with DB (sort of, we still have logistical issue)
+    -Fixed very minor issues in UserEngine.cs and GListEngineTests
+
+[33mcommit 9969b4e8c129b32ddbdbe0b303227cc65a3e9a6e[m
+Author: lexlinhardt <42552486+lexlinhardt@users.noreply.github.com>
+Date:   Fri Oct 16 16:01:06 2020 -0500
+
+    Added Accessor Test Files
+
+[33mcommit 43691780f8e0420fc048c39e16e7e7664955ddc2[m
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Fri Oct 16 15:22:18 2020 -0500
+
+    starting dynamic lists
+
+[33mcommit 085145df943939afdaec505e9c3ae86a614f46b8[m[33m ([m[1;31morigin/alexis-dev[m[33m, [m[1;31morigin/Noah_Dev[m[33m)[m
+Merge: 33a7904 6745822
+Author: MindOverGame <42360536+MindOverGame@users.noreply.github.com>
+Date:   Fri Oct 16 15:12:09 2020 -0500
+
+    Merge pull request #57 from tzxb018/Noah_Dev
+    
+    Noah dev
+
+[33mcommit 674582276ca34b36e7fb9e75c4491507779b0914[m
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Fri Oct 16 15:07:44 2020 -0500
+
+    Added and interface for UserEngine
+
+[33mcommit 9370eb7ced787768eb8b992e35e1a89566423c1a[m
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Fri Oct 16 10:25:31 2020 -0500
+
+    Added UserEngine
+
+[33mcommit e666f5f7bbf598dd3cdfc634c62243aebd4b5b34[m
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Wed Oct 14 15:24:33 2020 -0500
+
+    Added UserAccessor
+
+[33mcommit 33a7904884baffcc30bf2bad3b29fab5d540ba13[m
+Merge: e4247aa 9d7afe5
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Wed Oct 14 14:37:23 2020 -0500
+
+    Merge pull request #55 from tzxb018/bryce-dev
+    
+    Added html files and paths for new-item, new-list
+
+[33mcommit 9d7afe5703a8d8285369b3fe2c6d44ded6cb594a[m[33m ([m[1;31morigin/bryce-dev[m[33m)[m
+Merge: 480bd51 e4247aa
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Wed Oct 14 14:37:07 2020 -0500
+
+    Merge branch 'dev' into bryce-dev
+
+[33mcommit 480bd5137c9dcd52c9b22040fed66d014202b000[m
+Author: Bryce Jen Wei Yong <54676043+bryceyong@users.noreply.github.com>
+Date:   Wed Oct 14 14:25:27 2020 -0500
+
+    Added html files and paths for new-item, new-list
+    Renamed CreateNewAcc to new-account
+    Added back button on most pages
+
+[33mcommit d20dbf287106536ff88b41d8daea7092e347e12c[m
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Mon Oct 12 15:17:15 2020 -0500
+
+    updated tomo local connection string
+
+[33mcommit bbf0503ea4db22578eb6c8f632287034ed01fef6[m
+Merge: 9905f9b e4247aa
+Author: Noah Anderson <noah.royals@gmail.com>
+Date:   Mon Oct 12 14:40:30 2020 -0500
+
+    Merge branch 'dev' of https://github.com/tzxb018/CS361-Group10-Grocery-App into Noah_Dev
+
+[33mcommit e4247aa0e71b6dd8a349cbd7b6e958261172dfa2[m[33m ([m[1;31morigin/tomo-static-code[m[33m, [m[1;31morigin/alexis-code-review[m[33m, [m[1;32mtomo-static-code[m[33m)[m
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Wed Oct 7 11:24:12 2020 -0500
+
+    Unit Tests for GList
+
+[33mcommit fbf8e3061c5b98499eb674e0a6ec2ff42c9babff[m
+Merge: 89667a1 192358e
+Author: Tomo Bessho <tomobessho018@gmail.com>
+Date:   Wed Oct 7 11:13:16 2020 -0500
+
+    Merge pull request #53 from tzxb018/alexis-dev
+    
+    Implementing Alexis' InsertGList Unit Test

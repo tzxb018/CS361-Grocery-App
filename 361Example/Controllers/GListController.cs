@@ -1,14 +1,12 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
 using _361Example.Engines;
 using _361Example.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace _361Example.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class GListController : ControllerBase

@@ -16,7 +16,6 @@ export class UserMenuService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'my-auth-token'
     })
   };
 
@@ -52,7 +51,7 @@ export class UserMenuService {
   }
 
   public get() {
-    return this.http.get(this.baseUrl, { headers: this.headers });
+    return this.http.get(this.baseUrl + 'item', { headers: this.headers });
   }
 
   addGList(newList) {
