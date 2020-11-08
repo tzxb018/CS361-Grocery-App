@@ -9,10 +9,10 @@ namespace _361Example.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ItemsController : ControllerBase
+    public class ItemController : ControllerBase
     {
         private readonly IItemsEngine _itemsEngine;
-        public ItemsController(IItemsEngine itemsEngine)
+        public ItemController(IItemsEngine itemsEngine)
         {
             _itemsEngine = itemsEngine;
         }
@@ -24,21 +24,29 @@ namespace _361Example.Controllers
             return _itemsEngine.GetAllItems().ToArray();
         }
 
-        // GET: api/items/5
         [Route("{id}")]
         [HttpGet]
-        public Item GetItem(string id)
+        public IEnumerable<Item> GetListItems(string id)
         {
             var parsedId = int.Parse(id);
-            Item item = _itemsEngine.GetItem(parsedId);
-
-            if (item == null)
-            {
-                return null;
-            }
-
-            return item;
+            return _itemsEngine.GetListItems(parsedId);
         }
+
+        // GET: api/items/5
+        //[Route("{id}")]
+        //[HttpGet]
+        //public Item GetItem(string id)
+        //{
+        //    var parsedId = int.Parse(id);
+        //    Item item = _itemsEngine.GetItem(parsedId);
+
+        //    if (item == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    return item;
+        //}
 
 
         // POST: api/items

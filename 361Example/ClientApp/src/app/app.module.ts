@@ -18,6 +18,7 @@ import { NewListComponent } from './new-list/new-list.component';
 
 import { AddItemComponent } from './add-item/add-item.component';
 import { UserMenuService } from './user-menu.service';
+import { ItemListService } from './item-list.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }
@@ -59,6 +60,8 @@ const appRoutes: Routes = [
   providers: [
     UserMenuComponent,
     UserMenuService,
+    ItemListComponent,
+    ItemListService,
   ],
   bootstrap: [AppComponent]
 })
