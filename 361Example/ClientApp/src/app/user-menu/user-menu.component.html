@@ -8,8 +8,8 @@
     <h2 id="page-header">Grocery Lists</h2>
     <div style="display: inline-flex">
       <form class="example">
-        <input type="text" placeholder=" Search for list.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" placeholder=" Search for list.." name="search" id="search">
+        <button type="submit" (click)="searchGList()"><i class="fa fa-search"></i></button>
       </form>
       <div>
         <button id="refresh" (click)="refreshTable()">Refresh</button>
@@ -19,21 +19,6 @@
 
 
   </div>
-
-  <!--<table width="100%" style="margin-bottom: 10px;">
-    <tr>
-      <td id="page-header">Grocery Lists</td>
-      <td style="text-align: right;">
-        <form class="example">
-          <input type="text" placeholder=" Search for list.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </td>
-
-      <td style="text-align:right; width: 15%;"><button [routerLink]="['/new-list']" id="new-list-button">Create New List</button>  </td>
-    </tr>
-  </table>-->
-
   <p *ngIf="!gLists"><em>Loading...</em></p>
   <div class=parent id="table-formatter">
     <div id="rcorners2">
