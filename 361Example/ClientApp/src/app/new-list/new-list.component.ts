@@ -18,7 +18,7 @@ export class NewListComponent {
 
     const newListName = (document.getElementById('new-list-name') as HTMLInputElement).value;
     let todayUTC = new Date().getTime();
-    let overlap = -5 * 60 * 60000;
+    let overlap = -6 * 60 * 60000;
     let todayCST = new Date(todayUTC + overlap);
     const newList = { listName: newListName, date: todayCST, items: null, accountId: 1 };
 
