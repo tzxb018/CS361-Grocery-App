@@ -29,6 +29,15 @@ export class ItemListComponent {
       console.log(result);
     }, error => console.error(error));
   }
+
+  // function to search for items
+  searchItems() {
+    const searchBar = document.getElementById("search") as HTMLInputElement;
+    const itemName = searchBar.value;
+    if (itemName.length > 0) {
+      this.items = this.allItems.filter(glist => glist.name.includes(itemName));
+    }
+  }
 }
 
 interface Item {
