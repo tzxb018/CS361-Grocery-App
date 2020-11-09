@@ -47,7 +47,7 @@
               <input type="checkbox" [checked]="item.checkoff" />
             </td>
             <td style="text-align:center; ">
-              <button class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+              <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteItem(item.id, item.name)">Delete</button>
             </td>
           </tr>
         </tbody>
