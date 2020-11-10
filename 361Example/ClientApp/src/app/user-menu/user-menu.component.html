@@ -34,7 +34,7 @@
         <tr *ngFor="let gList of gLists">
           <td style="text-align:center;">{{ gList.listName }}</td>
           <td style="text-align:center;"> {{gList.date | date:'medium'}}</td>
-          <td style="text-align:center">{{ gList.items?.length || 0 }}</td>
+          <td style="text-align:center" id="num{{gList.id}}"></td>
           <td style="text-align:center;">
             <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}" (click)="selectGList(gList.id, gList.listName)">View</button>
             <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}" (click)="deleteGList(gList.id, gList.listName)">Delete</button>

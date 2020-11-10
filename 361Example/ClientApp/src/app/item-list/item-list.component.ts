@@ -1,4 +1,4 @@
-﻿import { Component, Inject, Injectable, Input } from '@angular/core';
+import { Component, Inject, Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemListService } from '../item-list.service';
 import { DataService } from '../data.service';
@@ -41,7 +41,7 @@ export class ItemListComponent {
     const searchBar = document.getElementById("search") as HTMLInputElement;
     const itemName = searchBar.value;
     if (itemName.length > 0) {
-      this.items = this.allItems.filter(glist => glist.name.includes(itemName));
+      this.items = this.allItems.filter(glist => glist.name.toLowerCase().includes(itemName.toLowerCase()));
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemListService } from '../item-list.service';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -9,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class AddItemComponent {
 
-  constructor(private itemListService: ItemListService, private dataService: DataService) {
+  constructor(private itemListService: ItemListService, private dataService: DataService, private router: Router) {
   }
 
   async addItem() {
@@ -22,7 +23,12 @@ export class AddItemComponent {
     let todayCST = new Date(todayUTC + overlap);
     const newItem = { name: newItemName, date: todayCST, checkoff: false, quantity: newItemNum, groceryListId: gListID };
 
-    await this.itemListService.addItem(newItem).toPromise().then();
+
+    await this.itemListService.addItem(newItem).toPromise().then(result => {
+      alert("Added " + newItemNum + " " + newItemName + " to your list!");
+      this.router.navigateByUrl('/item-list');
+    }
+    );
   }
 
 }
