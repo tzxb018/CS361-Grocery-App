@@ -2,6 +2,7 @@ import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/co
 import { HttpClient } from '@angular/common/http';
 import { UserMenuService } from '../user-menu.service';
 import { DataService } from '../data.service';
+import { ItemListService } from '../item-list.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -21,7 +22,7 @@ export class UserMenuComponent {
 
 
   // constructor that populates the tables after injecting the http client and the base url 
-  constructor(private userMenuService: UserMenuService, private dataService: DataService) {
+  constructor(private userMenuService: UserMenuService, private dataService: DataService, private itemListService: ItemListService) {
     this.refreshTable();
   }
 
@@ -32,12 +33,44 @@ export class UserMenuComponent {
 
 
   // function to reload the table
-  refreshTable() {
-    this.userMenuService.getAllGLists().subscribe(result => {
-      this.gLists = result;
-      this.allGLists = result;
-      console.log(result);
-    }, error => console.error(error));
+  async refreshTable() {
+
+    this.gLists = await this.userMenuService.getAllGLists().toPromise();
+
+    //t.subscribe(result => {
+    //  this.gLists = result;
+    //  this.allGLists = result;
+    //  console.log(result);
+    //}, error => console.error(error));
+
+    this.populateNumberOfItems();
+  }
+
+  // getting the number of items for each glist
+  populateNumberOfItems() {
+
+    // iterating through each glist 
+    for (const glist of this.gLists) {
+
+      // getting the respective glist id
+      const glistID = glist.id;
+
+      // waits for a response from function
+      this.getItemsForEachList(glistID).then(function (result) {
+
+        // result is a list of all the items in grocery list
+        const numItems = result.length;
+
+        // setting the respective html element for each grocery list
+        document.getElementById("num" + glistID.toString()).innerHTML = numItems.toString();
+      });
+
+    }
+  }
+
+  // uses a promise to get the grocery items of each grocery list
+  async getItemsForEachList(glistID: number) {
+    return this.itemListService.getItemsForList(glistID).toPromise();
   }
 
   // function to delete the glist from the table
