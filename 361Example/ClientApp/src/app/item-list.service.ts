@@ -54,7 +54,7 @@ export class ItemListService {
   public getItemsForList(id: number) {
 
     // gets the url of the deleted item with the ID (defined in the ItemController headers)
-    const url = this.baseUrl + `item\\${id}`;
+    const url = this.baseUrl + `item\\glist${id}`;
     return this.http.get<Item[]>(url)
       .pipe(
         retry(3),

@@ -26,6 +26,15 @@ namespace _361Example.Controllers
             return _gListEngine.GetAllLists().ToArray();
         }
 
+        [Route("user{id}")]
+        [HttpGet]
+        public IEnumerable<GList> GetUserGLists(string id)
+        {
+            var parsedId = int.Parse(id);
+
+            return _gListEngine.GetUserLists(parsedId);
+        }
+
         // GET: api/glist/5
         [Route("{id}")]
         [HttpGet]

@@ -24,7 +24,7 @@ namespace _361Example.Controllers
             return _itemsEngine.GetAllItems().ToArray();
         }
 
-        [Route("{id}")]
+        [Route("glist{id}")]
         [HttpGet]
         public IEnumerable<Item> GetListItems(string id)
         {
