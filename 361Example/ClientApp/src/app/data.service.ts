@@ -5,8 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
+  // data to hold which user and grocery list is selected
   selectedGListId: number;
   selectedGListName: string;
+  selectedUserId: number;
+  existingGLists: any;
 
-  constructor() { }
+  constructor() {
+    this.selectedUserId = 1; // will change when login and users are implemented
+
+  }
 }

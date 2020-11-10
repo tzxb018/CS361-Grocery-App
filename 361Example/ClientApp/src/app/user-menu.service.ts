@@ -40,10 +40,10 @@ export class UserMenuService {
   }
 
   // gets all the glists and populates the tables
-  public getAllGLists() {
+  public getGListsForUser(id: number) {
 
     // this will only populate the glists if there are no errors
-    return this.http.get<GList[]>(this.baseUrl + 'glist')
+    return this.http.get<GList[]>(this.baseUrl + 'glist' + `\\user${id}`)
       .pipe(
         retry(3),
         catchError(this.handleError)
