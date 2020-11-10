@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Input } from '@angular/core';
+﻿import { Component, Inject, Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemListService } from '../item-list.service';
 import { DataService } from '../data.service';
@@ -27,7 +27,7 @@ export class ItemListComponent {
   refreshTable() {
     if (this.dataService.selectedGListId) {
       console.log(this.dataService.selectedGListId);
-      this.itemListService.get(this.dataService.selectedGListId).subscribe(result => {
+      this.itemListService.getItemsForList(this.dataService.selectedGListId).subscribe(result => {
         this.items = result;
         this.allItems = result;
         document.getElementById("page-header").innerHTML = this.dataService.selectedGListName;
@@ -42,6 +42,19 @@ export class ItemListComponent {
     const itemName = searchBar.value;
     if (itemName.length > 0) {
       this.items = this.allItems.filter(glist => glist.name.includes(itemName));
+    }
+  }
+
+  // function to delete the items from the table
+  deleteItem(id: number, itemName: string) {
+
+    // if the user confirms to delete the glist (will be given the name of the list)
+    if (confirm(`Are you sure to delete ${itemName}?`)) {
+
+      // deletes list by filtering through all glists and finding id if http delete passes
+      this.itemListService.deleteItem(id).subscribe(() => {
+        this.items = this.items.filter(glist => glist.id != id);
+      }, error => console.error(error));
     }
   }
 }
