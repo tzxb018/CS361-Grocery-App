@@ -164,6 +164,6 @@ table.head tr th {
 }
 
 .inner_table {
-  height: 500px;
+  height: 600px;
   overflow-y: auto;
 }

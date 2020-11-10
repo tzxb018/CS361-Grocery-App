@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <body>
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
@@ -26,32 +26,34 @@
         <div [routerLink]="['/user-menu']" id="back-button">Back to Your Lists</div>
       </div>
     </div>
-    <div id="rcorners2">
+    <div id="rcorners2" class="wrap">
+
+      <table class="head" *ngIf="items">
+        <tr>
+          <th style="text-align: center">Name</th>
+          <th style="text-align:center">Quantity</th>
+          <th style="text-align:center">Date Added</th>
+          <th style="text-align:center">Completed</th>
+          <th style="text-align:center">Actions</th>
+        </tr>
+      </table>
       <p *ngIf="!items"><em>Loading...</em></p>
-      <table class='table' aria-labelledby="tableLabel" *ngIf="items">
-        <thead>
-          <tr>
-            <th style="min-width: 40%;">Name</th>
-            <th style="text-align:center">Quantity</th>
-            <th style="text-align:center">Date Added</th>
-            <th style="text-align:center">Completed</th>
-            <th style="text-align:center">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="table-body">
+      <div class="inner_table">
+        <table>
           <tr *ngFor="let item of items">
-            <td style="min-width: 40%;">{{ item.name }}</td>
-            <td style="text-align:center">{{item.quantity}}</td>
-            <td style="text-align:center"> {{item.date | date:'medium'}}</td>
-            <td style="text-align:center">
-              <input type="checkbox" [checked]="item.checkoff" />
+            <td style="text-align:center;">{{ item.name }}</td>
+            <td style="text-align:center;">{{item.quantity}}</td>
+            <td style="text-align:center;"> {{item.date | date:'shortDate'}}</td>
+            <td style="text-align:center;">
+              <input type="checkbox" style="text-align:center;" [checked]="item.checkoff" />
             </td>
             <td style="text-align:center; ">
               <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteItem(item.id, item.name)">Delete</button>
             </td>
           </tr>
-        </tbody>
-      </table>
+        </table>
+
+      </div>
     </div>
   </div>
 </body>
