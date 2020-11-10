@@ -2,6 +2,7 @@ import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/co
 import { HttpClient } from '@angular/common/http';
 import { UserMenuService } from '../user-menu.service';
 import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-user-menu',
   templateUrl: './user-menu.component.html',
@@ -44,6 +45,7 @@ export class UserMenuComponent {
 
     // if the user confirms to delete the glist (will be given the name of the list)
     if (confirm(`Are you sure to delete ${listName}?`)) {
+
 
       // deletes list by filtering through all glists and finding id if http delete passes
       this.userMenuService.deleteGList(id).subscribe(() => {
