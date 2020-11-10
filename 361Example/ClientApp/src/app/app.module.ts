@@ -21,8 +21,9 @@ import { UserMenuService } from './user-menu.service';
 import { ItemListService } from './item-list.service';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
-
+  { path: '', component: HomeComponent },
+  { path: '/user-menu', component: UserMenuComponent },
+  { path: '/item-list', component: ItemListComponent },
 ];
 
 @NgModule({

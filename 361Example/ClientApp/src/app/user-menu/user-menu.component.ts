@@ -35,13 +35,9 @@ export class UserMenuComponent {
   // function to reload the table
   async refreshTable() {
 
-    this.gLists = await this.userMenuService.getAllGLists().toPromise();
-
-    //t.subscribe(result => {
-    //  this.gLists = result;
-    //  this.allGLists = result;
-    //  console.log(result);
-    //}, error => console.error(error));
+    const result = await this.userMenuService.getAllGLists().toPromise();
+    this.allGLists = result;
+    this.gLists = result;
 
     this.populateNumberOfItems();
   }
@@ -62,7 +58,12 @@ export class UserMenuComponent {
         const numItems = result.length;
 
         // setting the respective html element for each grocery list
-        document.getElementById("num" + glistID.toString()).innerHTML = numItems.toString();
+        if (numItems !== null) {
+          const numLabel = document.getElementById("num" + glistID.toString());
+          if (numLabel) {
+            numLabel.innerHTML = numItems.toString();
+          }
+        }
       });
 
     }
@@ -92,8 +93,9 @@ export class UserMenuComponent {
     const searchBar = document.getElementById("search") as HTMLInputElement;
     const listName = searchBar.value;
     if (listName.length > 0) {
-      this.gLists = this.allGLists.filter(glist => glist.listName.includes(listName));
+      this.gLists = this.allGLists.filter(glist => glist.listName.toLowerCase().includes(listName.toLowerCase()));
     }
+    searchBar.value = "";
   }
 }
 

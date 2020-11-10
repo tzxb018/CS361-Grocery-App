@@ -6,7 +6,7 @@
   font-family: 'Text Me One';
   color: #ffffff;
   width: 20%;
-  height: 375px;
+  height: 425px;
   position: relative;
 }
 
@@ -14,7 +14,7 @@
   box-shadow: 0px 3px 7px #629c44;
   border-radius: 0px 15px 15px 0px;
   background: #ffffff;
-  height: 375px;
+  height: 425px;
   width: 80%;
 }
 
@@ -209,6 +209,6 @@ table.head {
   }
 
 .inner_table {
-  height: 320px;
+  height: 370px;
   overflow-y: auto;
 }
