@@ -10,6 +10,7 @@ export class DataService {
   selectedGListName: string;
   selectedUserId: number;
   existingGLists: any;
+  existingItems: any;
 
   constructor() {
     this.selectedUserId = 1; // will change when login and users are implemented

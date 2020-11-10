@@ -27,11 +27,17 @@ export class ItemListComponent {
   refreshTable() {
     if (this.dataService.selectedGListId) {
       console.log(this.dataService.selectedGListId);
+
+      // from the selected grocery list id, retrieve the data from the service
       this.itemListService.getItemsForList(this.dataService.selectedGListId).subscribe(result => {
+
+        // storing the items 
         this.items = result;
         this.allItems = result;
+        this.dataService.existingItems = this.allItems;
+
+        // sets the header of the page to the list's name
         document.getElementById("page-header").innerHTML = this.dataService.selectedGListName;
-        console.log(result);
       }, error => console.error(error));
     }
   }
