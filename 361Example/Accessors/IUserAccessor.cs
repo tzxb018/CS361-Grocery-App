@@ -10,7 +10,7 @@ namespace _361Example.Accessors
 
         User GetUserEmail(string email);
 
-        User Find(String username, String password);
+        User Find(string username, string password);
 
         User Insert(User user);
         void Update(User user);
