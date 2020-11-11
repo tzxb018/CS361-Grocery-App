@@ -10,6 +10,7 @@ namespace _361Example.Accessors
     {
         IEnumerable<User> GetAllUsers();
         User Find(int id);
+        User GetUserEmail(string email);
         User Insert(User user);
         void Update(User user);
         User Delete(int id);

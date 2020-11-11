@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Accessors
 {
@@ -64,6 +65,12 @@ namespace _361Example.Accessors
         {
             Entry(user).State = EntityState.Modified;
             base.SaveChanges();
+        }
+
+        public User GetUserEmail(string email)
+        {
+            return Account.Where(u => u.email == email).ToArray()[0];
+           
         }
     }
 }
