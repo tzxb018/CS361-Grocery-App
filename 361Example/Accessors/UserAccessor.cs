@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Accessors
 {
@@ -64,6 +65,11 @@ namespace _361Example.Accessors
         {
             Entry(user).State = EntityState.Modified;
             base.SaveChanges();
+        }
+
+        public User Find(String username, String password)
+        {
+            return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
         }
     }
 }
