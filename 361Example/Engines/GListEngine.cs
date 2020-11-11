@@ -11,9 +11,9 @@ namespace _361Example.Engines
     // This is the engine we used to unit test
     public class GListEngine : IGListEngine
     {
-
+        
         private readonly IGListAccessor _gListAccessor;
-
+        
         public GListEngine(IGListAccessor gListAccessor)
         {
             _gListAccessor = gListAccessor;

@@ -77,5 +77,11 @@ namespace GroceryApp.Tests.MockedAccessors
             return users;
         }
 
+        public User GetUserEmail(string email)
+        {
+            return users.Where(u => u.email == email).ToArray()[0];
+
+        }
+
     }
 }
