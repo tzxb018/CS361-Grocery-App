@@ -62,6 +62,11 @@ namespace GroceryApp.Tests.MockedAccessors
             return false;
         }
 
+        public User Find(String username, String password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetState(List<User> newState)
         {
             users = newState;

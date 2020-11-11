@@ -30,6 +30,12 @@ namespace _361Example.Engines
 
         }
 
+        //Returns the user if found, null if not
+        public User VerifyUser(String username, String password)
+        {
+            return _userAccessor.Find(username, password);
+        }
+
         public User InsertUser(User user)
         {
             List<User> allUsers = GetAllUsers().ToList();

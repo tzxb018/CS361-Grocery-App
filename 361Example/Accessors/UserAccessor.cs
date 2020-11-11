@@ -71,6 +71,10 @@ namespace _361Example.Accessors
         {
             return Account.Where(u => u.email == email).ToArray()[0];
            
+        public User Find(String username, String password)
+        {
+            return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
+
         }
     }
 }
