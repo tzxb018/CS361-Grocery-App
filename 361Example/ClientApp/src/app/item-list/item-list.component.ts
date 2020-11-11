@@ -27,11 +27,17 @@ export class ItemListComponent {
   refreshTable() {
     if (this.dataService.selectedGListId) {
       console.log(this.dataService.selectedGListId);
-      this.itemListService.get(this.dataService.selectedGListId).subscribe(result => {
+
+      // from the selected grocery list id, retrieve the data from the service
+      this.itemListService.getItemsForList(this.dataService.selectedGListId).subscribe(result => {
+
+        // storing the items 
         this.items = result;
         this.allItems = result;
+        this.dataService.existingItems = this.allItems;
+
+        // sets the header of the page to the list's name
         document.getElementById("page-header").innerHTML = this.dataService.selectedGListName;
-        console.log(result);
       }, error => console.error(error));
     }
   }
@@ -41,7 +47,20 @@ export class ItemListComponent {
     const searchBar = document.getElementById("search") as HTMLInputElement;
     const itemName = searchBar.value;
     if (itemName.length > 0) {
-      this.items = this.allItems.filter(glist => glist.name.includes(itemName));
+      this.items = this.allItems.filter(glist => glist.name.toLowerCase().includes(itemName.toLowerCase()));
+    }
+  }
+
+  // function to delete the items from the table
+  deleteItem(id: number, itemName: string) {
+
+    // if the user confirms to delete the glist (will be given the name of the list)
+    if (confirm(`Are you sure to delete ${itemName}?`)) {
+
+      // deletes list by filtering through all glists and finding id if http delete passes
+      this.itemListService.deleteItem(id).subscribe(() => {
+        this.items = this.items.filter(glist => glist.id != id);
+      }, error => console.error(error));
     }
   }
 }
