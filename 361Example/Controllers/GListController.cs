@@ -72,21 +72,11 @@ namespace _361Example.Controllers
         [HttpPut]
         public void PutList(string id, GList glist)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
             var parsedId = int.Parse(id);
-
-            if (parsedId != glist.Id)
-            {
-                //return BadRequest();
-            }
 
             _gListEngine.UpdateList(parsedId, glist);
 
 
-            //return Ok();
         }
 
 
