@@ -2,6 +2,7 @@ import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/co
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,8 +19,7 @@ export class HomeComponent {
   public allUsers: User[];
   public login: number;
   
-
-  constructor(private loginService: LoginService,) {
+  constructor(private loginService: LoginService, private router: Router) {
     this.refreshTable();
   }
 
@@ -41,6 +41,7 @@ export class HomeComponent {
       for (const user of this.allUsers) {
         if (email == user.email && password == user.password) {
           this.login = 1;
+          this.router.navigate(['/user-menu']);
           break;
         } else {
           this.login = 0;
