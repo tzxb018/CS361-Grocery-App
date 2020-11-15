@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 
@@ -15,7 +16,7 @@ namespace _361Example.Accessors
 
         //For testing purposes change the connection string to your personal DB's
 
-        public ItemsAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public ItemsAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
             Item = Set<Item>();
@@ -40,6 +41,11 @@ namespace _361Example.Accessors
         public IEnumerable<Item> GetAllItems()
         {
             return Item;
+        }
+
+        public IEnumerable<Item> GetItems(int groceryListId)
+        {
+            return Item.Where(i => i.GroceryListId == groceryListId).ToArray();
         }
 
         // https://stackoverflow.com/questions/48363894/where-is-idbsett-in-entity-core
@@ -70,5 +76,6 @@ namespace _361Example.Accessors
         {
             return base.SaveChanges();
         }
+
     }
 }

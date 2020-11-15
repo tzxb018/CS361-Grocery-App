@@ -11,9 +11,9 @@ namespace _361Example.Engines
     // This is the engine we used to unit test
     public class GListEngine : IGListEngine
     {
-
+        
         private readonly IGListAccessor _gListAccessor;
-
+        
         public GListEngine(IGListAccessor gListAccessor)
         {
             _gListAccessor = gListAccessor;
@@ -21,9 +21,12 @@ namespace _361Example.Engines
 
         public IEnumerable<GList> GetAllLists()
         {
-            IEnumerable<GList> gListList = _gListAccessor.GetAllGLists().ToList();
+            return _gListAccessor.GetAllGLists();
+        }
 
-            return _gListAccessor.GetAllGLists().ToList();
+        public IEnumerable<GList> GetUserLists(int userId)
+        {
+            return _gListAccessor.GetGLists(userId);
         }
 
         public GList GetList(int id)
@@ -81,7 +84,6 @@ namespace _361Example.Engines
             }
             return glist;
         }
-
 
         public IEnumerable<GList> SortLists()
         {

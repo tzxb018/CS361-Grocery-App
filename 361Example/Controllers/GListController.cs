@@ -1,80 +1,92 @@
 ﻿//using Microsoft.AspNetCore.Mvc;
 using _361Example.Engines;
 using _361Example.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 
 namespace _361Example.Controllers
 {
-    [RoutePrefix("api/glists")]
-    public class GListController : ApiController
+    [ApiController]
+    [Route("[controller]")]
+    public class GListController : ControllerBase
     {
         private readonly IGListEngine _gListEngine;
-        public GListController(IGListEngine gListEngine)
+        private readonly IItemsEngine _itemsEngine;
+        public GListController(IGListEngine gListEngine, IItemsEngine itemsEngine)
         {
             _gListEngine = gListEngine;
+            _itemsEngine = itemsEngine;
         }
 
-        // GET: api/glists
-        [Route("")]
+        // GET: api/glist
         [HttpGet]
-        public IHttpActionResult GetAllLists()
+        public IEnumerable<GList> GetAllLists()
         {
-            return Ok(_gListEngine.GetAllLists());
+            return _gListEngine.GetAllLists().ToArray();
+        }
+
+        [Route("user{id}")]
+        [HttpGet]
+        public IEnumerable<GList> GetUserGLists(string id)
+        {
+            var parsedId = int.Parse(id);
+
+            return _gListEngine.GetUserLists(parsedId);
         }
 
         // GET: api/glist/5
-        [System.Web.Http.Route("{id}")]
-        [System.Web.Http.HttpGet]
-        public IHttpActionResult GetList(string id)
+        [Route("{id}")]
+        [HttpGet]
+        public GList GetList(string id)
         {
             var parsedId = int.Parse(id);
             GList glist = _gListEngine.GetList(parsedId);
 
             if (glist == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(glist);
+            return glist;
         }
 
 
-        // POST: api/glists
+        // POST: api/glist
         [Route("")]
         [HttpPost]
-        public IHttpActionResult PostList(GList glist)
+        public void PostList(GList glist)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
 
             _gListEngine.InsertList(glist);
 
-            return Ok(glist);
+            //return Ok(glist);
         }
 
-        // PUT: api/glists/5
+        // PUT: api/glist/5
         [Route("{id}")]
         [HttpPut]
-        public IHttpActionResult PutList(string id, GList glist)
+        public void PutList(string id, GList glist)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
             }
             var parsedId = int.Parse(id);
 
             if (parsedId != glist.Id)
             {
-                return BadRequest();
+                //return BadRequest();
             }
 
             _gListEngine.UpdateList(parsedId, glist);
 
 
-            return Ok();
+            //return Ok();
         }
 
 
@@ -82,18 +94,32 @@ namespace _361Example.Controllers
         // DELETE: api/glists/5
         [Route("{id}")]
         [HttpDelete]
-        public IHttpActionResult DeleteList(string id)
+        public void DeleteList(string id)
         {
             var parsedId = int.Parse(id);
 
             GList glist = _gListEngine.GetList(parsedId);
             if (glist == null)
             {
-                return NotFound();
+
             }
+
+            // deletes each item in the grocery list before deleting the list itself to prevent SQL errors
+            var itemsInGList = _itemsEngine.GetListItems(parsedId);
+
+            // checks if there are any items in the list
+            if (itemsInGList.Any())
+            {
+                // iterates through each item in the glist and deletes them by their Id's
+                foreach (Item item in itemsInGList)
+                {
+                    _itemsEngine.DeleteItem(item.Id);
+                }
+            }
+
+            // deleting the acutal list itself
             _gListEngine.DeleteList(glist.Id);
 
-            return Ok(glist);
         }
 
         //protected override void Dispose(bool disposing)

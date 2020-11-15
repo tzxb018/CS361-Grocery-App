@@ -1,8 +1,5 @@
-﻿using _361Example.Data;
-using _361Example.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using _361Example.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +13,7 @@ namespace _361Example.Accessors
 
         //For testing purposes change the connection string to your personal DB's
 
-        public GListAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public GListAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
             GroceryList = Set<GList>();
@@ -52,12 +49,19 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
+
             return GroceryList.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
+
             return GroceryList;
+        }
+
+        public IEnumerable<GList> GetGLists(int userId)
+        {
+            return GroceryList.Where(g => g.AccountId == userId).ToArray();
         }
 
         public GList Insert(GList gList)
@@ -71,5 +75,7 @@ namespace _361Example.Accessors
         {
             Entry(gList).State = EntityState.Modified;
         }
+
+
     }
 }

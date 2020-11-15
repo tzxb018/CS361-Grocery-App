@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace _361Example.Accessors
 {
@@ -13,7 +12,7 @@ namespace _361Example.Accessors
 
         //For testing purposes change the connection string to your personal DB's
 
-        public UserAccessor() : base(GetOptions("Data Source=DESKTOP-3JRFLEM\\SQLEXPRESS;Initial Catalog=GroceryWebAppDB;Integrated Security=True"))
+        public UserAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
             Account = Set<User>();
@@ -38,7 +37,7 @@ namespace _361Example.Accessors
         public bool Exists(int id)
         {
             var user = Find(id);
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }
@@ -66,6 +65,22 @@ namespace _361Example.Accessors
         {
             Entry(user).State = EntityState.Modified;
             base.SaveChanges();
+        }
+
+        public User GetUserEmail(string email)
+        {
+            return Account.Where(u => u.email == email).ToArray()[0];
+        }
+           
+        public User Find(String username, String password)
+        {
+            return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
+
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
         }
     }
 }

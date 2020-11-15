@@ -13,6 +13,7 @@ namespace _361Example.Models
         [Column("EncryptedPassword")]
         public string password { get; set; }
 
+        /*
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -25,5 +26,6 @@ namespace _361Example.Models
                 return (Id == user.Id) && (email == user.email) && (password == user.password);
             }
         }
+        */
     }
 }

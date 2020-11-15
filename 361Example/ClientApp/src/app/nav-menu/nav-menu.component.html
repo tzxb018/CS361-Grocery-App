@@ -1,7 +1,5 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
       <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
       <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
@@ -26,9 +24,8 @@
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
            [ngClass]="{ show: isExpanded }"
            style="font-family: 'Alata'; color: #7a7a7a">
-        <app-login-menu></app-login-menu>
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item"
+          <!--<li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
@@ -36,14 +33,15 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/CreateNewAcc']">Create New Account</a>
           </li>
-          <!-- this is the weather tab
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
           </li>
-            -->
+
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/user-menu']">User Menu</a>
-          </li>
+          </li>-->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/faq']">FAQ</a>
           </li>

@@ -6,11 +6,9 @@ namespace _361Example.Engines
     public interface IItemsEngine
     {
         IEnumerable<Item> GetAllItems();
-
+        IEnumerable<Item> GetListItems(int groceryListId);
         Item GetItem(int id);
-
         Item InsertItem(Item item);
-
         Item UpdateItem(int id, Item item);
         Item DeleteItem(int id);
 

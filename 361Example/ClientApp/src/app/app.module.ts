@@ -7,38 +7,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
-import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
-import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { FaqComponent } from './faq/faq.component';
 import { NewListComponent } from './new-list/new-list.component';
 
-import { ItemListService } from './item-list/item-list.service';
 import { AddItemComponent } from './add-item/add-item.component';
+import { UserMenuService } from './user-menu.service';
+import { ItemListService } from './item-list.service';
+
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent }
-
+  { path: '', component: HomeComponent },
+  { path: '/user-menu', component: UserMenuComponent },
+  { path: '/item-list', component: ItemListComponent },
 ];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     NewAccountComponent,
     ItemListComponent,
     FaqComponent,
     UserMenuComponent,
     NewListComponent,
+    AddItemComponent,
 
 
   ],
@@ -46,21 +44,20 @@ const appRoutes: Routes = [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    ApiAuthorizationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'new-account', component: NewAccountComponent },
       { path: 'item-list', component: ItemListComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'faq', component: FaqComponent },
       { path: 'user-menu', component: UserMenuComponent },
       { path: 'new-list', component: NewListComponent },
-
+      { path: 'add-item', component: AddItemComponent },
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    UserMenuComponent,
+    UserMenuService,
+    ItemListComponent,
     ItemListService,
   ],
   bootstrap: [AppComponent]
