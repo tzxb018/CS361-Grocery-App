@@ -64,7 +64,7 @@ export class NewAccountComponent {
           .subscribe(user => this.allUsers.push(user));
         this.refreshTable();
         this.router.navigate(['/user-menu']);
-        selectedUser = newUser;
+        this.selectedUser = newUser;
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
