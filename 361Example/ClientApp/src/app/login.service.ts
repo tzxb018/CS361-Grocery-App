@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
@@ -49,7 +49,7 @@ export class LoginService {
       );
   }
 
-  public insertUser(user: User): Observable<User> {
+  public insertUser(user): Observable<User> {
     return this.http.post<User>(this.baseUrl + 'user', user, this.httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -61,6 +61,7 @@ export class LoginService {
   }
 }
 interface User {
+  id: number;
   email: string;
   password: string;
 }

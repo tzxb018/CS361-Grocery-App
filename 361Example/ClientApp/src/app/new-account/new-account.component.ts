@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
@@ -13,8 +13,8 @@ export class NewAccountComponent {
 
   // holds all the glists for the component
   public allUsers: User[];
+  public selectedUser: User;
   public login: number;
-  public currentUser: User;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.refreshTable();
@@ -28,11 +28,11 @@ export class NewAccountComponent {
 
   }
 
-  
+
 
   emailValid(email) {
     for (const user of this.allUsers) {
-      if (!email.includes("@") && !email.includes(".com")){
+      if (!email.includes("@") && !email.includes(".com")) {
         document.getElementById("feedback").innerHTML = "Invalid email input, please use another email.";
         return false;
       }
@@ -41,7 +41,7 @@ export class NewAccountComponent {
         return false;
       }
       return true;
-    }   
+    }
   }
 
   createNewUser() {
@@ -52,23 +52,25 @@ export class NewAccountComponent {
     const newPasswordForm2 = document.getElementById("newPassword2") as HTMLInputElement;
     const newPassword2 = newPasswordForm2.value;
 
-    const newUser: User = {
+    const newUser = {
       email: newEmail,
       password: newPassword1,
-  };
-  
+    };
+
     if (this.emailValid(newEmail) == true) {
       if (newPassword1 == newPassword2) {
         this.loginService
           .insertUser(newUser)
           .subscribe(user => this.allUsers.push(user));
         this.refreshTable();
+        this.router.navigate(['/user-menu']);
+        this.selectedUser = newUser;
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
     }
 
-    
+
 
 
   }
@@ -79,4 +81,3 @@ interface User {
   email: string;
   password: string;
 }
-

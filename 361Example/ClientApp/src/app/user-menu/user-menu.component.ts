@@ -40,6 +40,7 @@ export class UserMenuComponent {
     this.allGLists = result;
     this.gLists = result;
     this.dataService.existingGLists = this.allGLists;
+    console.log("lists", this.gLists);
 
     this.populateNumberOfItems();
   }
@@ -92,11 +93,19 @@ export class UserMenuComponent {
 
   // function to search for glists
   searchGList() {
+
+    // getting the value from the search bar
     const searchBar = document.getElementById("search") as HTMLInputElement;
     const listName = searchBar.value;
+
+    // if there is something in the search bar
     if (listName.length > 0) {
+
+      // filter out the results 
       this.gLists = this.allGLists.filter(glist => glist.listName.toLowerCase().includes(listName.toLowerCase()));
     }
+
+    // reset the search bar
     searchBar.value = "";
   }
 }

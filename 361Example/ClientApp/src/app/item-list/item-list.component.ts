@@ -2,6 +2,7 @@ import { Component, Inject, Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ItemListService } from '../item-list.service';
 import { DataService } from '../data.service';
+import { UserMenuService } from '../user-menu.service';
 
 @Component({
   selector: 'app-item-list',
@@ -19,8 +20,9 @@ export class ItemListComponent {
 
 
   // constructor that populates the tables after injecting the http client and the base url 
-  constructor(private itemListService: ItemListService, private dataService: DataService) {
+  constructor(private itemListService: ItemListService, private dataService: DataService, private userMenuService: UserMenuService) {
     this.refreshTable();
+    this.updateTimeStampOfList();
   }
 
   // function to reload the table
@@ -62,6 +64,44 @@ export class ItemListComponent {
         this.items = this.items.filter(glist => glist.id != id);
       }, error => console.error(error));
     }
+  }
+
+  // function to update the grocery list object but keeping the same name
+  updateTimeStampOfList() {
+
+    // getting the current date and time
+    let todayUTC = new Date().getTime();
+
+    // offset!
+    let overlap = -6 * 60 * 60000;
+    let todayCST = new Date(todayUTC + overlap);
+
+    // creates json object representing new list object
+    const newList = {
+      listName: this.dataService.selectedGListName,
+      date: todayCST,
+      items: null,
+      accountId: this.dataService.selectedUserId
+    };
+
+    this.userMenuService.updateGList(newList, this.dataService.selectedGListId).subscribe(
+      val => {
+        console.log("PUT call successful value returned in body",
+          val);
+      },
+      response => {
+        console.log("PUT call in error", response);
+      },
+      () => {
+        console.log("The PUT observable is now completed.");
+      }
+    );
+
+    //subscribe((updated) => {
+    //  console.log("updated glist timpestamp", updated);
+    //  
+    //  });
+    //}, error => console.error(error));
   }
 }
 
