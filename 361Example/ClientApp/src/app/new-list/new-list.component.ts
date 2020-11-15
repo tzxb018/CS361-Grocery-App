@@ -30,9 +30,13 @@ export class NewListComponent {
       }
     });
 
+    // checks to see if list name is not too long
+    let goodSize = false;
+    if (newListName.length <= 25) goodSize = true;
+
     // validates the list name so that it only has letters and numbers
     const re = new RegExp('^[A-Za-z0-9 _/-]*[A-Za-z0-9/-][A-Za-z0-9 _/-]*$');
-    if (newListName.match(re) && unique) {
+    if (newListName.match(re) && unique && goodSize) {
 
       // gets the current date and time
       const todayUTC = new Date().getTime();
@@ -54,15 +58,22 @@ export class NewListComponent {
         this.router.navigateByUrl('/user-menu');
       });
     }
-    else if (!unique) {
-      // alerts the user if the list name has already been used
-      alert("This list name has already been used! Chooose a different list name");
-      (document.getElementById('new-list-name') as HTMLInputElement).select();
-
-    }
     else {
-      // if the list name is rejected, notify user and have user retype in input box
-      alert("This is an invalid name for a list. List names can only have '/', '-', '_', ' ', numbers, and letters!");
+      let alertString = "";
+
+      if (!unique) {
+        // alerts the user if the list name has already been used
+        alertString += "This list name has already been used! Chooose a different list name!\n";
+      }
+      if (!newListName.match(re)) {
+        // if the list name is rejected, notify user and have user retype in input box
+        alertString += "This is an invalid name for a list. List names can only have '/', '-', '_', ' ', numbers, and letters!\n";
+      }
+      if (!goodSize) {
+        // notify user that the name of list is too long
+        alertString += "The name of the list is too long! Needs to be less than or equal to 25 characters long!";
+      }
+      alert(alertString);
       (document.getElementById('new-list-name') as HTMLInputElement).select();
     }
   }
