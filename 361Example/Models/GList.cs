@@ -14,7 +14,8 @@ namespace _361Example.Models
         public String ListName { get; set; }
         public DateTime Date { get; set; }
         public IEnumerable<Item> Items { get; set; }
-        public int AccountId { get; set; }
+        public int AccountId { get; set; }   
+
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))

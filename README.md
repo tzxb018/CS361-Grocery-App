@@ -8,6 +8,25 @@
 * Tomo Bessho - https://github.com/tzxb018
 
 ## Coding Checkpoints
+<details><summary>Final Checkpoint (11/16/2020)</summary>
+ 
+### Overview
+We were able to deliver and create a functioning grocery list application. We have an implemented login functionality and displays all the relevant informations for each user, grocery list, and grocery list items. 
+
+### Tasks
+* Bryce Yong
+* Alexis Linhardt
+* Noah Anderson
+* Ryan Hruby
+* Tomo Bessho
+  - UI improvements to have a 'sticky' header for both the user menu and each grocery list
+  - Added in validation to the grocery list names, grocery item names, and quantities
+  - Implemented POST, DELETE, and GET methods for grocery items
+  - Implemented relevant service to do HTTP requests for grocery items and list
+  - Integrated a data service to have componenets send relevant data to each other (selected grocery list id, selected user id, etc.)
+</p>
+</details>
+
 
 <details><summary>Third Checkpoint (11/2/2020)</summary>
  

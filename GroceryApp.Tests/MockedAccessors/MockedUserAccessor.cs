@@ -64,7 +64,7 @@ namespace GroceryApp.Tests.MockedAccessors
 
         public User Find(String username, String password)
         {
-            throw new NotImplementedException();
+            return users.Where(u => u.email == username && u.password == password).FirstOrDefault();
         }
 
         public void SetState(List<User> newState)
@@ -79,10 +79,15 @@ namespace GroceryApp.Tests.MockedAccessors
 
         public User GetUserEmail(string email)
         {
-            return users.Where(u => u.email == email).ToArray()[0];
+            return users.Where(u => u.email == email).FirstOrDefault();
 
         }
         int IUserAccessor.SaveChanges()
+        {
+            return 0;
+        }
+
+        public int SaveChanges()
         {
             return 0;
         }
