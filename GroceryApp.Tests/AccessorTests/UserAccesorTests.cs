@@ -148,7 +148,6 @@ namespace GroceryApp.Tests
         }
 
         [TestMethod]
-
         public void UserAccessor_GetUserEmail()
         {
             var expected = new User { Id = 1, email = "johnsmith@gmail.com", password = "dlka3jgd45" };
@@ -159,6 +158,9 @@ namespace GroceryApp.Tests
             //Assert
             Assert.AreEqual(expected, result, "The user was inserted incorrectly");
 
+        }
+
+        [TestMethod]
         public void UserAccessor_Find_successful()
         {
             //Arrange
@@ -172,10 +174,8 @@ namespace GroceryApp.Tests
             Assert.AreEqual(5, result.Id, "User not found");
 
         }
+
     }
-
-
-
 }
 
 

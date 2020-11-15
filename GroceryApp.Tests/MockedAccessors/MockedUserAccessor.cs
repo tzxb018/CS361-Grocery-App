@@ -83,5 +83,10 @@ namespace GroceryApp.Tests.MockedAccessors
 
         }
 
+        public int SaveChanges()
+        {
+            return 0;
+        }
+
     }
 }
