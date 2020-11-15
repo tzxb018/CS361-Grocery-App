@@ -16,3 +16,15 @@ code {
 }
 
 
+
+#rcorners1 {
+  box-shadow: 3px 3px 7px #629c44;
+  border-radius: 15px;
+  background: #ffffff;
+  padding: 20px;
+  width: 389px;
+  height: 552px;
+  position: fixed;
+  right: 300px;
+  top: 250px;
+}

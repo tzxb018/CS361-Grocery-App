@@ -1,13 +1,18 @@
-﻿import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Injectable, Output, EventEmitter, ViewEncapsulation, OnInit, OnDestroy  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
 import { Router, Data } from '@angular/router';
 
 
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./bg.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 
 @Injectable({
@@ -18,7 +23,13 @@ import { Router, Data } from '@angular/router';
 export class HomeComponent {
 
   ngOnInit() {
-    document.body.classList.add('bg-img');
+    document.body.classList.add('bg');
+    // OR you can Add inline style css with the help of code below
+    // this._document.body.style.background = '#fff';
+  }
+  ngOnDestroy() {
+    // remove the class form body tag
+    document.body.classList.remove('bg');
   }
 
   // holds all the glists for the component
