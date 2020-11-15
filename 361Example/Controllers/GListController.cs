@@ -12,9 +12,11 @@ namespace _361Example.Controllers
     public class GListController : ControllerBase
     {
         private readonly IGListEngine _gListEngine;
-        public GListController(IGListEngine gListEngine)
+        private readonly IItemsEngine _itemsEngine;
+        public GListController(IGListEngine gListEngine, IItemsEngine itemsEngine)
         {
             _gListEngine = gListEngine;
+            _itemsEngine = itemsEngine;
         }
 
         // GET: api/glist
@@ -22,6 +24,15 @@ namespace _361Example.Controllers
         public IEnumerable<GList> GetAllLists()
         {
             return _gListEngine.GetAllLists().ToArray();
+        }
+
+        [Route("user{id}")]
+        [HttpGet]
+        public IEnumerable<GList> GetUserGLists(string id)
+        {
+            var parsedId = int.Parse(id);
+
+            return _gListEngine.GetUserLists(parsedId);
         }
 
         // GET: api/glist/5
@@ -61,21 +72,11 @@ namespace _361Example.Controllers
         [HttpPut]
         public void PutList(string id, GList glist)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
             var parsedId = int.Parse(id);
-
-            if (parsedId != glist.Id)
-            {
-                //return BadRequest();
-            }
 
             _gListEngine.UpdateList(parsedId, glist);
 
 
-            //return Ok();
         }
 
 
@@ -90,11 +91,25 @@ namespace _361Example.Controllers
             GList glist = _gListEngine.GetList(parsedId);
             if (glist == null)
             {
-                //return NotFound();
+
             }
+
+            // deletes each item in the grocery list before deleting the list itself to prevent SQL errors
+            var itemsInGList = _itemsEngine.GetListItems(parsedId);
+
+            // checks if there are any items in the list
+            if (itemsInGList.Any())
+            {
+                // iterates through each item in the glist and deletes them by their Id's
+                foreach (Item item in itemsInGList)
+                {
+                    _itemsEngine.DeleteItem(item.Id);
+                }
+            }
+
+            // deleting the acutal list itself
             _gListEngine.DeleteList(glist.Id);
 
-            //return Ok(glist);
         }
 
         //protected override void Dispose(bool disposing)

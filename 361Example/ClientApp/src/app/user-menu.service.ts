@@ -1,7 +1,7 @@
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -40,18 +40,18 @@ export class UserMenuService {
   }
 
   // gets all the glists and populates the tables
-  public getAllGLists() {
+  public getGListsForUser(accountID: number) {
 
     // this will only populate the glists if there are no errors
-    return this.http.get<GList[]>(this.baseUrl + 'glist')
+    return this.http.get<GList[]>(this.baseUrl + 'glist' + `\\user${accountID}`)
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
   }
 
-  public get() {
-    return this.http.get(this.baseUrl + 'item', { headers: this.headers });
+  public getSpecificGList(id: number) {
+    return this.http.get<GList>(this.baseUrl + 'glist' + `\\${id}`, { headers: this.headers });
   }
 
   addGList(newList) {
@@ -74,8 +74,15 @@ export class UserMenuService {
     );
   }
 
-  public update(payload) {
-    return this.http.put(this.baseUrl + '/' + payload.id, payload, { headers: this.headers });
+  public updateGList(payload, id: number) {
+
+    const url = this.baseUrl + 'glist' + `\\${id}`;
+    console.log("updated", url);
+    console.log("updated glist", payload);
+    return this.http.put<GList>(url, payload, this.httpOptions).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 }
 interface GList {

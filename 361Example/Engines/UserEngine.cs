@@ -1,12 +1,10 @@
 ﻿using _361Example.Accessors;
 using _361Example.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
+using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace _361Example.Engines
 {
@@ -14,8 +12,9 @@ namespace _361Example.Engines
     {
         private readonly IUserAccessor _userAccessor;
 
-        public UserEngine()
+        public UserEngine(IUserAccessor userAccessor)
         {
+            _userAccessor = userAccessor;
         }
 
         public IEnumerable<User> GetAllUsers()
@@ -30,29 +29,27 @@ namespace _361Example.Engines
 
         }
 
+        //Returns the user if found, null if not
+        public User VerifyUser(String username, String password)
+        {
+            return _userAccessor.Find(username, password);
+        }
+
         public User InsertUser(User user)
         {
-            List<User> allUsers = GetAllUsers().ToList();
-
-            foreach(User u in allUsers)
+            if(GetUserEmail(user.email) == null)
             {
-                if(u.Id == user.Id)
-                {
-                    throw new DuplicateNameException();
-                }
-                else if(u.email == user.email)
-                {
-                    throw new DuplicateNameException();
-                }
+                return _userAccessor.Insert(user);
             }
-            return user;
+
+            throw new DuplicateNameException();
         }
 
         public User UpdateUser(User user)
         {
             _userAccessor.Update(user);
 
-            if(GetUser(user.Id) != user)
+            if (GetUser(user.Id) != user)
             {
                 return null;
             }
@@ -65,5 +62,14 @@ namespace _361Example.Engines
         {
             return _userAccessor.Delete(user.Id);
         }
+
+        public User GetUserEmail(string email)
+        {
+            return _userAccessor.GetUserEmail(email);
+
+        }
     }
+        
+
 }
+

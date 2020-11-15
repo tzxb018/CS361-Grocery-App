@@ -23,15 +23,15 @@ namespace GroceryApp.Tests
         {
             var expectedOne = true;
             var expectedThree = true;
-            var expectedFive = false;
+            var expectedFalse = false;
 
             var one = gListAccessor.Exists(1);
             var three = gListAccessor.Exists(3);
-            var five = gListAccessor.Exists(5);
+            var _false = gListAccessor.Exists(-1);
 
             Assert.AreEqual(expectedOne, one, "DB was analyzed incorrectly");
             Assert.AreEqual(expectedThree, three, "DB was analyzed incorrectly");
-            Assert.AreEqual(expectedFive, five, "DB was analyzed incorrectly");
+            Assert.AreEqual(expectedFalse, _false, "DB was analyzed incorrectly");
         }
 
         [TestMethod]
@@ -76,12 +76,14 @@ namespace GroceryApp.Tests
         public void GListAccessor_Delete()
         {
             //Arrange: The GList to be deleted is within the database
+            GList glist = new GList { ListName = "MY LIST", Date = DateTime.Parse("2020-09-29"), AccountId = 1 };
+            GList removable = gListAccessor.Insert(glist);
 
             //Act: Calls the GListAccessor Delete() method to delete the GList from the database
-            var result = gListAccessor.Delete(5);
+            var result = gListAccessor.Delete(removable.Id);
 
             //Assert: Checks that the correct GList was returned
-            Assert.AreEqual("Another List", result.ListName, "The incorrect GList was deleted.");
+            Assert.AreEqual(glist.ListName, result.ListName, "The incorrect GList was deleted.");
 
         }
 
@@ -91,7 +93,7 @@ namespace GroceryApp.Tests
             //Arrange: The GList id 0 is not within the database
 
             //Act: Calls the GListAccessor Delete() method to delete the GList from the database
-            var result = gListAccessor.Delete(0);
+            var result = gListAccessor.Delete(-1);
 
             //Assert: Checks that null was returned
             Assert.IsNull(result, "A GList was unexpectedly deleted.");
@@ -140,15 +142,30 @@ namespace GroceryApp.Tests
         public void GListAccessor_Insert()
         {
             //Arrange: Create a new list to be inserted
-            GList expected = new GList { ListName = "Inserted List", AccountId = 1 };
+            GList expected = new GList { ListName = "Inserted List", Date = DateTime.Parse("2020-09-29"), AccountId = 1, };
 
             //Act: Insert the list
             var result = gListAccessor.Insert(expected);
+            gListAccessor.Delete(result.Id);
 
             //Assert:
             Assert.AreEqual(result, expected, "The grocery list was inserted incorrectly");
         }
 
+        [TestMethod]
+        public void GListAccessor_UpdateTimestamp()
+        {
+            //Arrange: Create a new list to be updated
+            DateTime dateTime = DateTime.UtcNow;
+            GList expected = new GList { ListName = "First List", AccountId = 1, Id = 1, Date = dateTime };
+
+            //Act: Insert the list
+            gListAccessor.Update(expected);
+            var result = gListAccessor.Find(1);
+
+            //Assert:
+            Assert.AreEqual(result, expected, "The grocery list was inserted incorrectly");
+        }
     }
 
 }

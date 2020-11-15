@@ -6,7 +6,7 @@
   font-family: 'Text Me One';
   color: #ffffff;
   width: 20%;
-  height: 600px;
+  height: 425px;
   position: relative;
 }
 
@@ -14,9 +14,8 @@
   box-shadow: 0px 3px 7px #629c44;
   border-radius: 0px 15px 15px 0px;
   background: #ffffff;
-  height: 600px;
+  height: 425px;
   width: 80%;
-  overflow: auto;
 }
 
 .parent {
@@ -31,28 +30,6 @@
   font-weight: bold;
 }
 
-#items {
-  font-family: 'Alata';
-  border-collapse: collapse;
-  width: 95%;
-  position: relative;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-}
-
-  #items td, #items th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-
-  #items th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
 
 .custom-control-label:before {
   background-color: white;
@@ -91,6 +68,25 @@
   padding: 15px;
   text-align: left
 }
+
+#edit-list-button {
+  font-family: 'Alata';
+  font-size: 18px;
+  font-weight: normal;
+  text-align: left;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+}
+
+  #edit-list-button:hover {
+    cursor: pointer;
+  }
+
+  #edit-list-button:focus {
+    outline: 0;
+    cursor: pointer;
+  }
 
 #back-button {
   font-family: 'Alata';
@@ -196,4 +192,42 @@ form.example::after {
   background: #f06e9c;
   position: relative;
   margin-right: 10px;
+}
+
+.wrap {
+  width: 100%;
+}
+
+  .wrap table {
+    width: 100%;
+    table-layout: fixed;
+    font-family: 'Alata';
+  }
+
+table tr td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px #DDD solid;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+table.head {
+  margin-right: 18px;
+  padding-right: 18px;
+}
+
+  table.head tr td {
+    background: #eee;
+    padding: 5px 0px 5px 0px;
+  }
+
+  table.head tr th {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1.5px #DDD solid;
+  }
+
+.inner_table {
+  height: 370px;
+  overflow-y: auto;
 }

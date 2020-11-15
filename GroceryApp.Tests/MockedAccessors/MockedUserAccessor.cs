@@ -62,6 +62,11 @@ namespace GroceryApp.Tests.MockedAccessors
             return false;
         }
 
+        public User Find(String username, String password)
+        {
+            return users.Where(u => u.email == username && u.password == password).FirstOrDefault();
+        }
+
         public void SetState(List<User> newState)
         {
             users = newState;
@@ -70,6 +75,21 @@ namespace GroceryApp.Tests.MockedAccessors
         public List<User> GetState()
         {
             return users;
+        }
+
+        public User GetUserEmail(string email)
+        {
+            return users.Where(u => u.email == email).FirstOrDefault();
+
+        }
+        int IUserAccessor.SaveChanges()
+        {
+            return 0;
+        }
+
+        public int SaveChanges()
+        {
+            return 0;
         }
 
     }

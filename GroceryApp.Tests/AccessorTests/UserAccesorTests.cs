@@ -23,15 +23,15 @@ namespace GroceryApp.Tests
         {
             var expectedOne = true;
             var expectedTwo = true;
-            var expectedFive = false;
+            var expectedFalse = false;
 
             var one = userAccessor.Exists(1);
             var two = userAccessor.Exists(2);
-            var five = userAccessor.Exists(5);
+            var _false = userAccessor.Exists(-1);
 
             Assert.AreEqual(expectedOne, one, "DB was analyzed incorrectly");
             Assert.AreEqual(expectedTwo, two, "DB was analyzed incorrectly");
-            Assert.AreEqual(expectedFive, five, "DB was analyzed incorrectly");
+            Assert.AreEqual(expectedFalse, _false, "DB was analyzed incorrectly");
         }
 
         [TestMethod]
@@ -72,13 +72,16 @@ namespace GroceryApp.Tests
         public void UserAccessor_Delete()
         {
             //Arrange: The account to be deleted is within the database
+            User temp = new User { email = "insertuser@gmail.com", password = "asdfghjkl" };
+            User removable = userAccessor.Insert(temp);
+            
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
-            var result = userAccessor.Delete(4);
+            var result = userAccessor.Delete(removable.Id);
 
             //Assert: Checks that the correct account was returned
-            Assert.AreEqual("ihavenolists@gmail.com", result.email, "The incorrect user was deleted.");
-            Assert.AreEqual("sfljrred2", result.password, "The incorrect user was deleted.");
+            Assert.AreEqual("insertuser@gmail.com", result.email, "The incorrect user was deleted.");
+            Assert.AreEqual("asdfghjkl", result.password, "The incorrect user was deleted.");
 
         }
 
@@ -88,7 +91,7 @@ namespace GroceryApp.Tests
             //Arrange: The account id 0 is not within the database
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
-            var result = userAccessor.Delete(0);
+            var result = userAccessor.Delete(-1);
 
             //Assert: Checks that null was returned
             Assert.IsNull(result, "A user was unexpectedly deleted.");
@@ -138,14 +141,54 @@ namespace GroceryApp.Tests
 
             //Act: Insert the User
             var result = userAccessor.Insert(expected);
+            userAccessor.Delete(result.Id);
 
             //Assert
             Assert.AreEqual(expected, result, "The user was inserted incorrectly");
         }
+
+        [TestMethod]
+        public void UserAccessor_GetUserEmail()
+        {
+            var expected = new User { Id = 1, email = "johnsmith@gmail.com", password = "dlka3jgd45" };
+
+            //Act: Insert the User
+            var result = userAccessor.GetUserEmail("johnsmith@gmail.com");
+
+            //Assert
+            Assert.AreEqual(expected, result, "The user was inserted incorrectly");
+
+
+        }
+
+        [TestMethod]
+        public void UserAccessor_Find_successful()
+        {
+            //Arrange
+            String username = "insertuser@gmail.com";
+            String password = "asdfghjkl";
+
+            //Act
+            var result = userAccessor.Find(username, password);
+
+            //Assert
+            Assert.AreEqual(5, result.Id, "User not found");
+
+        }
+
+        [TestMethod]
+        public void UserAccessor_Find_unsuccessful()
+        {
+            //Arrange
+            String username = "thisemaildoesntexist@gmail.com";
+            String password = "asdfghjkl";
+
+            //Act
+            var result = userAccessor.Find(username, password);
+
+            //Assert
+            Assert.AreEqual(null, result, "A user was found when no users had the login credentials");
+        }
     }
-
-
-
-}
-
+ }
 
