@@ -63,7 +63,6 @@ export class HomeComponent {
  }
 
 interface User {
-  id: number;
   email: string;
   password: string;
 }

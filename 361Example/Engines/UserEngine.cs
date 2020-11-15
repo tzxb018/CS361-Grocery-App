@@ -51,6 +51,10 @@ namespace _361Example.Engines
                     throw new DuplicateNameException();
                 }
             }
+
+            _userAccessor.Insert(user);
+            _userAccessor.SaveChanges();
+
             return user;
         }
 

@@ -56,10 +56,16 @@ export class NewAccountComponent {
     const newPasswordForm2 = document.getElementById("newPassword2") as HTMLInputElement;
     const newPassword2 = newPasswordForm2.value;
 
+    const newUser: User = {
+      email: newEmail,
+      password: newPassword1,
+  };
   
     if (this.emailValid(newEmail) == true) {
       if (newPassword1 == newPassword2) {
-        document.getElementById("feedback").innerHTML = "";
+        this.loginService
+          .insertUser(newUser)
+          .subscribe(user => this.allUsers.push(user));
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
@@ -73,7 +79,6 @@ export class NewAccountComponent {
 }
 
 interface User {
-  id: number;
   email: string;
   password: string;
 }

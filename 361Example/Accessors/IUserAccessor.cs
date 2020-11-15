@@ -16,5 +16,7 @@ namespace _361Example.Accessors
         void Update(User user);
         User Delete(int id);
         bool Exists(int id);
+
+        int SaveChanges();
     }
 }
