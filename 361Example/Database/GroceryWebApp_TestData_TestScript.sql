@@ -30,6 +30,8 @@ SELECT GroceryListId, Name, Account.AccountId, Username
 	FROM GroceryList JOIN Account ON GroceryList.AccountId = Account.AccountId 
 	WHERE Account.Username = 'johnsmith@gmail.com'
 
+--The below query should fail to execute as there is already a list named "First List" associated with accountId 1
+INSERT GroceryList (Name, Date, AccountId) VALUES ('First List', '2020-11-02 10:12:32', 1);
 
 --Shows all Item data
 SELECT *

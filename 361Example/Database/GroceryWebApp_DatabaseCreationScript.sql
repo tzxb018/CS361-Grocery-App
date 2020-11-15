@@ -1,3 +1,5 @@
+--This script was used in SMSS in order to create a local database for testing purposes
+
 USE master
 GO
 IF NOT EXISTS (
