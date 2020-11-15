@@ -11,10 +11,6 @@ import { Router } from '@angular/router';
 })
 export class NewAccountComponent {
 
-  ngOnInit() {
-    document.body.classList.add('bg-img');
-  }
-
   // holds all the glists for the component
   public allUsers: User[];
   public login: number;
@@ -66,6 +62,7 @@ export class NewAccountComponent {
         this.loginService
           .insertUser(newUser)
           .subscribe(user => this.allUsers.push(user));
+        this.refreshTable();
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
