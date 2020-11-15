@@ -77,5 +77,10 @@ namespace _361Example.Accessors
             return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
 
         }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }

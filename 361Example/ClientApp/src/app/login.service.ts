@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,12 +49,18 @@ export class LoginService {
       );
   }
 
+  public insertUser(user: User): Observable<User> {
+    return this.http.post<User>(this.baseUrl + 'user', user, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   public update(payload) {
     return this.http.put(this.baseUrl + '/' + payload.id, payload, { headers: this.headers });
   }
 }
 interface User {
-  id: number;
   email: string;
   password: string;
 }

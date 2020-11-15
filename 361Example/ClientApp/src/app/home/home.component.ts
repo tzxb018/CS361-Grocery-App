@@ -13,7 +13,13 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class HomeComponent {
+
+  ngOnInit() {
+    document.body.classList.add('bg-img');
+  }
 
   // holds all the glists for the component
   public allUsers: User[];
@@ -47,6 +53,7 @@ export class HomeComponent {
           break;
         } else {
           this.login = 0;
+          document.getElementById("feedback").innerHTML = "Incorrect email or password, please try again.";
         }
       }
     }
@@ -56,7 +63,6 @@ export class HomeComponent {
  }
 
 interface User {
-  id: number;
   email: string;
   password: string;
 }

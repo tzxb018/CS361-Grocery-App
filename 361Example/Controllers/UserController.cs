@@ -19,11 +19,26 @@ namespace _361Example.Controllers
 
         }
 
-        // GET: api/items
+        // GET: api/users
         [HttpGet]
         public IEnumerable<User> GetAllUsers()
         {
             return _userEngine.GetAllUsers().ToArray();
+        }
+
+        // POST: api/users
+        [Route("")]
+        [HttpPost]
+        public void PostItem(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return BadRequest(ModelState);
+            }
+
+            _userEngine.InsertUser(user);
+
+            //return item;
         }
 
     }
