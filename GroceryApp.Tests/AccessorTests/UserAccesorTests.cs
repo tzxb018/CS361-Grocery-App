@@ -158,6 +158,7 @@ namespace GroceryApp.Tests
             //Assert
             Assert.AreEqual(expected, result, "The user was inserted incorrectly");
 
+
         }
 
         [TestMethod]
@@ -172,6 +173,7 @@ namespace GroceryApp.Tests
 
             //Assert
             Assert.AreEqual(5, result.Id, "User not found");
+
         }
 
         [TestMethod]

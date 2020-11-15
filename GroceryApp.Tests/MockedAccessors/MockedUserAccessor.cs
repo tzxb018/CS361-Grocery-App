@@ -82,6 +82,10 @@ namespace GroceryApp.Tests.MockedAccessors
             return users.Where(u => u.email == email).FirstOrDefault();
 
         }
+        int IUserAccessor.SaveChanges()
+        {
+            return 0;
+        }
 
         public int SaveChanges()
         {
