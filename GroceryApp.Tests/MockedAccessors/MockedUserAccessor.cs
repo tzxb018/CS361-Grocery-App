@@ -62,6 +62,11 @@ namespace GroceryApp.Tests.MockedAccessors
             return false;
         }
 
+        public User Find(String username, String password)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetState(List<User> newState)
         {
             users = newState;
@@ -70,6 +75,12 @@ namespace GroceryApp.Tests.MockedAccessors
         public List<User> GetState()
         {
             return users;
+        }
+
+        public User GetUserEmail(string email)
+        {
+            return users.Where(u => u.email == email).ToArray()[0];
+
         }
 
     }

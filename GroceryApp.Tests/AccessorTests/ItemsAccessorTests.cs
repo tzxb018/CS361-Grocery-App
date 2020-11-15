@@ -23,15 +23,15 @@ namespace GroceryApp.Tests
         {
             var expectedOne = true;
             var expectedThree = true;
-            var expectedTen = false;
+            var expectedFalse = false;
 
             var one = itemsAccessor.Exists(1);
             var three = itemsAccessor.Exists(3);
-            var ten = itemsAccessor.Exists(10);
+            var _false = itemsAccessor.Exists(-1);
 
             Assert.AreEqual(expectedOne, one, "DB was analyzed incorrectly");
             Assert.AreEqual(expectedThree, three, "DB was analyzed incorrectly");
-            Assert.AreEqual(expectedTen, ten, "DB was analyzed incorrectly");
+            Assert.AreEqual(expectedFalse, _false, "DB was analyzed incorrectly");
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace GroceryApp.Tests
 
 
             // Act: Calls the items Accessor Find() method on a item that doesn't exist
-            var result = itemsAccessor.Find(10);
+            var result = itemsAccessor.Find(1000000000);
 
             // Assert checks if the result is null
             Assert.AreEqual(null, result.Name, result.Id + " was returned. ");
@@ -156,13 +156,15 @@ namespace GroceryApp.Tests
         public void ItemsAccessor_Delete()
         {
             //Arrange: The item to be deleted is within the database
-            var item = new Item { Id = 9, Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 1};
+            
+            var item = new Item { Name = "Cabbage"+-, Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 1};
+            var removable = itemsAccessor.Insert(item);
 
             //Act: Calls the UserAccessor Delete() method to delete the account from the database
-            var result = itemsAccessor.Delete(9);
+            var result = itemsAccessor.Delete(removable.Id);
 
             //Assert: Checks that the correct account was returned
-            Assert.AreEqual(item, result, "The incorrect item was deleted.");
+            Assert.AreEqual(removable, result, "The incorrect item was deleted (ID should be " + removable.Id + ",not " + result.Id);
 
         }
 
@@ -193,10 +195,13 @@ namespace GroceryApp.Tests
 
             //Act: Insert the item into the database
             var result = itemsAccessor.Insert(expected);
+            itemsAccessor.Remove(result);
 
             //Assert:
             Assert.AreEqual(expected, result, "The item was not inserted correctly");
         }
+
+
     }
 
 }

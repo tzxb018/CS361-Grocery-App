@@ -7,8 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { NewAccountComponent } from './new-account/new-account.component';
 import { ItemListComponent } from './item-list/item-list.component';
@@ -20,19 +18,19 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { UserMenuService } from './user-menu.service';
 import { ItemListService } from './item-list.service';
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: '/user-menu', component: UserMenuComponent },
   { path: '/item-list', component: ItemListComponent },
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     NewAccountComponent,
     ItemListComponent,
     FaqComponent,
@@ -48,10 +46,8 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'new-account', component: NewAccountComponent },
       { path: 'item-list', component: ItemListComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'faq', component: FaqComponent },
       { path: 'user-menu', component: UserMenuComponent },
       { path: 'new-list', component: NewListComponent },
