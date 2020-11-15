@@ -27,6 +27,7 @@ export class HomeComponent {
   public currentUser: User;
 
   constructor(private loginService: LoginService, private router: Router, private dataService: DataService) {
+
     this.refreshTable();
   }
 
@@ -52,6 +53,7 @@ export class HomeComponent {
           this.currentUser = user;
           this.dataService.selectedUserId = user.id;
           this.dataService.selectedUserName = user.email;
+
           break;
         } else {
           this.login = 0;

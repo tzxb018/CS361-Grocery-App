@@ -13,8 +13,8 @@ export class NewAccountComponent {
 
   // holds all the glists for the component
   public allUsers: User[];
+  public selectedUser: User;
   public login: number;
-  public currentUser: User;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.refreshTable();
@@ -63,6 +63,8 @@ export class NewAccountComponent {
           .insertUser(newUser)
           .subscribe(user => this.allUsers.push(user));
         this.refreshTable();
+        this.router.navigate(['/user-menu']);
+        selectedUser = newUser;
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
