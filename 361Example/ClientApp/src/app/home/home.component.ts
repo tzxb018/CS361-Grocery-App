@@ -1,9 +1,8 @@
-import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
 import { Router, Data } from '@angular/router';
-import { DataService } from '../data.service';
 
 
 @Component({
