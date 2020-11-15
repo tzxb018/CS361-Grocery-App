@@ -152,6 +152,20 @@ namespace GroceryApp.Tests
             Assert.AreEqual(result, expected, "The grocery list was inserted incorrectly");
         }
 
+        [TestMethod]
+        public void GListAccessor_UpdateTimestamp()
+        {
+            //Arrange: Create a new list to be updated
+            DateTime dateTime = DateTime.UtcNow;
+            GList expected = new GList { ListName = "First List", AccountId = 1, Id = 1, Date = dateTime };
+
+            //Act: Insert the list
+            gListAccessor.Update(expected);
+            var result = gListAccessor.Find(1);
+
+            //Assert:
+            Assert.AreEqual(result, expected, "The grocery list was inserted incorrectly");
+        }
     }
 
 }

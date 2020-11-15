@@ -50,6 +50,9 @@ namespace _361Example
             services.AddTransient<IItemAccessor, ItemsAccessor>();
             services.AddTransient<IItemsEngine, ItemsEngine>();
 
+            services.AddTransient<IUserAccessor, UserAccessor>();
+            services.AddTransient<IUserEngine, UserEngine>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

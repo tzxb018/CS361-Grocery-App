@@ -69,6 +69,25 @@
   text-align: left
 }
 
+#edit-list-button {
+  font-family: 'Alata';
+  font-size: 18px;
+  font-weight: normal;
+  text-align: left;
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+}
+
+  #edit-list-button:hover {
+    cursor: pointer;
+  }
+
+  #edit-list-button:focus {
+    outline: 0;
+    cursor: pointer;
+  }
+
 #back-button {
   font-family: 'Alata';
   font-size: 18px;

@@ -19,7 +19,7 @@ GO
 CREATE TABLE Account
 (
 	AccountId	INT		IDENTITY(1,1)	NOT NULL	PRIMARY KEY,
-	Username	[NVARCHAR](255)			NOT NULL,
+	Username	[NVARCHAR](255)			NOT NULL	UNIQUE,
 	EncryptedPassword [NVARCHAR](50)	NOT NULL
 );
 
@@ -30,6 +30,7 @@ CREATE TABLE GroceryList
 	Name			[NVARCHAR](50)			NOT NULL,
 	AccountId		INT						NOT NULL,
 	Date			DATETIME				NOT NULL,
+	CONSTRAINT UniqueListNameForAccount UNIQUE(AccountId, Name),
 	CONSTRAINT FK_ListAccount FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
 );
 

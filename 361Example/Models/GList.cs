@@ -14,7 +14,8 @@ namespace _361Example.Models
         public String ListName { get; set; }
         public DateTime Date { get; set; }
         public IEnumerable<Item> Items { get; set; }
-        public int AccountId { get; set; }       
+        public int AccountId { get; set; }   
+
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -24,7 +25,7 @@ namespace _361Example.Models
             else
             {
                 GList glist = (GList)obj;
-                return (Id == glist.Id) && (ListName == glist.ListName) && (Items == glist.Items) && (Date == glist.Date);
+                return (Id == glist.Id) && (ListName == glist.ListName) && (Date == glist.Date) && (AccountId == glist.AccountId);
             }
         }
 

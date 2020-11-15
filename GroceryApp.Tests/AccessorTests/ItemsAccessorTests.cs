@@ -38,10 +38,10 @@ namespace GroceryApp.Tests
         public void ItemsAccessor_GetItem()
         {
             // Arrange: setting the objects of all the expected lists in the database (the database is seeded with data from SQL script)
-            var expected1 = new Item { Id = 1, Name = "Bread", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 3};
-            var expected2 = new Item { Id = 2, Name = "Milk", Date = DateTime.Parse("2020-09-14"), Checkoff = false, Quantity = 1};
-            var expected3 = new Item { Id = 7, Name = "Apples", Date = DateTime.Parse("2020-09-22"), Checkoff = true, Quantity = 6};
-            var expected4 = new Item { Id = 8, Name = "Carrots", Date = DateTime.Parse("2020-09-24"), Checkoff = true, Quantity = 2};
+            var expected1 = new Item { Id = 1, Name = "Bread", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 3 };
+            var expected2 = new Item { Id = 2, Name = "Milk", Date = DateTime.Parse("2020-09-14"), Checkoff = false, Quantity = 1 };
+            var expected3 = new Item { Id = 7, Name = "Apples", Date = DateTime.Parse("2020-09-22"), Checkoff = true, Quantity = 6 };
+            var expected4 = new Item { Id = 8, Name = "Carrots", Date = DateTime.Parse("2020-09-24"), Checkoff = true, Quantity = 2 };
 
             // Act: get the lists from the database by their IDs
             var result1 = itemsAccessor.Find(1);
@@ -156,7 +156,7 @@ namespace GroceryApp.Tests
         public void ItemsAccessor_Delete()
         {
             //Arrange: The item to be deleted is within the database
-            
+          
             var item = new Item { Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 1};
             var removable = itemsAccessor.Insert(item);
 
