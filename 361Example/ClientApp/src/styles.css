@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
@@ -13,18 +14,4 @@ code {
   color: #fff;
   background-color: #108a00;
   border-color: #1861ac;
-}
-
-
-
-#rcorners1 {
-  box-shadow: 3px 3px 7px #629c44;
-  border-radius: 15px;
-  background: #ffffff;
-  padding: 20px;
-  width: 389px;
-  height: 552px;
-  position: fixed;
-  right: 300px;
-  top: 250px;
 }

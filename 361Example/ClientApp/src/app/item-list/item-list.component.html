@@ -4,60 +4,58 @@
   <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div id="top-row">
-      <h2 id="page-header">Grocery List</h2>
-      <div style="display: inline-flex">
-        <form class="example">
-          <input type="text" placeholder=" Search for item.." name="search" id="search">
-          <button type="submit" (click)="searchItems()"><i class="fa fa-search"></i></button>
-        </form>
-        <div>
-          <button id="refresh" (click)="refreshTable()">Refresh</button>
-          <button [routerLink]="['/add-item']" id="new-item-button">Create New Item</button>
-        </div>
+  <div id="top-row">
+    <h2 id="page-header">Grocery List</h2>
+    <div style="display: inline-flex">
+      <form class="example">
+        <input type="text" placeholder=" Search for item.." name="search" id="search">
+        <button type="submit" (click)="searchItems()"><i class="fa fa-search"></i></button>
+      </form>
+      <div>
+        <button id="refresh" (click)="refreshTable()">Refresh</button>
+        <button [routerLink]="['/add-item']" id="new-item-button">Create New Item</button>
       </div>
     </div>
+  </div>
 
 
-    <div class=parent>
-      <div id="rcorners1">
-        <div id="rconer1-sub1">
-          <img src="../assets/market-5043873__340-removebg-preview.png" style="max-height: 100%; max-width: 100%;">
-          <div id="edit-list-button">Edit List Name</div>
-          <div [routerLink]="['/user-menu']" id="back-button">Back to Your Lists</div>
-        </div>
+  <div class=parent>
+    <div id="rcorners1">
+      <div id="rconer1-sub1">
+        <img src="../assets/market-5043873__340-removebg-preview.png" style="max-height: 100%; max-width: 100%;">
+        <div id="edit-list-button">Edit List Name</div>
+        <div [routerLink]="['/user-menu']" id="back-button">Back to Your Lists</div>
       </div>
-      <div id="rcorners2" class="wrap">
+    </div>
+    <div id="rcorners2" class="wrap">
 
-        <table class="head" *ngIf="items">
-          <tr>
-            <th style="text-align: center">Name</th>
-            <th style="text-align:center">Quantity</th>
-            <th style="text-align:center">Date Added</th>
-            <th style="text-align:center">Completed</th>
-            <th style="text-align:center">Actions</th>
+      <table class="head" *ngIf="items">
+        <tr>
+          <th style="text-align: center">Name</th>
+          <th style="text-align:center">Quantity</th>
+          <th style="text-align:center">Date Added</th>
+          <th style="text-align:center">Completed</th>
+          <th style="text-align:center">Actions</th>
+        </tr>
+      </table>
+      <p *ngIf="!items"><em>Loading...</em></p>
+      <div class="inner_table">
+        <table>
+          <tr *ngFor="let item of items">
+            <td style="text-align:center;">{{ item.name }}</td>
+            <td style="text-align:center;">{{item.quantity}}</td>
+            <td style="text-align:center;"> {{item.date | date:'shortDate'}}</td>
+            <td style="text-align:center;">
+              <input type="checkbox" style="text-align:center;" [checked]="item.checkoff" />
+            </td>
+            <td style="text-align:center; ">
+              <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteItem(item.id, item.name)">Delete</button>
+            </td>
           </tr>
         </table>
-        <p *ngIf="!items"><em>Loading...</em></p>
-        <div class="inner_table">
-          <table>
-            <tr *ngFor="let item of items">
-              <td style="text-align:center;">{{ item.name }}</td>
-              <td style="text-align:center;">{{item.quantity}}</td>
-              <td style="text-align:center;"> {{item.date | date:'shortDate'}}</td>
-              <td style="text-align:center;">
-                <input type="checkbox" style="text-align:center;" [checked]="item.checkoff" />
-              </td>
-              <td style="text-align:center; ">
-                <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteItem(item.id, item.name)">Delete</button>
-              </td>
-            </tr>
-          </table>
 
-        </div>
       </div>
     </div>
-
-  
+  </div>
 </body>
 </html>
