@@ -14,5 +14,6 @@ namespace _361Example.Engines
         public User InsertUser(User user);
         public User UpdateUser(User user);
         public User DeleteUser(User user);
+        public User VerifyUser(String username, String password);
     }
 }
