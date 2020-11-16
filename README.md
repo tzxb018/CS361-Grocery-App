@@ -17,6 +17,9 @@ We were able to deliver and create a functioning grocery list application. We ha
 * Bryce Yong
 * Alexis Linhardt
 * Noah Anderson
+  - Implemented UserEngineTests.cs and tweaked the accessor test files to accomodate new methods/fix bugs with old methods
+  - Fixed minor code smells and implemented quality of life methods in the accessors/engines
+  - Added some documentation to the accessors and engines to clarify some of the more involved methods
 * Ryan Hruby
   - Configured database for access by a wider range of IP addresses
   - Added new constraints to database and modified database scripts to account for this
