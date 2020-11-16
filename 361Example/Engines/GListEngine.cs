@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace _361Example.Engines
 {
-    // This is the engine we used to unit test
     public class GListEngine : IGListEngine
     {
         
@@ -24,6 +23,8 @@ namespace _361Example.Engines
             return _gListAccessor.GetAllGLists();
         }
 
+        //This method will retrieve all of the lists attributed to a user
+        //Returns list of GLists if successful, null if unsuccessful
         public IEnumerable<GList> GetUserLists(int userId)
         {
             return _gListAccessor.GetGLists(userId);

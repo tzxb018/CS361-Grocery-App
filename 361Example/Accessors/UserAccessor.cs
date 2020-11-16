@@ -67,11 +67,14 @@ namespace _361Example.Accessors
             base.SaveChanges();
         }
 
+        //Retrieves User by their email
         public User GetUserEmail(string email)
         {
             return Account.Where(u => u.email == email).FirstOrDefault();
         }
-           
+        
+        //Retrieves user by their email/password
+        //Could be helpful for login verification
         public User Find(String username, String password)
         {
             return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
