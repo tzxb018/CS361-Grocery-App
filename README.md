@@ -15,6 +15,9 @@ We were able to deliver and create a functioning grocery list application. We ha
 
 ### Tasks
 * Bryce Yong
+  - Implemented UserController
+  - Implemented login verification and account creation, as well as UI components for these
+  - Partially implemented navigation bar
 * Alexis Linharn
   - Updated the FAQ section to contain relevant information
   - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
