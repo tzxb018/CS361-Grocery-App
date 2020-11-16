@@ -12,5 +12,6 @@ namespace _361Example.Accessors
         void Update(GList gList);
         GList Delete(int id);
         bool Exists(int id);
+        int SaveChanges();
     }
 }

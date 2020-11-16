@@ -156,7 +156,10 @@ namespace GroceryApp.Tests
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists
             SeedGLists();
-
+            var expected = new GList { 
+                Id = 3,
+                ListName = "MyList"
+            };
 
             //Act: Calls the GListEngine DeleteList() method, which should delete the GList with the given id from the lists of GLists
             var deletedList = gListEngine.DeleteList(3);
@@ -165,8 +168,7 @@ namespace GroceryApp.Tests
             //Assert: Checks if a GList was deleted, if the correct GList was returned, and if the list of GLists does not contain the deleted GList
             Assert.IsNotNull(deletedList, "The deleted list is null.");
             Assert.AreEqual(2, mockedGListAccessor.GetState().Count(), "A GList was not deleted from the list of GLists.");
-            Assert.AreEqual(3, deletedList.Id, "An incorrect list was returned or no list was returned.");
-            Assert.AreEqual("MyList", deletedList.ListName, "An incorrect list was returned or no list was returned.");
+            Assert.AreEqual(expected, deletedList, "An incorrect list was returned or no list was returned.");
             CollectionAssert.DoesNotContain(mockedGListAccessor.GetState(), deletedList, "The list still contains the GList that needed to be deleted.");
         }
 
@@ -245,7 +247,7 @@ namespace GroceryApp.Tests
         [TestMethod]
         public void GListEngine_UpdateList()
         {
-            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
+            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an updated GList
             SeedGLists();
             var expected = new GList()
             {
@@ -256,7 +258,7 @@ namespace GroceryApp.Tests
 
             //Act: Calls the GListEngine UpdateList() method and uses the GetState() method to retrieve the Mocked Accessor's list
             gListEngine.UpdateList(2, expected);
-            List<GList> results = mockedGListAccessor.GetState().ToList();
+            List<GList> results = mockedGListAccessor.GetState();
 
 
             //Assert: Checks if the GList's name was successfully updated
@@ -357,7 +359,8 @@ namespace GroceryApp.Tests
 
 
             //Assert: Checks whether the GList added is equal to the expected GList
-            Assert.AreEqual(expected, result, "The GList wasn't inserted correctly.");
+            Assert.AreEqual(expected, result, "The GList was not returned correctly.");
+            CollectionAssert.Contains(mockedGListAccessor.GetState(), gList, "The list of GLists does not contain the inserted GList.");
         }
 
     }

@@ -6,10 +6,11 @@ using _361Example.Models;
 namespace GroceryApp.Tests.MockedAccessors
 {
     /**
-     * The purpose of this class is to act as a Mock Accessor to be used in the GListEngine during unit testing.
+     * The purpose of this class is to act as a Mock Accessor to be used in the GListEngine during unit testing
+     * in the GListEngineTests class.
      * The MockedGListAccessor implements the IGListAccessor, so it can be passed as an argument in the
      * GListEngine constructor.
-     * The MockedGListAccessor uses a List of GLists to act as the database in the regular GListAccessor.
+     * The MockedGListAccessor uses a List of GLists to act in place of the database in the regular GListAccessor.
      **/
     public class MockedGListAccessor : IGListAccessor
     {
@@ -67,6 +68,12 @@ namespace GroceryApp.Tests.MockedAccessors
         public bool Exists(int id)
         {
             return gLists.Any(g => g.Id == id);
+        }
+
+        //Method is required by the IGListAccessor; in the regular accessor, saves changes made to the database
+        public int SaveChanges()
+        {
+            return 0;
         }
 
         //Helper method for the MockedGListAccessor that sets the List of GLists to a specified new state
