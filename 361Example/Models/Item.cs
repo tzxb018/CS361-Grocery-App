@@ -24,8 +24,21 @@ namespace _361Example.Models
             else
             {
                 Item item = (Item)obj;
-                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) && (Checkoff == item.Checkoff) && (Quantity == item.Quantity);
+                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) &&
+                    (Checkoff == item.Checkoff) && (Quantity == item.Quantity) && (GroceryListId == item.GroceryListId);
             }
         }
+
+        public override int GetHashCode()
+        {
+            int hash = 5;
+            hash = 7 * hash + Id;
+            hash = 11 * hash + (Name != null ? Name.GetHashCode() : 0);
+            hash = 13 * hash + (Date != null ? Date.GetHashCode() : 0);
+            hash = 17 * hash + (Checkoff ? 1 : 0);
+            hash = 19 * hash + GroceryListId;
+            return hash;
+        }
+
     }
 }

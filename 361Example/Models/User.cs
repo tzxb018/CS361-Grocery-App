@@ -13,7 +13,7 @@ namespace _361Example.Models
         [Column("EncryptedPassword")]
         public string password { get; set; }
 
-        /*
+        
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -26,6 +26,15 @@ namespace _361Example.Models
                 return (Id == user.Id) && (email == user.email) && (password == user.password);
             }
         }
-        */
+
+        public override int GetHashCode()
+        {
+            int hash = 5;
+            hash = 7 * hash + Id;
+            hash = 11 * hash + (email != null ? email.GetHashCode() : 0);
+            hash = 13 * hash + (password != null ? password.GetHashCode() : 0);
+            return hash;
+        }
+
     }
 }

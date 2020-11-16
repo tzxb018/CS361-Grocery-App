@@ -29,5 +29,15 @@ namespace _361Example.Models
             }
         }
 
+        public override int GetHashCode()
+        {
+            int hash = 5;
+            hash = 7 * hash + Id;
+            hash = 11 * hash + (ListName != null ? ListName.GetHashCode() : 0);
+            hash = 13 * hash + (Date != null ? Date.GetHashCode() : 0);
+            hash = 17 * hash + AccountId;
+            return hash;
+        }
+
     }
 }

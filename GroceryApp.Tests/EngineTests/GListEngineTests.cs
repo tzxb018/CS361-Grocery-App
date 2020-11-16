@@ -115,7 +115,7 @@ namespace GroceryApp.Tests
 
 
         [TestMethod]
-        public void GListEngine_GetAllGLists()
+        public void GListEngine_GetAllLists()
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected list of GLists
             SeedGLists();
