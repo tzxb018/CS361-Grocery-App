@@ -43,6 +43,7 @@ namespace _361Example.Accessors
             return Item;
         }
 
+        //Gathers all of the items belonging to the indicated grocery list
         public IEnumerable<Item> GetItems(int groceryListId)
         {
             return Item.Where(i => i.GroceryListId == groceryListId).ToArray();

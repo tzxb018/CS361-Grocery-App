@@ -57,6 +57,7 @@ namespace _361Example.Accessors
             return GroceryList;
         }
 
+        //Gathers all of the GLists associated with the indicated User
         public IEnumerable<GList> GetGLists(int userId)
         {
             return GroceryList.Where(g => g.AccountId == userId).ToArray();
