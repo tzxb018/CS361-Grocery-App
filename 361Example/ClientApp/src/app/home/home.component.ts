@@ -21,6 +21,7 @@ export class HomeComponent {
 
   ngOnInit() {
     document.body.classList.add('bg');
+    this.dataService.loginStatus = false;
     // OR you can Add inline style css with the help of code below
     // this._document.body.style.background = '#fff';
   }

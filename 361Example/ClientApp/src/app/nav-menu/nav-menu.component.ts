@@ -4,6 +4,7 @@ import { LoginService } from '../login.service';
 import { UserMenuService } from '../user-menu.service';
 import { DataService } from '../data.service';
 import { ItemListService } from '../item-list.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-nav-menu',
@@ -11,6 +12,22 @@ import { ItemListService } from '../item-list.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
+
+
+  constructor(private dataService: DataService) {
+
+    this.selectedUserName = this.dataService.selectedUserName;
+    this.dataService.loginStatus = false;
+    this.loginStatus = this.dataService.loginStatus;
+
+
+  }
+
+  public loginStatus1 = new BehaviorSubject<boolean>(this.dataService.loginStatus);
+
+  isLoggedIn() {
+    return this.loginStatus1.asObservable();
+  }
 
   @Input() selectedUserName: string;
   loginStatus: boolean;
@@ -26,12 +43,6 @@ export class NavMenuComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  constructor(private dataService: DataService) {
-
-    this.selectedUserName = this.dataService.selectedUserName;
-    this.loginStatus = this.dataService.loginStatus;
-    this.loginStatus = true;
-  }
 
   ngOnInit() {
     this.selectedUserName = this.dataService.selectedUserName;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,12 @@ export class DataService {
   existingItems: any;
   selectedUserName: string;
   loginStatus: boolean;
+  public loginStatus1 = new BehaviorSubject<boolean>(this.loginStatus);
 
-  isLoggedIn() {
-    return this.loginStatus
+
+
+  get isLoggedIn() {
+    return this.loginStatus1.asObservable();
   }
 
   
