@@ -15,10 +15,10 @@ We were able to deliver and create a functioning grocery list application. We ha
 
 ### Tasks
 * Bryce Yong
-* Alexis Linhardt
-  -Updated the FAQ section to contain relevant information
-  -Implemented the UI in the FAQ section to contain a background image cohesive to the main page
-  -Examined code for code smells and removed unused files
+* Alexis Linharn
+  - Updated the FAQ section to contain relevant information
+  - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
+  - Examined code for code smells and removed unused files
 * Noah Anderson
   - Implemented UserEngineTests.cs and tweaked the accessor test files to accomodate new methods/fix bugs with old methods
   - Fixed minor code smells and implemented quality of life methods in the accessors/engines
