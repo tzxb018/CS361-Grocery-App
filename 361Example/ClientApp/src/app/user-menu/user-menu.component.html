@@ -5,60 +5,45 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <div id="top-row">
-    <h2 id="page-header">Grocery Lists</h2>
+    <h2 id="page-header">Your Grocery Lists</h2>
     <div style="display: inline-flex">
       <form class="example">
-        <input type="text" placeholder=" Search for list.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" placeholder=" Search for list.." name="search" id="search">
+        <button type="submit" (click)="searchGList()"><i class="fa fa-search"></i></button>
       </form>
       <div>
         <button id="refresh" (click)="refreshTable()">Refresh</button>
         <button [routerLink]="['/new-list']" id="new-list-button">Create New List</button>
       </div>
     </div>
-
-
   </div>
 
-  <!--<table width="100%" style="margin-bottom: 10px;">
-    <tr>
-      <td id="page-header">Grocery Lists</td>
-      <td style="text-align: right;">
-        <form class="example">
-          <input type="text" placeholder=" Search for list.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </td>
-
-      <td style="text-align:right; width: 15%;"><button [routerLink]="['/new-list']" id="new-list-button">Create New List</button>  </td>
-    </tr>
-  </table>-->
-
   <p *ngIf="!gLists"><em>Loading...</em></p>
-  <div class=parent id="table-formatter">
-    <div id="rcorners2">
-      <table class='table' aria-labelledby="tableLabel" *ngIf="gLists">
-        <thead>
-          <tr>
-            <th style="min-width: 40%;">List Name</th>
-            <th>Last Updated</th>
-            <th style="text-align:center">Number of Items</th>
-            <th style="text-align:center">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="table-body">
-          <tr *ngFor="let gList of gLists">
-            <td style="min-width: 40%;">{{ gList.listName }}</td>
-            <td> {{gList.date | date:'medium'}}</td>
-            <td style="text-align:center">{{ gList.items?.length || 0 }}</td>
-            <td style="text-align:center; ">
-              <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}">View</button>
-              <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}" (click)="deleteGList(gList.id, gList.listName)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
+
+  <div class="wrap" id="rcorners2">
+    <table class="head" *ngIf="gLists">
+      <tr>
+        <th style="text-align:center;" scope="col">List Name</th>
+        <th style="text-align:center" scope="col">Last Updated</th>
+        <th style="text-align:center" scope="col">Number of Items</th>
+        <th style="text-align:center;" scope="col">Actions</th>
+      </tr>
+    </table>
+    <div class="inner_table">
+      <table>
+        <tr *ngFor="let gList of gLists">
+          <td style="text-align:center;">{{ gList.listName }}</td>
+          <td style="text-align:center;"> {{gList.date | date:'medium'}}</td>
+          <td style="text-align:center" id="num{{gList.id}}"></td>
+          <td style="text-align:center;">
+            <button class="btn btn-warning" style="margin-left: 10px;" [routerLink]="['/item-list']" id="view{{gList.id}}" (click)="selectGList(gList.id, gList.listName)">View</button>
+            <button class="btn btn-danger" style="margin-left: 10px;" id="delete{{gList.id}}" (click)="deleteGList(gList.id, gList.listName)">Delete</button>
+          </td>
+        </tr>
       </table>
     </div>
   </div>
+
+
 </body>
 </html>

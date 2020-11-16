@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace _361Example.Accessors
@@ -12,9 +11,7 @@ namespace _361Example.Accessors
 
         private DbSet<GList> GroceryList { get; set; }
 
-        //For testing purposes change the connection string to your personal DB's
-
-        public GListAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#Group10361;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+        public GListAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
             GroceryList = Set<GList>();
@@ -50,14 +47,17 @@ namespace _361Example.Accessors
 
         public GList Find(int id)
         {
+
             return GroceryList.Find(id);
         }
 
         public IEnumerable<GList> GetAllGLists()
         {
+
             return GroceryList;
         }
 
+        //Gathers all of the GLists associated with the indicated User
         public IEnumerable<GList> GetGLists(int userId)
         {
             return GroceryList.Where(g => g.AccountId == userId).ToArray();
@@ -75,6 +75,6 @@ namespace _361Example.Accessors
             Entry(gList).State = EntityState.Modified;
         }
 
-        
+
     }
 }

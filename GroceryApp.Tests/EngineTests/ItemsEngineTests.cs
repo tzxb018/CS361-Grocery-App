@@ -15,7 +15,6 @@ namespace GroceryApp.Tests
 
         private readonly IItemsEngine itemsEngine;
         private readonly MockedItemsAccessor mockedItemsAccessor;
-        private object expected;
 
         public ItemsEngineTests()
         {

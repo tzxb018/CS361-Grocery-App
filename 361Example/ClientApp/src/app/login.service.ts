@@ -1,17 +1,17 @@
-import { Injectable, Inject } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+export class LoginService {
 
-export class ItemListService {
   private headers: HttpHeaders;
 
-  // public list to hold all the item instances
-  public Items: Item[];
+  // public list to hold all the glist instances
+  public users: User[];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -39,59 +39,29 @@ export class ItemListService {
       'Something bad happened; please try again later.');
   }
 
-  // gets all the items and populates the tables
-  public getAllItems() {
+  public getAllUser() {
 
-    // this will only populate the items if there are no errors
-    return this.http.get<Item[]>(this.baseUrl + 'item')
+    // this will only populate the user if there are no errors
+    return this.http.get<User[]>(this.baseUrl + 'user')
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
   }
 
-  // getting all the items for a specific list
-  public getItemsForList(id: number) {
-
-    // gets the url of the deleted item with the ID (defined in the ItemController headers)
-    const url = this.baseUrl + `item\\glist${id}`;
-    return this.http.get<Item[]>(url)
+  public insertUser(user): Observable<User> {
+    return this.http.post<User>(this.baseUrl + 'user', user, this.httpOptions)
       .pipe(
-        retry(3),
         catchError(this.handleError)
       );
-  }
-
-  addItem(newItem) {
-    console.log(newItem);
-    return this.http.post<Item>(this.baseUrl + 'item', newItem, this.httpOptions).pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
-  }
-
-  // function to delete the item from the table
-  deleteItem(id: number) {
-
-    // gets the url of the deleted item with the ID (defined in the ItemController headers)
-    const url = this.baseUrl + `item\\${id}`;
-
-    // deletes the item only if there is no errors
-    return this.http.delete(url).pipe(
-      catchError(this.handleError)
-    );
   }
 
   public update(payload) {
     return this.http.put(this.baseUrl + '/' + payload.id, payload, { headers: this.headers });
   }
 }
-
-interface Item {
+interface User {
   id: number;
-  name: string;
-  date: Date;
-  checkoff: boolean;
-  quantity: number;
-  groceryListId: number;
+  email: string;
+  password: string;
 }

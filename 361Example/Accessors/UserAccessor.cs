@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace _361Example.Accessors
 {
@@ -9,17 +10,17 @@ namespace _361Example.Accessors
     {
         private DbSet<User> Account { get; set; }
 
-        //For testing purposes change the connection string to your personal DB's
-
-        public UserAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#Group10361;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+        public UserAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 
         {
             Account = Set<User>();
         }
+
         private static DbContextOptions GetOptions(String ConnectionString)
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), ConnectionString).Options;
         }
+
         public User Delete(int id)
         {
             if (Exists(id))
@@ -64,6 +65,25 @@ namespace _361Example.Accessors
         {
             Entry(user).State = EntityState.Modified;
             base.SaveChanges();
+        }
+
+        //Retrieves User by their email
+        public User GetUserEmail(string email)
+        {
+            return Account.Where(u => u.email == email).FirstOrDefault();
+        }
+        
+        //Retrieves user by their email/password
+        //Could be helpful for login verification
+        public User Find(String username, String password)
+        {
+            return Account.Where(u => u.email == username && u.password == password).FirstOrDefault();
+
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
         }
     }
 }

@@ -20,11 +20,14 @@ namespace _361Example.Engines
             return _itemsAccessor.GetAllItems().ToList();
         }
 
+        //Used for obtaining all of the items attributed to a specific grocery list
+        //Returns List of items if successful, null if not
         public IEnumerable<Item> GetListItems(int groceryListId)
         {
             return _itemsAccessor.GetItems(groceryListId);
         }
 
+        //The next four methods (excluding UpdateItem) will return null if unsuccessful
         public Item GetItem(int id)
         {
             if (_itemsAccessor.Exists(id))
@@ -52,13 +55,7 @@ namespace _361Example.Engines
 
         public Item DeleteItem(int id)
         {
-            var item = _itemsAccessor.Find(id);
-            if (item != null)
-            {
-                _itemsAccessor.Delete(id);
-                _itemsAccessor.SaveChanges();
-            }
-            return item;
+            return _itemsAccessor.Delete(id);
         }
 
 
