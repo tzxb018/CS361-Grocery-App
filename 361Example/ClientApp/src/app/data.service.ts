@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,11 @@ export class DataService {
   existingGLists: any;
   existingItems: any;
   selectedUserName: string;
+  loginStatus: boolean;
 
-  constructor() {
-    /*this.selectedUserId = 1; // will change when login and users are implemented*/
-
+  isLoggedIn() {
+    return this.loginStatus
   }
+
+  
 }
