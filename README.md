@@ -18,6 +18,11 @@ We were able to deliver and create a functioning grocery list application. We ha
 * Alexis Linhardt
 * Noah Anderson
 * Ryan Hruby
+  - Configured database for access by a wider range of IP addresses
+  - Added new constraints to database and modified database scripts to account for this
+  - Cleaned up code smells in GListEngineTests, ItemsEngineTests, and the mocked accessors
+  - Added documentation to all mocked accessors as well as some to the engine tests
+  - Implemented GetHashCode() methods for the Models
 * Tomo Bessho
   - UI improvements to have a 'sticky' header for both the user menu and each grocery list
   - Added in validation to the grocery list names, grocery item names, and quantities
