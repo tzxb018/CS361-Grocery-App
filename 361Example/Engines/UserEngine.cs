@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace _361Example.Engines
 {
-    // This is the engine we used to unit test
     public class UserEngine : IUserEngine
     {
         private readonly IUserAccessor _userAccessor;
@@ -38,24 +37,12 @@ namespace _361Example.Engines
 
         public User InsertUser(User user)
         {
-            List<User> allUsers = GetAllUsers().ToList();
-
-            foreach (User u in allUsers)
+            if(GetUserEmail(user.email) == null)
             {
-                if (u.Id == user.Id)
-                {
-                    throw new DuplicateNameException();
-                }
-                else if (u.email == user.email)
-                {
-                    throw new DuplicateNameException();
-                }
+                return _userAccessor.Insert(user);
             }
 
-            _userAccessor.Insert(user);
-            _userAccessor.SaveChanges();
-
-            return user;
+            throw new DuplicateNameException();
         }
 
         public User UpdateUser(User user)

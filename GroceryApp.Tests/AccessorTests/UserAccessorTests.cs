@@ -158,6 +158,7 @@ namespace GroceryApp.Tests
             //Assert
             Assert.AreEqual(expected, result, "The user was inserted incorrectly");
 
+
         }
 
         [TestMethod]
@@ -175,7 +176,19 @@ namespace GroceryApp.Tests
 
         }
 
-    }
-}
+        [TestMethod]
+        public void UserAccessor_Find_unsuccessful()
+        {
+            //Arrange
+            String username = "thisemaildoesntexist@gmail.com";
+            String password = "asdfghjkl";
 
+            //Act
+            var result = userAccessor.Find(username, password);
+
+            //Assert
+            Assert.AreEqual(null, result, "A user was found when no users had the login credentials");
+        }
+    }
+ }
 
