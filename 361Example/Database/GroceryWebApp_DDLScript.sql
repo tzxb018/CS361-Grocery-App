@@ -1,4 +1,5 @@
-﻿USE [GroceryWebAppDB]
+﻿--DDL Script for creating the Account, GroceryList, and Item tables in the GroceryWebAppDB
+USE [GroceryWebAppDB]
 
 --Drop Tables if they already exist in the Database
 IF OBJECT_ID('Item', 'U') IS NOT NULL 

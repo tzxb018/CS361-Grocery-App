@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GroceryApp.Tests
+namespace GroceryApp.Tests.EngineTests
 {
     /**
      * The purpose of this class is the unit testing of the methods within the ItemsEngine class.
@@ -105,7 +105,7 @@ namespace GroceryApp.Tests
             mockedItemsAccessor.SetState(null);
 
 
-            //Act: Calls the ItemsEngine GetAllItems() method
+            //Act: Calls the ItemsEngine GetAllItems() method to return all Items
             itemsEngine.GetAllItems();
 
 
@@ -136,7 +136,7 @@ namespace GroceryApp.Tests
 
 
         [TestMethod]
-        public void ItemsEngine_DeleteList_InvalidId()
+        public void ItemsEngine_DeleteItem_InvalidId()
         {
             //Arrange: Seeds the Mocked Accessor's list of Items
             SeedItems();
@@ -175,7 +175,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the ItemsEngine GetListItems() method which returns a list of all items
+            //Act: Calls the ItemsEngine GetListItems() method which returns a list of all items on a certain grocery list
             IEnumerable<Item> result = itemsEngine.GetListItems(groceryListId);
 
 
@@ -200,7 +200,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the ItemsEngine GetItem() method
+            //Act: Calls the ItemsEngine GetItem() method to return the Item with id = 2
             var result = itemsEngine.GetItem(2);
 
 
@@ -274,7 +274,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the ItemsEngine InsertItem() method
+            //Act: Calls the ItemsEngine InsertItem() method to insert the "Vanilla Ice Cream" item
             var result = itemsEngine.InsertItem(item);
 
 

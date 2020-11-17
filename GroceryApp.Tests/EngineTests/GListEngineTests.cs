@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace GroceryApp.Tests
+namespace GroceryApp.Tests.EngineTests
 {
     /**
      * The purpose of this class is the unit testing of the methods within the GListEngine class.
@@ -79,7 +79,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine SortLists() method and converts the return value to a list
+            //Act: Calls the GListEngine SortLists() method to sort the GLists according to name
             var result = gListEngine.SortLists().ToList();
 
 
@@ -106,7 +106,7 @@ namespace GroceryApp.Tests
             });
 
 
-            //Act: Calls the GListEngine SortLists() method
+            //Act: Calls the GListEngine SortLists() method on a list of GLists with a null-named list
             gListEngine.SortLists();
 
 
@@ -139,11 +139,11 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine GetAllLists() method and converts the return value to a list
+            //Act: Calls the GListEngine GetAllLists() method to return all GLists
             var result = gListEngine.GetAllLists();
 
 
-            //Assert: Checks whether the expected and result lists are the exact same
+            //Assert: Checks whether each GList in the expected and result lists are equal
             for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected.ElementAt(i), result.ElementAt(i), $"The GList at index {i} was retrieved incorrectly.");
@@ -201,7 +201,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine GetList() method
+            //Act: Calls the GListEngine GetList() method with the id for the "Wednesday Groceries" list
             var result = gListEngine.GetList(2);
 
 
@@ -218,7 +218,7 @@ namespace GroceryApp.Tests
             mockedGListAccessor.SetState(new List<GList> { null });
 
 
-            //Act: Calls the GListEngine GetList() method
+            //Act: Calls the GListEngine GetList() method on the empty list
             gListEngine.GetList(3);
 
 
@@ -256,7 +256,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine UpdateList() method and uses the GetState() method to retrieve the Mocked Accessor's list
+            //Act: Calls the GListEngine UpdateList() and uses the GetState() method to retrieve the Mocked Accessor's list
             gListEngine.UpdateList(2, expected);
             List<GList> results = mockedGListAccessor.GetState();
 
