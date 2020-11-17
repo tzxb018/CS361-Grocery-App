@@ -36,6 +36,7 @@ export class UserMenuComponent {
   async refreshTable() {
 
     console.log("selected user id", this.dataService.selectedUserId);
+    console.log("login status", this.dataService.loginStatus);
     const result = await this.userMenuService.getGListsForUser(this.dataService.selectedUserId).toPromise();
     this.allGLists = result;
     this.gLists = result;
