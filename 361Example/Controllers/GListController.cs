@@ -12,6 +12,8 @@ namespace _361Example.Controllers
     {
         private readonly IGListEngine _gListEngine;
         private readonly IItemsEngine _itemsEngine;
+
+        // using dependency injection to use engines' methods
         public GListController(IGListEngine gListEngine, IItemsEngine itemsEngine)
         {
             _gListEngine = gListEngine;
@@ -19,12 +21,15 @@ namespace _361Example.Controllers
         }
 
         // GET: api/glist
+        // function to get all the grocery lists (primarily used for testing)
         [HttpGet]
         public IEnumerable<GList> GetAllLists()
         {
             return _gListEngine.GetAllLists().ToArray();
         }
 
+        // GET: api/user{id}
+        // gets all the glists for a specific user (defined by the user's id)
         [Route("user{id}")]
         [HttpGet]
         public IEnumerable<GList> GetUserGLists(string id)
@@ -35,6 +40,7 @@ namespace _361Example.Controllers
         }
 
         // GET: api/glist/5
+        // getting a specific list based on the glist's id
         [Route("{id}")]
         [HttpGet]
         public GList GetList(string id)
@@ -51,21 +57,17 @@ namespace _361Example.Controllers
         }
 
 
+        // adding a new glist to the database
         // POST: api/glist
         [Route("")]
         [HttpPost]
         public void PostList(GList glist)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
-
             _gListEngine.InsertList(glist);
 
-            //return Ok(glist);
         }
 
+        // editting a specific glist based on the id
         // PUT: api/glist/5
         [Route("{id}")]
         [HttpPut]
@@ -78,8 +80,7 @@ namespace _361Example.Controllers
 
         }
 
-
-
+        // deleting a specific glist based by ID
         // DELETE: api/glists/5
         [Route("{id}")]
         [HttpDelete]
@@ -88,10 +89,6 @@ namespace _361Example.Controllers
             var parsedId = int.Parse(id);
 
             GList glist = _gListEngine.GetList(parsedId);
-            if (glist == null)
-            {
-
-            }
 
             // deletes each item in the grocery list before deleting the list itself to prevent SQL errors
             var itemsInGList = _itemsEngine.GetListItems(parsedId);
@@ -109,20 +106,6 @@ namespace _361Example.Controllers
             // deleting the acutal list itself
             _gListEngine.DeleteList(glist.Id);
 
-        }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        private bool ListExists(int id)
-        {
-            return _gListEngine.GetAllLists().Count(e => e.Id == id) > 0;
         }
 
     }
