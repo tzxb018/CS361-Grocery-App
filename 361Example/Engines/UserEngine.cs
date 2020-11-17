@@ -29,7 +29,7 @@ namespace _361Example.Engines
 
         }
 
-        //Returns the user if found, null if not
+        //Returns User if one is found under the provided credentials, null if unsucessful
         public User VerifyUser(String username, String password)
         {
             return _userAccessor.Find(username, password);
@@ -37,7 +37,7 @@ namespace _361Example.Engines
 
         public User InsertUser(User user)
         {
-            if(GetUserEmail(user.email) == null)
+            if(GetUserEmail(user.Email) == null)
             {
                 return _userAccessor.Insert(user);
             }
@@ -63,6 +63,8 @@ namespace _361Example.Engines
             return _userAccessor.Delete(user.Id);
         }
 
+        //Retrieves the User given their email
+        //Returns User if succesfully found, null if not
         public User GetUserEmail(string email)
         {
             return _userAccessor.GetUserEmail(email);

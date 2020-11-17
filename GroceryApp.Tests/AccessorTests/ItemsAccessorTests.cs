@@ -155,8 +155,7 @@ namespace GroceryApp.Tests
         [TestMethod]
         public void ItemsAccessor_Delete()
         {
-            //Arrange: The item to be deleted is within the database
-          
+            //Arrange: The item to be deleted is within the database         
             var item = new Item { Name = "Cabbage", Date = DateTime.Parse("2020-09-29"), Checkoff = false, Quantity = 1};
             var removable = itemsAccessor.Insert(item);
 

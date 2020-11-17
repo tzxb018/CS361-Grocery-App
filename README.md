@@ -15,9 +15,23 @@ We were able to deliver and create a functioning grocery list application. We ha
 
 ### Tasks
 * Bryce Yong
-* Alexis Linhardt
+  - Implemented UserController
+  - Implemented login verification and account creation, as well as UI components for these
+  - Partially implemented navigation bar
+* Alexis Linharn
+  - Updated the FAQ section to contain relevant information
+  - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
+  - Examined code for code smells and removed unused files
 * Noah Anderson
+  - Implemented UserEngineTests.cs and tweaked the accessor test files to accomodate new methods/fix bugs with old methods
+  - Fixed minor code smells and implemented quality of life methods in the accessors/engines
+  - Added some documentation to the accessors and engines to clarify some of the more involved methods
 * Ryan Hruby
+  - Configured database for access by a wider range of IP addresses
+  - Added new constraints to database and modified database scripts to account for this
+  - Cleaned up code smells in GListEngineTests, ItemsEngineTests, and the mocked accessors
+  - Added documentation to all mocked accessors as well as some to the engine tests
+  - Implemented GetHashCode() methods for the Models
 * Tomo Bessho
   - UI improvements to have a 'sticky' header for both the user menu and each grocery list
   - Added in validation to the grocery list names, grocery item names, and quantities

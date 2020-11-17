@@ -66,7 +66,9 @@ export class HomeComponent {
           this.currentUser = user;
           this.dataService.selectedUserId = user.id;
           this.dataService.selectedUserName = user.email;
-          this.dataService.loginStatus = true;
+
+          this.dataService.authenticate();
+
           break;
         } else {
           this.login = 0;

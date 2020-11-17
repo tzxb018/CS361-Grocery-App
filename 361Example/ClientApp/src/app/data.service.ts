@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+
+  authenticated$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   // data to hold which user and grocery list is selected
   selectedGListId: number;
@@ -18,10 +20,21 @@ export class DataService {
   public loginStatus1 = new BehaviorSubject<boolean>(this.loginStatus);
 
 
-
-  get isLoggedIn() {
-    return this.loginStatus1.asObservable();
+  public authenticate() {
+    this.authenticated$.next(true);
   }
+
+  public deauthenticate() {
+    this.authenticated$.next(false);
+    this.selectedGListId = null;
+    this.selectedGListName = null;
+    this.selectedUserId = null;
+    this.existingGLists = null;
+    this.existingItems = null;
+    this.selectedUserName = null;
+  }
+ 
+
 
   
 }
