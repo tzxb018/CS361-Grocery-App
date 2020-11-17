@@ -1,11 +1,8 @@
-import { Component, Inject, Injectable, Output, EventEmitter, ViewEncapsulation, OnInit, OnDestroy  } from '@angular/core';
+import { Component, Inject, Injectable, Output, EventEmitter, ViewEncapsulation, OnInit, OnDestroy,   } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
 import { Router, Data } from '@angular/router';
-
-
-
 
 
 @Component({
@@ -24,6 +21,7 @@ export class HomeComponent {
 
   ngOnInit() {
     document.body.classList.add('bg');
+    this.dataService.loginStatus = false;
     // OR you can Add inline style css with the help of code below
     // this._document.body.style.background = '#fff';
   }
@@ -37,9 +35,12 @@ export class HomeComponent {
   public login: number;
   public currentUser: User;
 
+
+
   constructor(private loginService: LoginService, private router: Router, private dataService: DataService) {
 
     this.refreshTable();
+    console.log("login status", this.dataService.loginStatus);
   }
 
   //func to refresh table
@@ -49,6 +50,7 @@ export class HomeComponent {
     this.allUsers = result;
 
   }
+
 
   verifyUser() {
     const emailForm = document.getElementById("email") as HTMLInputElement;
@@ -64,6 +66,8 @@ export class HomeComponent {
           this.currentUser = user;
           this.dataService.selectedUserId = user.id;
           this.dataService.selectedUserName = user.email;
+
+          this.dataService.authenticate();
 
           break;
         } else {
