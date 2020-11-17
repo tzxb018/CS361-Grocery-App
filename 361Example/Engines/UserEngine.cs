@@ -37,7 +37,7 @@ namespace _361Example.Engines
 
         public User InsertUser(User user)
         {
-            if(GetUserEmail(user.email) == null)
+            if(GetUserEmail(user.Email) == null)
             {
                 return _userAccessor.Insert(user);
             }
