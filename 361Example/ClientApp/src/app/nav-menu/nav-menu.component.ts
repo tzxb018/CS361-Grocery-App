@@ -14,13 +14,10 @@ export class NavMenuComponent {
   public allUsers: User[];
 
   constructor(private loginService: LoginService, private router: Router, private dataService: DataService) {
-   // this.refreshTable();
+
   }
 
-  //async refreshTable() {
-  //  const result = await this.loginService.getAllUser().toPromise();
-  //  this.allUsers = result;
-  //}
+
 
   isExpanded = false;
 
