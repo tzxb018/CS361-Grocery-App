@@ -136,7 +136,7 @@ namespace GroceryApp.Tests
 
 
         [TestMethod]
-        public void ItemsEngine_DeleteList_InvalidId()
+        public void ItemsEngine_DeleteItem_InvalidId()
         {
             //Arrange: Seeds the Mocked Accessor's list of Items
             SeedItems();
