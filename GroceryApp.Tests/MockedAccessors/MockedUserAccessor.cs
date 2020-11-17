@@ -32,7 +32,7 @@ namespace GroceryApp.Tests.MockedAccessors
         //Returns the User with the specified email
         public User GetUserEmail(string email)
         {
-            return users.Find(u => u.email == email);
+            return users.Find(u => u.Email == email);
         }
 
         //Returns the User with the specified id
@@ -44,7 +44,7 @@ namespace GroceryApp.Tests.MockedAccessors
         //Returns the User with the specified username and password
         public User Find(String username, String password)
         {
-            return users.FirstOrDefault(u => u.email == username && u.password == password);
+            return users.FirstOrDefault(u => u.Email == username && u.Password == password);
         }
 
         //Inserts the specified User into the List of Users

@@ -1,10 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _361Example.Models
 {
+    /**
+     * The purpose of the GList class is to serve as the model for a grocery list.
+     * Since every grocery list belongs to an account, the AccountId field links
+     * the corresponding User to each GList.
+     * The Id field acts as the unique identifier for a GList object.
+     * The GList class also has attributes ListName and Date in order that allow
+     * the name of the grocery list to be specified as well as when its last update
+     * occurred.
+     **/
     public class GList
     {
         [Key]
@@ -13,9 +21,9 @@ namespace _361Example.Models
         [Column("Name")]
         public String ListName { get; set; }
         public DateTime Date { get; set; }
-        public IEnumerable<Item> Items { get; set; }
         public int AccountId { get; set; }   
 
+        //The overriden Equals method determines whether this GList and another object are equal based on GList's fields
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -29,6 +37,7 @@ namespace _361Example.Models
             }
         }
 
+        //The overriden GetHashCode method ensures that any equal GLists have the same hash code
         public override int GetHashCode()
         {
             int hash = 5;

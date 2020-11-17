@@ -4,6 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _361Example.Models
 {
+    /**
+     * The purpose of the Item class is to serve as a model for a grocery list item.
+     * Since every item belongs to a grocery list, the GroceryListId field links
+     * the corresponding GList to each Item.
+     * The Id field acts as the unique identifier for an Item object.
+     * The Item class also has fields for name, date, checkoff, and quantity in order to
+     * properly model a grocery list item according to requirements.
+     **/
     public class Item
     {
         [Key]
@@ -15,6 +23,7 @@ namespace _361Example.Models
         public int Quantity { get; set; }
         public int GroceryListId { get; set; }
 
+        //The overriden Equals method determines whether this Item and another object are equal based on Item's fields
         public override bool Equals(object obj)
         {
             if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -29,6 +38,7 @@ namespace _361Example.Models
             }
         }
 
+        //The overriden GetHashCode method ensures that any equal Items have the same hash code
         public override int GetHashCode()
         {
             int hash = 5;
