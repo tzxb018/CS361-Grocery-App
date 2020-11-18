@@ -278,14 +278,51 @@ namespace GroceryApp.Tests.AccessorTests
         [TestMethod]
         public void ItemsAccessor_GetItems()
         {
+            //Arrange: Creates an expected list of Items with GroceryListId = 2
+            var expected = new List<Item>
+            {
+                new Item
+                {
+                    Id = 5,
+                    Name = "Bagels",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-16"),
+                    Quantity = 2,
+                    GroceryListId = 2
+                },
+                new Item
+                {
+                    Id = 6,
+                    Name = "Lettuce",
+                    Checkoff = true,
+                    Date = DateTime.Parse("2020-09-18"),
+                    Quantity = 4,
+                    GroceryListId = 2
+                }
+            };
 
+
+            //Act: Calls the ItemAccessor GetItems() method to retrieve the Items with GroceryListId = 2
+            var result = itemsAccessor.GetItems(2).ToList();
+
+
+            //Assert: Checks that only the Items with GroceryListId = 2 were retrieved
+            CollectionAssert.AreEquivalent(expected, result, "An Item without GroceryListId = 2 was retrieved.");
         }
 
 
         [TestMethod]
         public void ItemsAccessor_GetItems_InvalidGroceryListId()
         {
+            //Arrange: No Items exist in the DB with the GroceryListId = 0
 
+
+            //Act: Calls the ItemAccessor GetItems() method to retrieve the Items with GroceryListId = 0
+            var result = itemsAccessor.GetItems(0).ToList();
+
+
+            //Assert: Checks that the retrieved list is empty
+            Assert.AreEqual(0, result.Count, "Items were retrieved from the database.");
         }
 
     }

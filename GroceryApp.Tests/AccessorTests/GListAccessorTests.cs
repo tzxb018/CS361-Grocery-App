@@ -197,15 +197,50 @@ namespace GroceryApp.Tests.AccessorTests
         }
 
 
+        [TestMethod]
         public void GListAccessor_GetGLists()
         {
+            //Arrange: Creates an expected list of GLists with AccountId = 3
+            var expected = new List<GList>
+            {
+                new GList
+                {
+                    Id = 4,
+                    ListName = "Food",
+                    Date = DateTime.Parse("2020-10-12"),
+                    AccountId = 3
+                },
+                new GList
+                {
+                    Id = 5,
+                    ListName = "Another List",
+                    Date = DateTime.Parse("2020-10-10"),
+                    AccountId = 3
+                }
+            };
 
+
+            //Act: Calls the GListAccessor GetGLists() method to retrieve the GLists with AccountId = 3
+            var result = gListAccessor.GetGLists(3).ToList();
+
+
+            //Assert: Checks that only the GLists with AccountId = 3 were retrieved
+            CollectionAssert.AreEquivalent(expected, result, "A GList without AccountId = 3 was retrieved.");
         }
 
 
+        [TestMethod]
         public void GListAccessor_GetGLists_InvalidUserId()
         {
+            //Arrange: No GLists exist in the DB with AccountId = 0
 
+
+            //Act: Calls the GListAccessor GetGLists() method to retrieve the GLists with AccountId = 0
+            var result = gListAccessor.GetGLists(0).ToList();
+
+
+            //Assert: Checks that the retrieved list is empty
+            Assert.AreEqual(0, result.Count, "GLists were retrieved from the database.");
         }
 
     }
