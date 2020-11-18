@@ -24,6 +24,12 @@ export class UserMenuComponent {
   // constructor that populates the tables after injecting the http client and the base url 
   constructor(private userMenuService: UserMenuService, private dataService: DataService, private itemListService: ItemListService) {
     this.refreshTable();
+
+    var iframes = document.querySelectorAll('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].parentNode.removeChild(iframes[i]);
+    }
+
   }
 
   selectGList(id: number, listName: string) {

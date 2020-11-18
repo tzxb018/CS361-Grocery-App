@@ -7,11 +7,29 @@
       background: #ffffff;
       padding: 20px;
       width: 389px;
-      height: 552px;
       position: fixed;
-      right: 300px;
-      top: 250px;
+      right: 100px;
+      margin-top: 50px;
     }
+
+    #back-button {
+      font-family: 'Alata';
+      font-size: 18px;
+      font-weight: normal;
+      text-align: left;
+      width: 100%;
+      position: absolute;
+      bottom: 15px;
+    }
+
+      #back-button:hover {
+        cursor: pointer;
+      }
+
+      #back-button:focus {
+        outline: 0;
+        cursor: pointer;
+      }
   </style>
 
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
@@ -28,8 +46,7 @@
       <button (click)="createNewUser()" style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 246px; height: 65px; border-radius: 7px; border:unset; background: #f06e9c; ">Create New Account </button>
       <br />
       <br />
-      <br />
-      <div [routerLink]="['/']" style="font-family: 'Alata'; font-size: 18px; font-weight: normal; position:relative; right:150px;">Back</div>
+      <div [routerLink]="['/']" id="back-button">Back</div>
     </div>
   </div>
 </body>
