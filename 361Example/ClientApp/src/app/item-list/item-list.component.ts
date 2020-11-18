@@ -23,6 +23,11 @@ export class ItemListComponent {
   constructor(private itemListService: ItemListService, private dataService: DataService, private userMenuService: UserMenuService) {
     this.refreshTable();
     this.updateTimeStampOfList();
+
+    var iframes = document.querySelectorAll('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].parentNode.removeChild(iframes[i]);
+    }
   }
 
   // function to reload the table
