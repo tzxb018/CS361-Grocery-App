@@ -30,7 +30,7 @@ namespace GroceryApp.Tests.MockedAccessors
         }
 
         //Returns the User with the specified email
-        public User GetUserEmail(string email)
+        public User GetUserByEmail(string email)
         {
             return users.Find(u => u.Email == email);
         }

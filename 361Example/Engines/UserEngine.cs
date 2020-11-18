@@ -67,7 +67,7 @@ namespace _361Example.Engines
         //Returns User if succesfully found, null if not
         public User GetUserEmail(string email)
         {
-            return _userAccessor.GetUserEmail(email);
+            return _userAccessor.GetUserByEmail(email);
 
         }
     }

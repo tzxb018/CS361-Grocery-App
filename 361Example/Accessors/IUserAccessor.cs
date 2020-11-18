@@ -6,7 +6,7 @@ namespace _361Example.Accessors
     public interface IUserAccessor
     {
         IEnumerable<User> GetAllUsers();
-        User GetUserEmail(string email);
+        User GetUserByEmail(string email);
         User Find(int id);
         User Find(string username, string password);
         User Insert(User user);
