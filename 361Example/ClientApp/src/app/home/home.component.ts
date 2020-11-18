@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable, Output, EventEmitter, ViewEncapsulation, OnInit, OnDestroy,   } from '@angular/core';
+import { Component, Inject, Injectable, Output, EventEmitter, ViewEncapsulation, OnInit, OnDestroy, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
@@ -24,6 +24,9 @@ export class HomeComponent {
     this.dataService.loginStatus = false;
     // OR you can Add inline style css with the help of code below
     // this._document.body.style.background = '#fff';
+
+
+
   }
   ngOnDestroy() {
     // remove the class form body tag
@@ -41,6 +44,10 @@ export class HomeComponent {
 
     this.refreshTable();
     console.log("login status", this.dataService.loginStatus);
+    var iframes = document.querySelectorAll('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].parentNode.removeChild(iframes[i]);
+    }
   }
 
   //func to refresh table
