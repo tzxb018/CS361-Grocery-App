@@ -68,17 +68,16 @@ namespace _361Example.Accessors
         }
 
         //Retrieves User by their email
-        public User GetUserEmail(string email)
+        public User GetUserByEmail(string email)
         {
             return Account.Where(u => u.Email == email).FirstOrDefault();
         }
         
         //Retrieves user by their email/password
         //Could be helpful for login verification
-        public User Find(String username, String password)
+        public User Find(string username, string password)
         {
             return Account.Where(u => u.Email == username && u.Password == password).FirstOrDefault();
-
         }
 
         public override int SaveChanges()

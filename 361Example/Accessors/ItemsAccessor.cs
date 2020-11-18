@@ -51,7 +51,9 @@ namespace _361Example.Accessors
         // https://stackoverflow.com/questions/48363894/where-is-idbsett-in-entity-core
         public Item Insert(Item item)
         {
-            return Item.Add(item).Entity;
+            Item.Add(item);
+            SaveChanges();
+            return item;
         }
 
         public void Update(Item item)

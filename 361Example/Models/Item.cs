@@ -33,7 +33,7 @@ namespace _361Example.Models
             else
             {
                 Item item = (Item)obj;
-                return (Id == item.Id) && (Name == item.Name) && (Date == item.Date) &&
+                return (Id == item.Id) && (Name == item.Name) &&
                     (Checkoff == item.Checkoff) && (Quantity == item.Quantity) && (GroceryListId == item.GroceryListId);
             }
         }
@@ -44,7 +44,6 @@ namespace _361Example.Models
             int hash = 5;
             hash = 7 * hash + Id;
             hash = 11 * hash + (Name != null ? Name.GetHashCode() : 0);
-            hash = 13 * hash + (Date != null ? Date.GetHashCode() : 0);
             hash = 17 * hash + (Checkoff ? 1 : 0);
             hash = 19 * hash + GroceryListId;
             return hash;
