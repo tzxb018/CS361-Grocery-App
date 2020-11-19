@@ -33,7 +33,7 @@ namespace _361Example.Models
             else
             {
                 GList glist = (GList)obj;
-                return (Id == glist.Id) && (ListName == glist.ListName) && (Date == glist.Date) && (AccountId == glist.AccountId);
+                return (Id == glist.Id) && (ListName == glist.ListName) && (AccountId == glist.AccountId);
             }
         }
 
@@ -43,7 +43,6 @@ namespace _361Example.Models
             int hash = 5;
             hash = 7 * hash + Id;
             hash = 11 * hash + (ListName != null ? ListName.GetHashCode() : 0);
-            hash = 13 * hash + (Date != null ? Date.GetHashCode() : 0);
             hash = 17 * hash + AccountId;
             return hash;
         }

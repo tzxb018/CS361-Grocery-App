@@ -38,7 +38,7 @@ namespace GroceryApp.Tests.EngineTests
                 new GList
                 {
                     Id = 1,
-                    ListName = "Sunday Groceries"
+                    ListName = "Sunday Groceries",
                 },
                 new GList
                 {
@@ -53,6 +53,28 @@ namespace GroceryApp.Tests.EngineTests
             });
         }
 
+        //Seeds the Mocked Accessor with test data including AccountId using the SetState() method
+        public void SeedGListsWithAccountId()
+        {
+            mockedGListAccessor.SetState( new List<GList> {
+                new GList {
+                    Id = 1,
+                    ListName = "Joe's First List",
+                    AccountId = 3
+                },
+                new GList
+                {
+                    Id = 2,
+                    ListName = "Sally's List",
+                    AccountId = 6
+                },
+                new GList{
+                    Id = 3,
+                    ListName = "Another Joe List",
+                    AccountId = 3
+                }
+            });
+        }
 
         [TestMethod]
         public void GListEngine_SortLists()
@@ -361,6 +383,55 @@ namespace GroceryApp.Tests.EngineTests
             //Assert: Checks whether the GList added is equal to the expected GList
             Assert.AreEqual(expected, result, "The GList was not returned correctly.");
             CollectionAssert.Contains(mockedGListAccessor.GetState(), gList, "The list of GLists does not contain the inserted GList.");
+        }
+
+
+        [TestMethod]
+        public void GListEngine_GetUserLists()
+        {
+            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected list of GLists
+            SeedGListsWithAccountId();
+            var expected = new List<GList>
+            {
+                new GList
+                {
+                    Id = 1,
+                    ListName = "Joe's First List",
+                    AccountId = 3
+                },
+                new GList
+                {
+                    Id = 3,
+                    ListName = "Another Joe List",
+                    AccountId = 3
+                }
+            };
+
+
+            //Act: Calls the GListEngine GetUserLists() method to return the GLists for the User with id = 3
+            var result = gListEngine.GetUserLists(3).ToList();
+
+
+            //Assert: Checks whether the expected and result list contain the same elements; only the GLists with AccountId = 3
+            Assert.IsFalse(expected.Count < result.Count, $"The result list contains {result.Count} GLists, but should only contain {expected.Count} GLists.");
+            Assert.IsFalse(expected.Count > result.Count, $"The result list contains only {result.Count} GLists, but should contain {expected.Count} GLists.");
+            CollectionAssert.AreEquivalent(expected, result, "The expected and result list have (an) unequal GList(s).");
+        }
+
+
+        [TestMethod]
+        public void GListEngine_GetUserLists_NoGListsReturned()
+        {
+            //Arrange: Seeds the Mocked Accessor's list of GLists
+            SeedGListsWithAccountId();
+
+
+            //Act: Calls the GListEngine GetUserLists() with an AccountId that should return an empty list of GLists
+            var result = gListEngine.GetUserLists(0).ToList();
+
+
+            //Assert: Checks that the result is an empty list
+            Assert.AreEqual(0, result.Count, "More than zero GLists were returned.");
         }
 
     }

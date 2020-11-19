@@ -3,6 +3,7 @@ using _361Example.Models;
 using GroceryApp.Tests.MockedAccessors;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -141,6 +142,22 @@ namespace GroceryApp.Tests.EngineTests
 
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void UserEngine_GetUser_EmptyList()
+        {
+            //Arrange: Seed the Mocked Accessor with an empty list of Users
+            mockedUserAccessor.SetState(new List<User> { null });
+
+
+            //Act: Calls the UserEngine GetUser() method on the empty list
+            userEngine.GetUser(2);
+
+
+            //Assert: Handled by the ExpectedException attribute on the test method
+        }
+
+
+        [TestMethod]
         public void UserEngine_VerifyUser()
         {
             //Arrange: Seed the Mocked Accessor's lists of Users and creates an expected list of Users
@@ -204,6 +221,43 @@ namespace GroceryApp.Tests.EngineTests
             //Assert: Checks whether the expected User and the inserted User are equal, and that the inserted User is within the list
             Assert.AreEqual(user, result, "User was inserted incorrectly.");
             CollectionAssert.Contains(mockedUserAccessor.GetState(), result, "The user was not inserted into the list.");
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void UserEngine_InsertUser_ExpectNullException()
+        {
+            //Arrange: Seed the Mocked Accessor with a list of Users
+            SeedUsers();
+
+
+            //Act: Calls the UserEngine InsertUser() with a null User
+            userEngine.InsertUser(null);
+
+
+            //Arrange: Handled by the ExpectedException attribute 
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(DuplicateNameException))]
+        public void UserEngine_InsertUser_DuplicateEmailException()
+        {
+            //Arrange: Seed the Mocked Accessor with a list of Users and a User with a duplicate email to be inserted
+            SeedUsers();
+            var user = new User
+            {
+                Id = 8,
+                Email = "useremail@gmail.com"
+            };
+
+
+            //Act: Calls the UserEngine InsertUser() with a User that has a duplicate email
+            userEngine.InsertUser(user);
+
+
+            //Arrange: Handled by the ExpectedException attribute 
         }
 
 
@@ -277,6 +331,29 @@ namespace GroceryApp.Tests.EngineTests
 
 
         [TestMethod]
+        public void UserEngine_DeleteUser_InvalidId()
+        {
+            //Arrange: Seeds the Mocked Accessor's list of Users, stores its size, and creates a User to be deleted
+            SeedUsers();
+            var count = mockedUserAccessor.GetState().Count;
+            var user = new User { 
+                Id = 4,
+                Email = "joe123@hotmail.com",
+                Password = "dsklfje"
+            };
+
+
+            //Act: Calls the UserEngine DeleteUser() method with a User that is not in the list
+            var result = userEngine.DeleteUser(user);
+
+
+            //Assert: Checks that the DeleteUser() method returned null and that no Users were deleted from the list
+            Assert.IsNull(result, "The User returned from the method is not null.");
+            Assert.AreEqual(count, mockedUserAccessor.GetState().Count, "A User was incorrectly deleted from the list of Users.");
+        }
+
+
+        [TestMethod]
         public void UserEngine_GetUserEmail()
         {
             //Arrange: Seed the Mocked Accessor with a list of Users and creates a list of emails to use as arguments in GetUserEmail()
@@ -304,6 +381,22 @@ namespace GroceryApp.Tests.EngineTests
                 Assert.AreEqual(user, results.ElementAt(i), $"User {i} was retrieved incorrectly.");
             }
         }
-    }
 
+
+        [TestMethod]
+        public void UserEngine_GetUserEmail_NullEmail()
+        {
+            //Arrange: Seed the Mocked Accessor with a list of Users
+            SeedUsers();
+
+
+            //Act: Calls the UserEngine GetUserEmail() method with a null email
+            var result = userEngine.GetUserEmail(null);
+
+
+            //Assert: Checks that a null User was returned
+            Assert.IsNull(result, "A non-null User was returned by passing in a null email.");
+        }
+
+    }
 }
