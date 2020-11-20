@@ -1,10 +1,8 @@
 ﻿using _361Example.Accessors;
-using _361Example.Data;
 using _361Example.Engines;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,12 +22,9 @@ namespace _361Example
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime to establish a DBContext and add to the program's services
+        // This method gets called by the runtime to add to the program's services
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                            options.UseSqlServer(
-                                Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
             services.AddRazorPages();
