@@ -46,9 +46,10 @@ namespace _361Example.Engines
                 throw new NullReferenceException();
             }
 
-            IEnumerable<GList> allLists = _gListAccessor.GetAllGLists();
+            IEnumerable<GList> allLists = GetAllLists();
+            IEnumerable<GList> userLists = allLists.Where(g => g.AccountId == glist.AccountId);
 
-            foreach (GList groceryList in allLists)
+            foreach (GList groceryList in userLists)
             {
                 if (glist.Equals(groceryList))
                 {
@@ -58,10 +59,11 @@ namespace _361Example.Engines
                 {
                     throw new DuplicateNameException();
                 }
-                else if (glist.Id.Equals(groceryList.Id))
-                {
-                    throw new ArgumentException();
-                }
+            }
+
+            if (allLists.Any(g => g.Id == glist.Id))
+            {
+                throw new ArgumentException();
             }
 
             _gListAccessor.Insert(glist);

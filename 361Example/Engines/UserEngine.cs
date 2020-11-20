@@ -1,10 +1,8 @@
 ﻿using _361Example.Accessors;
 using _361Example.Models;
-using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace _361Example.Engines
 {

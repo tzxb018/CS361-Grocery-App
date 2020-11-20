@@ -62,7 +62,7 @@ export class ItemListComponent {
   deleteItem(id: number, itemName: string) {
 
     // if the user confirms to delete the glist (will be given the name of the list)
-    if (confirm(`Are you sure to delete ${itemName}?`)) {
+    if (confirm(`Are you sure you want to delete ${itemName}?`)) {
 
       // deletes list by filtering through all glists and finding id if http delete passes
       this.itemListService.deleteItem(id).subscribe(() => {
