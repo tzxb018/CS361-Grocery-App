@@ -40,14 +40,10 @@ export class UserMenuComponent {
 
   // function to reload the table
   async refreshTable() {
-
-    console.log("selected user id", this.dataService.selectedUserId);
-    console.log("login status", this.dataService.loginStatus);
     const result = await this.userMenuService.getGListsForUser(this.dataService.selectedUserId).toPromise();
     this.allGLists = result;
     this.gLists = result;
     this.dataService.existingGLists = this.allGLists;
-    console.log("lists", this.gLists);
 
     this.populateNumberOfItems();
   }

@@ -77,8 +77,6 @@ export class UserMenuService {
   public updateGList(payload, id: number) {
 
     const url = this.baseUrl + 'glist' + `\\${id}`;
-    console.log("updated", url);
-    console.log("updated glist", payload);
     return this.http.put<GList>(url, payload, this.httpOptions).pipe(
       retry(3),
       catchError(this.handleError)

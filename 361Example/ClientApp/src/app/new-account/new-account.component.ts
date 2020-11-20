@@ -35,17 +35,18 @@ export class NewAccountComponent {
 
 
   emailValid(email) {
-    for (const user of this.allUsers) {
+    for (let user of this.allUsers) {
       if (!email.includes("@") && !email.includes(".com")) {
         document.getElementById("feedback").innerHTML = "Invalid email input, please use another email.";
         return false;
       }
-      if (email == user.email) {
+      if (email === user.email) {
         document.getElementById("feedback").innerHTML = "Email already exist, please log in or use another email.";
         return false;
       }
-      return true;
     }
+    return true;
+
   }
 
   createNewUser() {
