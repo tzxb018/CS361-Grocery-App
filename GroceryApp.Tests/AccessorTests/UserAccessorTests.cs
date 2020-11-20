@@ -170,7 +170,8 @@ namespace GroceryApp.Tests.AccessorTests
 
 
             //Assert: Checks that each User in the expected and result list are equal
-            for (int i = 0; i < result.Count; i++)
+            Assert.AreEqual(expected.Count, result.Count, "The list sizes are unequal.");
+            for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected.ElementAt(i), result.ElementAt(i), $"The User for Id = {i + 1} was retrieved incorrectly.");
             }
