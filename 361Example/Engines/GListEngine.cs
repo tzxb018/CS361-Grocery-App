@@ -46,9 +46,9 @@ namespace _361Example.Engines
                 throw new NullReferenceException();
             }
 
-            IEnumerable<GList> allLists = _gListAccessor.GetAllGLists();
+            IEnumerable<GList> userLists = _gListAccessor.GetGLists(glist.Id);
 
-            foreach (GList groceryList in allLists)
+            foreach (GList groceryList in userLists)
             {
                 if (glist.Equals(groceryList))
                 {

@@ -309,10 +309,11 @@ namespace GroceryApp.Tests.EngineTests
         public void GListEngine_InsertList_DuplicateNameException()
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
-            SeedGLists();
-            GList gListNameDup = new GList() { 
-                Id = 4, 
-                ListName = "MyList" 
+            SeedGListsWithAccountId();
+            GList gListNameDup = new GList() {
+                Id = 3,
+                ListName = "Another Joe List",
+                AccountId = 3
             };
 
 
