@@ -60,7 +60,7 @@ namespace _361Example.Accessors
         //Gathers all of the GLists associated with the indicated User
         public IEnumerable<GList> GetGLists(int userId)
         {
-            return GroceryList.Where(g => g.AccountId == userId).ToArray();
+            return GroceryList.FromSqlInterpolated($"EXEC Find_GroceryLists_For_Given_Account @userId = {userId}").ToArray();
         }
 
         public GList Insert(GList gList)
