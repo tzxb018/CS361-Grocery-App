@@ -48,9 +48,8 @@ From the final code checkpoint to the final submission, we polished our applicat
 * Bryce Yong
   - Fixed small bugs in the front-end side
   - Added background for home page
-  - Implemented the login functionality
   - Implemented the create new account functionality
-  - Implemented the User Controller
+
 * Alexis Linhardt
   - Implemented the Home Button in the Navigation Bar which will direct users to either the login page (if they are logged out) or the user-menu page which hosts all their available grocery lists (if they are logged in)
   - Created an authentication variable that acts as a global variable which allows for the navigation bar to check if the user is logged in or not before deciding what to display
