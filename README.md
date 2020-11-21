@@ -1,4 +1,9 @@
 # CS361 Group10 Grocery App - Grociri
+![lang](https://img.shields.io/github/languages/count/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![top](https://img.shields.io/github/languages/top/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![repo](https://img.shields.io/github/repo-size/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![contributors](https://img.shields.io/github/contributors/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![rate](https://img.shields.io/github/commit-activity/m/tzxb018/CS361-Group10-Grocery-App?style=plastic)
 
 ## Authors
 * Bryce Yong - https://github.com/bryceyong
@@ -42,13 +47,9 @@ From the final code checkpoint to the final submission, we polished our applicat
 ### Tasks
 * Bryce Yong
 * Alexis Linhardt
-  - Implemented the Home Button in the Navigation Bar which will direct users to either the login page (if they are logged out) or the user-menu page which hosts all their available grocery lists (if they are logged in)
-  - Created an authentication variable that acts as a global variable which allows for the navigation bar to check if the user is logged in or not before deciding what to display
-  - Implemented the sign out funcitonality
-  - Created the sign out button in the navigation bar
 * Noah Anderson
 * Ryan Hruby
-  - Implemented and utilized a stored procedure in the GListAccessor GetGLists() method
+  - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
   - Added documentation for interfaces, engines, accessors, and remaining testing classes
   - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
   - Deleted unused files and removed code smells
