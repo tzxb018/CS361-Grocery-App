@@ -34,6 +34,24 @@ After selecting a grocery list from the main page, the user will be prompted to 
 To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site. If you get an SQL exception telling you to wait, simply rerunning the project after a few seconds will solve it. Sometimes, since the Azure database is serverless, it takes a longer time to startup before the web application in order to unpause.
 
 ## Coding Checkpoints
+<details><summary>Final Submission (11/21/2020)</summary>
+ 
+### Overview
+From the final code checkpoint to the final submission, we polished our application in a number of ways: we fixed bugs throughout our project, finished up the remaining features, implemented final testing, and added in docomentation.
+
+### Tasks
+* Bryce Yong
+* Alexis Linhardt
+* Noah Anderson
+* Ryan Hruby
+  - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
+  - Added documentation for interfaces, engines, accessors, and remaining testing classes
+  - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
+  - Deleted unused files and removed code smells
+* Tomo Bessho
+</p>
+</details>
+
 <details><summary>Final Checkpoint (11/16/2020)</summary>
  
 ### Overview
