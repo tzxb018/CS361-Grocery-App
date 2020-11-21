@@ -24,6 +24,12 @@ export class UserMenuComponent {
   // constructor that populates the tables after injecting the http client and the base url 
   constructor(private userMenuService: UserMenuService, private dataService: DataService, private itemListService: ItemListService) {
     this.refreshTable();
+
+    var iframes = document.querySelectorAll('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].parentNode.removeChild(iframes[i]);
+    }
+
   }
 
   selectGList(id: number, listName: string) {
@@ -34,13 +40,10 @@ export class UserMenuComponent {
 
   // function to reload the table
   async refreshTable() {
-
-    console.log("selected user id", this.dataService.selectedUserId);
     const result = await this.userMenuService.getGListsForUser(this.dataService.selectedUserId).toPromise();
     this.allGLists = result;
     this.gLists = result;
     this.dataService.existingGLists = this.allGLists;
-    console.log("lists", this.gLists);
 
     this.populateNumberOfItems();
   }

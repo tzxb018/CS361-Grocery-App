@@ -23,12 +23,16 @@ export class ItemListComponent {
   constructor(private itemListService: ItemListService, private dataService: DataService, private userMenuService: UserMenuService) {
     this.refreshTable();
     this.updateTimeStampOfList();
+
+    var iframes = document.querySelectorAll('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+      iframes[i].parentNode.removeChild(iframes[i]);
+    }
   }
 
   // function to reload the table
   refreshTable() {
     if (this.dataService.selectedGListId) {
-      console.log(this.dataService.selectedGListId);
 
       // from the selected grocery list id, retrieve the data from the service
       this.itemListService.getItemsForList(this.dataService.selectedGListId).subscribe(result => {
@@ -57,7 +61,7 @@ export class ItemListComponent {
   deleteItem(id: number, itemName: string) {
 
     // if the user confirms to delete the glist (will be given the name of the list)
-    if (confirm(`Are you sure to delete ${itemName}?`)) {
+    if (confirm(`Are you sure you want to delete ${itemName}?`)) {
 
       // deletes list by filtering through all glists and finding id if http delete passes
       this.itemListService.deleteItem(id).subscribe(() => {
@@ -97,11 +101,6 @@ export class ItemListComponent {
       }
     );
 
-    //subscribe((updated) => {
-    //  console.log("updated glist timpestamp", updated);
-    //  
-    //  });
-    //}, error => console.error(error));
   }
 }
 

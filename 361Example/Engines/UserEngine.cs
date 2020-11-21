@@ -1,13 +1,15 @@
 ﻿using _361Example.Accessors;
 using _361Example.Models;
-using IdentityServer4.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 
 namespace _361Example.Engines
 {
+    /**
+     * The UserEngine class handles the business logic relating to throwing exceptions
+     * where appropriate and calling the methods of an IUserAccessor to access the database's Users.
+     **/
     public class UserEngine : IUserEngine
     {
         private readonly IUserAccessor _userAccessor;
@@ -17,6 +19,7 @@ namespace _361Example.Engines
             _userAccessor = userAccessor;
         }
 
+        //Returns all Users
         public IEnumerable<User> GetAllUsers()
         {
             return _userAccessor.GetAllUsers();
@@ -35,9 +38,13 @@ namespace _361Example.Engines
             return _userAccessor.Find(username, password);
         }
 
+        /**
+         * Inserts the given user if user.Email does not exist within the database already
+         * Otherwise, throws a new DuplicateNameException()
+         **/
         public User InsertUser(User user)
         {
-            if(GetUserEmail(user.email) == null)
+            if(GetUserEmail(user.Email) == null)
             {
                 return _userAccessor.Insert(user);
             }
@@ -45,6 +52,7 @@ namespace _361Example.Engines
             throw new DuplicateNameException();
         }
 
+        //Updates a User in the database with a given user
         public User UpdateUser(User user)
         {
             _userAccessor.Update(user);
@@ -67,11 +75,9 @@ namespace _361Example.Engines
         //Returns User if succesfully found, null if not
         public User GetUserEmail(string email)
         {
-            return _userAccessor.GetUserEmail(email);
-
+            return _userAccessor.GetUserByEmail(email);
         }
-    }
-        
 
+    }
 }
 

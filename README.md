@@ -1,4 +1,9 @@
-# CS361 Group10 Grocery App
+# CS361 Group10 Grocery App - Grociri
+![lang](https://img.shields.io/github/languages/count/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![top](https://img.shields.io/github/languages/top/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![repo](https://img.shields.io/github/repo-size/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![contributors](https://img.shields.io/github/contributors/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![rate](https://img.shields.io/github/commit-activity/m/tzxb018/CS361-Group10-Grocery-App?style=plastic)
 
 ## Authors
 * Bryce Yong - https://github.com/bryceyong
@@ -7,7 +12,61 @@
 * Ryan Hruby - https://github.com/ryanhruby
 * Tomo Bessho - https://github.com/tzxb018
 
+## Overview of Application
+<details><summary>Login</summary>
+ 
+![Grociri-login page](grociri-login.png)
+
+When first opening the application, the user will be prompted to this login page. Here, the user can input their email and password to login. If incorrect credentials are given, the user will be prompted in the login window and will have to try again. If the user wants to create an account with a new email and password, they can select 'create a new account' and follow the prompts given there.
+ </p>
+</details>
+<details><summary>User Menu</summary>
+ 
+![Grociri-main page](grociri-user-menu.png)
+
+After successfully logging in, the user will see their saved grocery lists. From here, they can select to view a grocery list by selecting 'view' in the corresponding row. To delete a list, they can select 'delete', which will delete the list and all the items in the list. Before deleting, the user will be asked to confirm their deletion of the list with an alert box. A user can search for a certain grocery list in the search bar by its name. To clear the search results, the user can press 'refresh'. Lastly, to create a new list, the user can select 'create new list', which will prompt them to a new page that has the user input the new list's name. After doing so, the user will be notified that the list was created and be brought back to this site. 
+ </p>
+</details>
+<details><summary>Item List</summary>
+ 
+![Grociri-item list](grociri-item-list.png)
+
+After selecting a grocery list from the main page, the user will be prompted to this page. Here, they can see all the items saved in the list. They have the option of adding, searching for, and deleting the items in the list. All the functionalities are the same as the main page. 
+ </p>
+</details>
+
+## How to Run Code
+To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site. If you get an SQL exception telling you to wait, simply rerunning the project after a few seconds will solve it. Sometimes, since the Azure database is serverless, it takes a longer time to startup before the web application in order to unpause.
+
 ## Coding Checkpoints
+<details><summary>Final Submission (11/21/2020)</summary>
+ 
+### Overview
+From the final code checkpoint to the final submission, we polished our application in a number of ways: we fixed bugs throughout our project, finished up the remaining features, implemented final testing, and added in documentation.
+
+### Tasks
+* Bryce Yong
+  - Fixed small bugs in the front-end side
+  - Added background for home page
+  - Implemented the create new account functionality
+
+* Alexis Linhardt
+  - Implemented the Home Button in the Navigation Bar which will direct users to either the login page (if they are logged out) or the user-menu page which hosts all their available grocery lists (if they are logged in)
+  - Created an authentication variable that acts as a global variable which allows for the navigation bar to check if the user is logged in or not before deciding what to display
+  - Implemented the sign out funcitonality
+  - Created the sign out button in the navigation bar
+* Noah Anderson
+* Ryan Hruby
+  - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
+  - Added documentation for interfaces, engines, accessors, and remaining testing classes
+  - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
+  - Deleted unused files and removed code smells
+* Tomo Bessho
+  - Ability to use the 'enter' key to submit new item/account/list requests
+  - Fixed small bugs in the UI
+</p>
+</details>
+
 <details><summary>Final Checkpoint (11/16/2020)</summary>
  
 ### Overview
@@ -15,9 +74,23 @@ We were able to deliver and create a functioning grocery list application. We ha
 
 ### Tasks
 * Bryce Yong
+  - Implemented UserController
+  - Implemented login verification and account creation, as well as UI components for these
+  - Partially implemented navigation bar
 * Alexis Linhardt
+  - Updated the FAQ section to contain relevant information
+  - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
+  - Examined code for code smells and removed unused files
 * Noah Anderson
+  - Implemented UserEngineTests.cs and tweaked the accessor test files to accomodate new methods/fix bugs with old methods
+  - Fixed minor code smells and implemented quality of life methods in the accessors/engines
+  - Added some documentation to the accessors and engines to clarify some of the more involved methods
 * Ryan Hruby
+  - Configured database for access by a wider range of IP addresses
+  - Added new constraints to database and modified database scripts to account for this
+  - Cleaned up code smells in GListEngineTests, ItemsEngineTests, and the mocked accessors
+  - Added documentation to all mocked accessors as well as some to the engine tests
+  - Implemented GetHashCode() methods for the Models
 * Tomo Bessho
   - UI improvements to have a 'sticky' header for both the user menu and each grocery list
   - Added in validation to the grocery list names, grocery item names, and quantities

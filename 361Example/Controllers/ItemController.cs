@@ -7,16 +7,23 @@ using System.Linq;
 
 namespace _361Example.Controllers
 {
+    /**
+     * The ItemController class handles the workflow for item-related actions in the application,
+     * such as retrieving an item, adding an item, updating an item, and deleting an item.
+     **/
     [ApiController]
     [Route("[controller]")]
     public class ItemController : ControllerBase
     {
         private readonly IItemsEngine _itemsEngine;
+
+        // using dependency injection to use the methods in IItemsEngine
         public ItemController(IItemsEngine itemsEngine)
         {
             _itemsEngine = itemsEngine;
         }
 
+        // function to get all items in the database (primarily used for testing)
         // GET: api/items
         [HttpGet]
         public IEnumerable<Item> GetAllItems()
@@ -24,6 +31,7 @@ namespace _361Example.Controllers
             return _itemsEngine.GetAllItems().ToArray();
         }
 
+        // function to get items in the database for a given grocery list
         [Route("glist{id}")]
         [HttpGet]
         public IEnumerable<Item> GetListItems(string id)
@@ -32,62 +40,27 @@ namespace _361Example.Controllers
             return _itemsEngine.GetListItems(parsedId);
         }
 
-        // GET: api/items/5
-        //[Route("{id}")]
-        //[HttpGet]
-        //public Item GetItem(string id)
-        //{
-        //    var parsedId = int.Parse(id);
-        //    Item item = _itemsEngine.GetItem(parsedId);
-
-        //    if (item == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    return item;
-        //}
-
-
+        // adding a new item to the database
         // POST: api/items
         [Route("")]
         [HttpPost]
         public void PostItem(Item item)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
-
             _itemsEngine.InsertItem(item);
-
-            //return item;
         }
 
+        // editing a specific item based on id
         // PUT: api/items/5
         [Route("{id}")]
         [HttpPut]
         public void PutList(string id, Item item)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
             var parsedId = int.Parse(id);
 
-            if (parsedId != item.Id)
-            {
-                //return BadRequest();
-            }
-
             _itemsEngine.UpdateItem(parsedId, item);
-
-
-            //return Ok();
         }
 
-
-
+        // deleting a specific item based on id
         // DELETE: api/items/5
         [Route("{id}")]
         [HttpDelete]
@@ -96,18 +69,9 @@ namespace _361Example.Controllers
             var parsedId = int.Parse(id);
 
             Item item = _itemsEngine.GetItem(parsedId);
-            if (item == null)
-            {
-                //return NotFound();
-            }
+
             _itemsEngine.DeleteItem(item.Id);
-
-            //return Ok(item);
         }
 
-        private bool ItemExists(int id)
-        {
-            return _itemsEngine.GetAllItems().Count(e => e.Id == id) > 0;
-        }
     }
 }

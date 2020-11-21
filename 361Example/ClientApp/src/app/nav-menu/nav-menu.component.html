@@ -3,7 +3,7 @@
     <div class="container">
       <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
       <link href='https://fonts.googleapis.com/css?family=Text Me One' rel='stylesheet'>
-      <a class="navbar-brand" [routerLink]="['/']">
+      <a class="navbar-brand">
 
         <h1 style="font-family: 'Text Me One'; color: #629c44; font-size: 72px; text-align: left;">Grociri</h1>
 
@@ -21,32 +21,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-           [ngClass]="{ show: isExpanded }"
-           style="font-family: 'Alata'; color: #7a7a7a">
-        <ul class="navbar-nav flex-grow">
-          <!--<li class="nav-item"
-              [routerLinkActive]="['link-active']"
-              [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/CreateNewAcc']">Create New Account</a>
-          </li>
+      <div>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+             [ngClass]="{ show: isExpanded }"
+             style="font-family: 'Alata'; color: #7a7a7a">
+          <ul class="navbar-nav flex-grow">
+            <li class="nav-item"
+                [ngSwitch]="dataService.authenticated$ | async">
+              <a class="nav-link" *ngSwitchCase="true" (click)="signOut()">SIGN OUT</a>
+            </li>
+            <li class="nav-item"
+                [ngSwitch]="dataService.authenticated$ | async">
+              <a class="nav-link" *ngSwitchCase="true" [routerLink]="['/user-menu']">HOME</a>
+              <a class="nav-link" *ngSwitchDefault [routerLink]="['/']">HOME</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link" [routerLink]="['/faq']">FAQ</a>
+            </li>
+          </ul>
+        </div>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-          </li>
-
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/user-menu']">User Menu</a>
-          </li>-->
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/faq']">FAQ</a>
-          </li>
-
-        </ul>
       </div>
     </div>
   </nav>

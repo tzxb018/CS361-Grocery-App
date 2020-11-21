@@ -7,29 +7,46 @@
       background: #ffffff;
       padding: 20px;
       width: 389px;
-      height: 552px;
       position: fixed;
-      right: 300px;
-      top: 250px;
+      right: 100px;
+      margin-top: 50px;
     }
+
+    #back-button {
+      font-family: 'Alata';
+      font-size: 18px;
+      font-weight: normal;
+      text-align: left;
+      width: 100%;
+      position: absolute;
+      bottom: 15px;
+    }
+
+      #back-button:hover {
+        cursor: pointer;
+      }
+
+      #back-button:focus {
+        outline: 0;
+        cursor: pointer;
+      }
   </style>
 
   <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
   <div id="rcorners1">
     <div class="form-group align-items-center" style="text-align: center">
       <br />
-      <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Username" style="width: 348px; height: 65px; ">
+      <input type="email" class="form-control" id="newEmail" aria-describedby="emailHelp" placeholder="Username" style="width: 348px; height: 65px; " (keydown.enter)="createNewUser()">
       <br />
-      <input type="password" class="form-control" id="newPassword1" placeholder="Password" style="width: 348px; height: 65px;">
+      <input type="password" class="form-control" id="newPassword1" placeholder="Password" style="width: 348px; height: 65px;" (keydown.enter)="createNewUser()">
       <br />
-      <input type="password" class="form-control" id="newPassword2" placeholder="Re-enter Password" style="width: 348px; height: 65px;">
+      <input type="password" class="form-control" id="newPassword2" placeholder="Re-enter Password" style="width: 348px; height: 65px;" (keydown.enter)="createNewUser()">
       <br />
       <p style="color:red" id="feedback"></p>
-      <button (click)="createNewUser()" style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 246px; height: 65px; border-radius: 7px; border:unset; background: #f06e9c; ">Create New Account </button>
+      <button (click)="createNewUser()" style="font-family: 'Alata'; color: #ffffff; font-size: 18px; width: 246px; height: 65px; border-radius: 7px; border:unset; background: #f06e9c; " (keydown.enter)="createNewUser()">Create New Account </button>
       <br />
       <br />
-      <br />
-      <div [routerLink]="['/']" style="font-family: 'Alata'; font-size: 18px; font-weight: normal; position:relative; right:150px;">Back</div>
+      <div [routerLink]="['/']" id="back-button">Back</div>
     </div>
   </div>
 </body>

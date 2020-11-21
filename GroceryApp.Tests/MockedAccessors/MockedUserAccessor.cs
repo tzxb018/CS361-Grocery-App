@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
-using System.Text;
 using _361Example.Accessors;
 using _361Example.Models;
 
 namespace GroceryApp.Tests.MockedAccessors
 {
+    /**
+     * The purpose of this class is to act as a Mock Accessor to be used in the UserEngine during unit testing
+     * in the UserEngineTests class.
+     * The MockedUserAccessor implements the IUserAccessor, so it can be passed as an argument in the
+     * UserEngine constructor.
+     * The MockedUserAccessor uses a List of Users to act in place of the database in the regular UserAccessor.
+     **/
     public class MockedUserAccessor : IUserAccessor
     {
 
@@ -18,17 +23,31 @@ namespace GroceryApp.Tests.MockedAccessors
             users = new List<User>();
         }
 
+        //Returns all Users
         public IEnumerable<User> GetAllUsers()
         {
             return users;
         }
 
-        public User Find(int id)
+        //Returns the User with the specified email
+        public User GetUserByEmail(string email)
         {
-            var user = users.FirstOrDefault(u => u.Id == id);
-            return user;
+            return users.Find(u => u.Email == email);
         }
 
+        //Returns the User with the specified id
+        public User Find(int id)
+        {
+            return users.FirstOrDefault(u => u.Id == id);
+        }
+
+        //Returns the User with the specified username and password
+        public User Find(String username, String password)
+        {
+            return users.FirstOrDefault(u => u.Email == username && u.Password == password);
+        }
+
+        //Inserts the specified User into the List of Users
         public User Insert(User user)
         {
             var max = users.Max(u => u.Id);
@@ -37,12 +56,14 @@ namespace GroceryApp.Tests.MockedAccessors
             return user;
         }
 
+        //Updates the specified User by removing the original and adding the new User
         public void Update(User user)
         {
             users.RemoveAll(u => u.Id == user.Id);
             users.Add(user);
         }
 
+        //Deletes the User with the specified id from the List of Users
         public User Delete(int id)
         {
             var user = Find(id);
@@ -50,42 +71,28 @@ namespace GroceryApp.Tests.MockedAccessors
             return user;
         }
 
+        //Returns true if the User with the specified id exists in the List of Users, and false if it does not
         public bool Exists(int id)
         {
-            for (int i = 0; i < users.Count; i = i + 1)
-            {
-                if (users.ElementAt(i).Id == id)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return users.Any(u => u.Id == id);
         }
 
-        public User Find(String username, String password)
+        //Method is required by the IUserAccessor; in the regular accessor, saves changes made to the database
+        public int SaveChanges()
         {
-            return users.Where(u => u.email == username && u.password == password).FirstOrDefault();
+            return 0;
         }
 
+        //Helper method for the MockedUserAccessor that sets the List of Users to a specified new state
         public void SetState(List<User> newState)
         {
             users = newState;
         }
 
+        //Helper method for the MockedUserAccessor that returns the List of Users
         public List<User> GetState()
         {
             return users;
-        }
-
-        public User GetUserEmail(string email)
-        {
-            return users.Where(u => u.email == email).FirstOrDefault();
-
-        }
-
-        public int SaveChanges()
-        {
-            return 0;
         }
 
     }

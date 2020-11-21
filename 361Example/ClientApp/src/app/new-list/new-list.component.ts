@@ -63,7 +63,7 @@ export class NewListComponent {
 
       if (!unique) {
         // alerts the user if the list name has already been used
-        alertString += "This list name has already been used! Chooose a different list name!\n";
+        alertString += "This list name has already been used! Choose a different list name!\n";
       }
       if (!newListName.match(re)) {
         // if the list name is rejected, notify user and have user retype in input box

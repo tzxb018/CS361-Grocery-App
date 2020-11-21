@@ -8,6 +8,10 @@ using System.Linq;
 
 namespace _361Example.Engines
 {
+    /**
+     * The GListEngine class handles the business logic relating to throwing exceptions
+     * where appropriate and calling the methods of an IGListAccessor to access the database's GLists.
+     **/
     public class GListEngine : IGListEngine
     {
         
@@ -18,6 +22,7 @@ namespace _361Example.Engines
             _gListAccessor = gListAccessor;
         }
 
+        //Returns all GLists
         public IEnumerable<GList> GetAllLists()
         {
             return _gListAccessor.GetAllGLists();
@@ -30,6 +35,7 @@ namespace _361Example.Engines
             return _gListAccessor.GetGLists(userId);
         }
 
+        //Returns the GList with the given id, or null if no such GList exists
         public GList GetList(int id)
         {
             if (_gListAccessor.Exists(id))
@@ -39,6 +45,14 @@ namespace _361Example.Engines
             return null;
         }
 
+        /**
+         * Inserts the given glist.
+         * Throws a new NullReferenceException() if glist is null.
+         * Throws a new DuplicateNameException() if glist is equal to another GList belonging to
+         * the same user, or if glist has the same name as another GList belonging to the same user.
+         * Throws a new ArgumentException() if glist.Id is equal to the id of any other GList in the database.
+         * Returns the inserted GList.
+         **/
         public GList InsertList(GList glist)
         {
             if (glist == null)
@@ -46,9 +60,10 @@ namespace _361Example.Engines
                 throw new NullReferenceException();
             }
 
-            IEnumerable<GList> allLists = _gListAccessor.GetAllGLists();
+            IEnumerable<GList> allLists = GetAllLists();
+            IEnumerable<GList> userLists = allLists.Where(g => g.AccountId == glist.AccountId);
 
-            foreach (GList groceryList in allLists)
+            foreach (GList groceryList in userLists)
             {
                 if (glist.Equals(groceryList))
                 {
@@ -58,10 +73,11 @@ namespace _361Example.Engines
                 {
                     throw new DuplicateNameException();
                 }
-                else if (glist.Id.Equals(groceryList.Id))
-                {
-                    throw new ArgumentException();
-                }
+            }
+
+            if (allLists.Any(g => g.Id == glist.Id))
+            {
+                throw new ArgumentException();
             }
 
             _gListAccessor.Insert(glist);
@@ -69,6 +85,7 @@ namespace _361Example.Engines
             return glist;
         }
 
+        //Updates a GList in the database with the given glist
         public GList UpdateList(int id, GList glist)
         {
             _gListAccessor.Update(glist);
@@ -76,6 +93,8 @@ namespace _361Example.Engines
             return glist;
         }
 
+        //Deletes the GList with the given id if the GList can be found, and returns the deleted GList
+        //Otherwise, returns null
         public GList DeleteList(int id)
         {
             var glist = _gListAccessor.Find(id);
@@ -86,6 +105,8 @@ namespace _361Example.Engines
             return glist;
         }
 
+        //Sorts all GLists alphabetically
+        //Throws a new ArgumentNullException() if ListName is null or empty for any GList
         public IEnumerable<GList> SortLists()
         {
             IEnumerable<GList> sortedGLists = _gListAccessor.GetAllGLists();
@@ -101,7 +122,6 @@ namespace _361Example.Engines
 
             return sortedGLists;
         }
-
 
     }
 }

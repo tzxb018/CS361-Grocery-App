@@ -1,4 +1,4 @@
-﻿import { Component, Inject, Injectable, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../login.service';
 import { DataService } from '../data.service';
@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-account',
-  templateUrl: './new-account.component.html'
+  templateUrl: './new-account.component.html',
+  styleUrls: ['./bg.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class NewAccountComponent {
 
@@ -17,6 +19,8 @@ export class NewAccountComponent {
   public login: number;
 
   constructor(private loginService: LoginService, private router: Router) {
+    document.body.classList.add('bg');
+
     this.refreshTable();
   }
 
@@ -28,22 +32,23 @@ export class NewAccountComponent {
 
   }
 
-
-
+  //func to check the validity of the email the user inputs when trying to create an account
   emailValid(email) {
-    for (const user of this.allUsers) {
+    for (let user of this.allUsers) {
       if (!email.includes("@") && !email.includes(".com")) {
         document.getElementById("feedback").innerHTML = "Invalid email input, please use another email.";
         return false;
       }
-      if (email == user.email) {
-        document.getElementById("feedback").innerHTML = "Email already exist, please log in or use another email.";
+      if (email === user.email) {
+        document.getElementById("feedback").innerHTML = "Email already exists, please log in or use another email.";
         return false;
       }
-      return true;
     }
+    return true;
+
   }
 
+  //func for creating a new account by having the user input a valid email, a password, and then confirming their password
   createNewUser() {
     const newEmailForm = document.getElementById("newEmail") as HTMLInputElement;
     const newEmail = newEmailForm.value;
@@ -62,16 +67,13 @@ export class NewAccountComponent {
         this.loginService
           .insertUser(newUser)
           .subscribe(user => this.allUsers.push(user));
-        this.refreshTable();
-        this.router.navigate(['/user-menu']);
-        this.selectedUser = newUser;
+
+        alert("New user " + newEmail + " created!\nLogin to confirm account creation!");
+        this.router.navigate(['/']);
       } else {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
     }
-
-
-
 
   }
 

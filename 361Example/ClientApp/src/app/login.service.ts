@@ -1,7 +1,8 @@
-﻿import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
+import { throwError, Observable, BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LoginService {
 
   private headers: HttpHeaders;
 
-  // public list to hold all the glist instances
+  // public list to hold all the user instances
   public users: User[];
 
   httpOptions = {
@@ -59,6 +60,8 @@ export class LoginService {
   public update(payload) {
     return this.http.put(this.baseUrl + '/' + payload.id, payload, { headers: this.headers });
   }
+
+
 }
 interface User {
   id: number;

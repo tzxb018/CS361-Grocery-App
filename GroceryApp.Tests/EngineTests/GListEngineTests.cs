@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace GroceryApp.Tests
+namespace GroceryApp.Tests.EngineTests
 {
     /**
      * The purpose of this class is the unit testing of the methods within the GListEngine class.
@@ -38,7 +38,7 @@ namespace GroceryApp.Tests
                 new GList
                 {
                     Id = 1,
-                    ListName = "Sunday Groceries"
+                    ListName = "Sunday Groceries",
                 },
                 new GList
                 {
@@ -53,6 +53,28 @@ namespace GroceryApp.Tests
             });
         }
 
+        //Seeds the Mocked Accessor with test data including AccountId using the SetState() method
+        public void SeedGListsWithAccountId()
+        {
+            mockedGListAccessor.SetState( new List<GList> {
+                new GList {
+                    Id = 1,
+                    ListName = "Joe's First List",
+                    AccountId = 3
+                },
+                new GList
+                {
+                    Id = 2,
+                    ListName = "Sally's List",
+                    AccountId = 6
+                },
+                new GList{
+                    Id = 3,
+                    ListName = "Another Joe List",
+                    AccountId = 3
+                }
+            });
+        }
 
         [TestMethod]
         public void GListEngine_SortLists()
@@ -79,7 +101,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine SortLists() method and converts the return value to a list
+            //Act: Calls the GListEngine SortLists() method to sort the GLists according to name
             var result = gListEngine.SortLists().ToList();
 
 
@@ -106,7 +128,7 @@ namespace GroceryApp.Tests
             });
 
 
-            //Act: Calls the GListEngine SortLists() method
+            //Act: Calls the GListEngine SortLists() method on a list of GLists with a null-named list
             gListEngine.SortLists();
 
 
@@ -115,7 +137,7 @@ namespace GroceryApp.Tests
 
 
         [TestMethod]
-        public void GListEngine_GetAllGLists()
+        public void GListEngine_GetAllLists()
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected list of GLists
             SeedGLists();
@@ -139,11 +161,11 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine GetAllLists() method and converts the return value to a list
+            //Act: Calls the GListEngine GetAllLists() method to return all GLists
             var result = gListEngine.GetAllLists();
 
 
-            //Assert: Checks whether the expected and result lists are the exact same
+            //Assert: Checks whether each GList in the expected and result lists are equal
             for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected.ElementAt(i), result.ElementAt(i), $"The GList at index {i} was retrieved incorrectly.");
@@ -156,7 +178,10 @@ namespace GroceryApp.Tests
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists
             SeedGLists();
-
+            var expected = new GList { 
+                Id = 3,
+                ListName = "MyList"
+            };
 
             //Act: Calls the GListEngine DeleteList() method, which should delete the GList with the given id from the lists of GLists
             var deletedList = gListEngine.DeleteList(3);
@@ -165,8 +190,7 @@ namespace GroceryApp.Tests
             //Assert: Checks if a GList was deleted, if the correct GList was returned, and if the list of GLists does not contain the deleted GList
             Assert.IsNotNull(deletedList, "The deleted list is null.");
             Assert.AreEqual(2, mockedGListAccessor.GetState().Count(), "A GList was not deleted from the list of GLists.");
-            Assert.AreEqual(3, deletedList.Id, "An incorrect list was returned or no list was returned.");
-            Assert.AreEqual("MyList", deletedList.ListName, "An incorrect list was returned or no list was returned.");
+            Assert.AreEqual(expected, deletedList, "An incorrect list was returned or no list was returned.");
             CollectionAssert.DoesNotContain(mockedGListAccessor.GetState(), deletedList, "The list still contains the GList that needed to be deleted.");
         }
 
@@ -199,7 +223,7 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine GetList() method
+            //Act: Calls the GListEngine GetList() method with the id for the "Wednesday Groceries" list
             var result = gListEngine.GetList(2);
 
 
@@ -216,7 +240,7 @@ namespace GroceryApp.Tests
             mockedGListAccessor.SetState(new List<GList> { null });
 
 
-            //Act: Calls the GListEngine GetList() method
+            //Act: Calls the GListEngine GetList() method on the empty list
             gListEngine.GetList(3);
 
 
@@ -245,7 +269,7 @@ namespace GroceryApp.Tests
         [TestMethod]
         public void GListEngine_UpdateList()
         {
-            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
+            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an updated GList
             SeedGLists();
             var expected = new GList()
             {
@@ -254,9 +278,9 @@ namespace GroceryApp.Tests
             };
 
 
-            //Act: Calls the GListEngine UpdateList() method and uses the GetState() method to retrieve the Mocked Accessor's list
+            //Act: Calls the GListEngine UpdateList() and uses the GetState() method to retrieve the Mocked Accessor's list
             gListEngine.UpdateList(2, expected);
-            List<GList> results = mockedGListAccessor.GetState().ToList();
+            List<GList> results = mockedGListAccessor.GetState();
 
 
             //Assert: Checks if the GList's name was successfully updated
@@ -284,11 +308,12 @@ namespace GroceryApp.Tests
         [ExpectedException(typeof(DuplicateNameException))]
         public void GListEngine_InsertList_DuplicateNameException()
         {
-            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
-            SeedGLists();
-            GList gListNameDup = new GList() { 
-                Id = 4, 
-                ListName = "MyList" 
+            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList with a duplcate name for an account
+            SeedGListsWithAccountId();
+            GList gListNameDup = new GList() {
+                Id = 6,
+                ListName = "Another Joe List",
+                AccountId = 3
             };
 
 
@@ -305,7 +330,7 @@ namespace GroceryApp.Tests
         public void GListEngine_InsertList_DuplicateIdException()
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
-            SeedGLists();
+            SeedGListsWithAccountId();
             GList gListIdDup = new GList() { 
                 Id = 3, 
                 ListName = "DuplicateIdList"
@@ -325,10 +350,12 @@ namespace GroceryApp.Tests
         public void GListEngine_InsertList_DuplicateGListException()
         {
             //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected GList
-            SeedGLists();
-            GList gListDup = new GList() { 
-                Id = 3, 
-                ListName = "MyList"
+            SeedGListsWithAccountId();
+            GList gListDup = new GList()
+            {
+                Id = 3,
+                ListName = "Another Joe List",
+                AccountId = 3
             };
 
 
@@ -357,7 +384,57 @@ namespace GroceryApp.Tests
 
 
             //Assert: Checks whether the GList added is equal to the expected GList
-            Assert.AreEqual(expected, result, "The GList wasn't inserted correctly.");
+            Assert.AreEqual(expected, result, "The GList was not returned correctly.");
+            CollectionAssert.Contains(mockedGListAccessor.GetState(), gList, "The list of GLists does not contain the inserted GList.");
+        }
+
+
+        [TestMethod]
+        public void GListEngine_GetUserLists()
+        {
+            //Arrange: Seeds the Mocked Accessor's list of GLists and creates an expected list of GLists
+            SeedGListsWithAccountId();
+            var expected = new List<GList>
+            {
+                new GList
+                {
+                    Id = 1,
+                    ListName = "Joe's First List",
+                    AccountId = 3
+                },
+                new GList
+                {
+                    Id = 3,
+                    ListName = "Another Joe List",
+                    AccountId = 3
+                }
+            };
+
+
+            //Act: Calls the GListEngine GetUserLists() method to return the GLists for the User with id = 3
+            var result = gListEngine.GetUserLists(3).ToList();
+
+
+            //Assert: Checks whether the expected and result list contain the same elements; only the GLists with AccountId = 3
+            Assert.IsFalse(expected.Count < result.Count, $"The result list contains {result.Count} GLists, but should only contain {expected.Count} GLists.");
+            Assert.IsFalse(expected.Count > result.Count, $"The result list contains only {result.Count} GLists, but should contain {expected.Count} GLists.");
+            CollectionAssert.AreEquivalent(expected, result, "The expected and result list have (an) unequal GList(s).");
+        }
+
+
+        [TestMethod]
+        public void GListEngine_GetUserLists_NoGListsReturned()
+        {
+            //Arrange: Seeds the Mocked Accessor's list of GLists
+            SeedGListsWithAccountId();
+
+
+            //Act: Calls the GListEngine GetUserLists() with an AccountId that should return an empty list of GLists
+            var result = gListEngine.GetUserLists(0).ToList();
+
+
+            //Assert: Checks that the result is an empty list
+            Assert.AreEqual(0, result.Count, "More than zero GLists were returned.");
         }
 
     }

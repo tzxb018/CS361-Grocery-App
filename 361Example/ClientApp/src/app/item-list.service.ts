@@ -63,7 +63,6 @@ export class ItemListService {
   }
 
   addItem(newItem) {
-    console.log(newItem);
     return this.http.post<Item>(this.baseUrl + 'item', newItem, this.httpOptions).pipe(
       retry(3),
       catchError(this.handleError)
