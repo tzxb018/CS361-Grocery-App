@@ -41,9 +41,7 @@ export class HomeComponent {
 
 
   constructor(private loginService: LoginService, private router: Router, private dataService: DataService) {
-
     this.refreshTable();
-    console.log("login status", this.dataService.loginStatus);
     var iframes = document.querySelectorAll('iframe');
     for (var i = 0; i < iframes.length; i++) {
       iframes[i].parentNode.removeChild(iframes[i]);

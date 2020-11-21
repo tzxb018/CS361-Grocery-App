@@ -7,11 +7,11 @@
   <div id="rcorners1">
     <div class="form-group align-items-center" style="text-align: center">
       <br />
-      <input type="email" maxlength="25" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Item Name" style="width: 348px; height: 65px;" id="new-item-name">
+      <input type="email" maxlength="25" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Item Name" style="width: 348px; height: 65px;" id="new-item-name" (keydown.enter)="addItem()">
       <br />
-      <input type="number" class="form-control" min="1" placeholder="Quantity" style="width: 348px; height: 65px;" id="new-item-num">
+      <input type="number" class="form-control" min="1" placeholder="Quantity" style="width: 348px; height: 65px;" id="new-item-num" (keydown.enter)="addItem()">
       <br />
-      <button id="create-list-button" (click)="addItem()">Add New Item</button>
+      <button id="create-list-button" (click)="addItem()" (keydown.enter)="addItem()">Add New Item</button>
       <br />
       <br />
       <br />
