@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace _361Example.Engines
 {
+    /**
+     * The ItemsEngine class handles the business logic for
+     * calling the methods of an IItemsAccessor to access the database's Items.
+     **/
     public class ItemsEngine : IItemsEngine
     {
 
@@ -15,6 +19,7 @@ namespace _361Example.Engines
             _itemsAccessor = itemAccessor;
         }
 
+        //Returns all Items
         public IEnumerable<Item> GetAllItems()
         {
             return _itemsAccessor.GetAllItems().ToList();
@@ -27,7 +32,7 @@ namespace _361Example.Engines
             return _itemsAccessor.GetItems(groceryListId);
         }
 
-        //The next four methods (excluding UpdateItem) will return null if unsuccessful
+        //Returns the Item with the given id, or null if no such Item exists
         public Item GetItem(int id)
         {
             if (_itemsAccessor.Exists(id))
@@ -37,6 +42,8 @@ namespace _361Example.Engines
             return null;
         }
 
+        //Inserts item into the database and returns the inserted Item
+        //Returns null if unsuccessful
         public Item InsertItem(Item item)
         {
             _itemsAccessor.Insert(item);
@@ -45,6 +52,7 @@ namespace _361Example.Engines
             return item;
         }
 
+        //Updates an Item in the database with the given item
         public Item UpdateItem(int id, Item item)
         {
             _itemsAccessor.Update(item);
@@ -53,11 +61,12 @@ namespace _361Example.Engines
             return item;
         }
 
+        //Deletes the Item with the given id
+        //Returns null if unsuccessful
         public Item DeleteItem(int id)
         {
             return _itemsAccessor.Delete(id);
         }
-
 
     }
 }

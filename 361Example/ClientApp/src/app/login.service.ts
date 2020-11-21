@@ -13,7 +13,6 @@ export class LoginService {
 
   // public list to hold all the user instances
   public users: User[];
-  //authenticated$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -62,13 +61,7 @@ export class LoginService {
     return this.http.put(this.baseUrl + '/' + payload.id, payload, { headers: this.headers });
   }
 
-/*  public authenticate() {
-    this.authenticated$.next(true);
-  }
 
-  public deauthenticate() {
-    this.authenticated$.next(false);
-  }*/
 }
 interface User {
   id: number;

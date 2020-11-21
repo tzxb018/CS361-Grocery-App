@@ -22,10 +22,6 @@ export class HomeComponent {
   ngOnInit() {
     document.body.classList.add('bg');
     this.dataService.loginStatus = false;
-    // OR you can Add inline style css with the help of code below
-    // this._document.body.style.background = '#fff';
-
-
 
   }
   ngOnDestroy() {
@@ -56,7 +52,7 @@ export class HomeComponent {
 
   }
 
-
+  //func to verify that the inputted email and password is correct so that the user can login
   verifyUser() {
     const emailForm = document.getElementById("email") as HTMLInputElement;
     const email = emailForm.value;
