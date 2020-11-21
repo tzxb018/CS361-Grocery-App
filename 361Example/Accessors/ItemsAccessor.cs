@@ -8,7 +8,10 @@ using System.Linq;
 namespace _361Example.Accessors
 {
     /**
-     * 
+     * The purpose of the ItemsAccessor is to access the Item records of the database
+     * and convert them to Item model instances.    
+     * This class implements the DbContext interface in order to access the database, as well as
+     * the IItemsAccessor interface for dependency injection purposes.
      **/
     public class ItemsAccessor : DbContext, IDisposable, IItemAccessor
     {

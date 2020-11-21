@@ -7,7 +7,10 @@ using System.Linq;
 namespace _361Example.Accessors
 {
     /**
-     * 
+     * The purpose of the UserAccessor class is to access the Account records of the database
+     * and convert them into User model instances.
+     * This class implements the DbContext interface in order to access the database, as well as
+     * the IUserAccessor interface for dependency injection purposes.
      **/
     public class UserAccessor : DbContext, IUserAccessor
     {

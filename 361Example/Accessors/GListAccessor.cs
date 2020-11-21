@@ -7,7 +7,10 @@ using System.Linq;
 namespace _361Example.Accessors
 {
     /**
-     * 
+     * The purpose of the GListAccessor is to access the GroceryList records of the database
+     * and convert them to GList model instances.
+     * This class implements the DbContext interface in order to access the database, as well as
+     * the IGListAccessor interface for dependency injection purposes.
      **/
     public class GListAccessor : DbContext, IGListAccessor
     {
