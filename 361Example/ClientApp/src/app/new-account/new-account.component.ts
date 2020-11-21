@@ -41,7 +41,7 @@ export class NewAccountComponent {
         return false;
       }
       if (email == user.email) {
-        document.getElementById("feedback").innerHTML = "Email already exist, please log in or use another email.";
+        document.getElementById("feedback").innerHTML = "Email already exists, please log in or use another email.";
         return false;
       }
       return true;
