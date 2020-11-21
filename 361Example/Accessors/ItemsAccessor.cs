@@ -11,9 +11,6 @@ namespace _361Example.Accessors
     {
         private DbSet<Item> Item { get; set; }
 
-        // https://stackoverflow.com/questions/58159293/c-sharp-problem-with-dbcontext-argument-1-cannot-convert-string-to-microsof
-
-
         public ItemsAccessor() : base(GetOptions("Server=tcp:grocerywebapp.database.windows.net,1433;Initial Catalog=GroceryWebAppDB;Persist Security Info=False;User ID=grociri;Password=#361_Group10_GroceryApp;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;"))
 
         {
@@ -24,7 +21,6 @@ namespace _361Example.Accessors
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
         }
-
 
         public bool Exists(int id)
         {
@@ -47,7 +43,6 @@ namespace _361Example.Accessors
             return Item.Where(i => i.GroceryListId == groceryListId).ToArray();
         }
 
-        // https://stackoverflow.com/questions/48363894/where-is-idbsett-in-entity-core
         public Item Insert(Item item)
         {
             Item.Add(item);
@@ -58,6 +53,7 @@ namespace _361Example.Accessors
         public void Update(Item item)
         {
             Entry(item).State = EntityState.Modified;
+            SaveChanges();
         }
 
         public Item Delete(int id)
@@ -66,7 +62,7 @@ namespace _361Example.Accessors
             {
                 var item = Find(id);
                 Item.Remove(item);
-                base.SaveChanges();
+                SaveChanges();
                 return item;
             }
 

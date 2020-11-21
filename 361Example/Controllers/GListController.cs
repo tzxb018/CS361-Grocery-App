@@ -6,6 +6,10 @@ using System.Linq;
 
 namespace _361Example.Controllers
 {
+    /**
+     * The GListController class handles the workflow for grocery list related actions in the application,
+     * such as retrieving the list, adding a new list, updating a list, and deleting a list.
+     **/
     [ApiController]
     [Route("[controller]")]
     public class GListController : ControllerBase
@@ -66,7 +70,7 @@ namespace _361Example.Controllers
             _gListEngine.InsertList(glist);
         }
 
-        // editting a specific glist based on the id
+        // editing a specific glist based on the id
         // PUT: api/glist/5
         [Route("{id}")]
         [HttpPut]
@@ -100,7 +104,7 @@ namespace _361Example.Controllers
                 }
             }
 
-            // deleting the acutal list itself
+            // deleting the actual list itself
             _gListEngine.DeleteList(glist.Id);
         }
 

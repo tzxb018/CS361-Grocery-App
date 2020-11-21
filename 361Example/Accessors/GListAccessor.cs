@@ -28,7 +28,7 @@ namespace _361Example.Accessors
             {
                 var gList = Find(id);
                 GroceryList.Remove(gList);
-                base.SaveChanges();
+                SaveChanges();
                 return gList;
             }
 
@@ -66,15 +66,20 @@ namespace _361Example.Accessors
         public GList Insert(GList gList)
         {
             GroceryList.Add(gList);
-            base.SaveChanges();
+            SaveChanges();
             return gList;
         }
 
         public void Update(GList gList)
         {
             Entry(gList).State = EntityState.Modified;
+            SaveChanges();
         }
 
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
 
     }
 }

@@ -7,17 +7,23 @@ using System.Linq;
 
 namespace _361Example.Controllers
 {
+    /**
+     * The ItemController class handles the workflow for item-related actions in the application,
+     * such as retrieving an item, adding an item, updating an item, and deleting an item.
+     **/
     [ApiController]
     [Route("[controller]")]
     public class ItemController : ControllerBase
     {
         private readonly IItemsEngine _itemsEngine;
 
+        // using dependency injection to use the methods in IItemsEngine
         public ItemController(IItemsEngine itemsEngine)
         {
             _itemsEngine = itemsEngine;
         }
 
+        // function to get all items in the database (primarily used for testing)
         // GET: api/items
         [HttpGet]
         public IEnumerable<Item> GetAllItems()
@@ -25,6 +31,7 @@ namespace _361Example.Controllers
             return _itemsEngine.GetAllItems().ToArray();
         }
 
+        // function to get items in the database for a given grocery list
         [Route("glist{id}")]
         [HttpGet]
         public IEnumerable<Item> GetListItems(string id)
@@ -33,6 +40,7 @@ namespace _361Example.Controllers
             return _itemsEngine.GetListItems(parsedId);
         }
 
+        // adding a new item to the database
         // POST: api/items
         [Route("")]
         [HttpPost]
@@ -41,6 +49,7 @@ namespace _361Example.Controllers
             _itemsEngine.InsertItem(item);
         }
 
+        // editing a specific item based on id
         // PUT: api/items/5
         [Route("{id}")]
         [HttpPut]
@@ -51,6 +60,7 @@ namespace _361Example.Controllers
             _itemsEngine.UpdateItem(parsedId, item);
         }
 
+        // deleting a specific item based on id
         // DELETE: api/items/5
         [Route("{id}")]
         [HttpDelete]

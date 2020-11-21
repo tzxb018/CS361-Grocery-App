@@ -27,7 +27,7 @@ namespace _361Example.Accessors
             {
                 var user = Find(id);
                 Account.Remove(user);
-                base.SaveChanges();
+                SaveChanges();
                 return user;
             }
 
@@ -57,14 +57,14 @@ namespace _361Example.Accessors
         public User Insert(User user)
         {
             Account.Add(user);
-            base.SaveChanges();
+            SaveChanges();
             return user;
         }
 
         public void Update(User user)
         {
             Entry(user).State = EntityState.Modified;
-            base.SaveChanges();
+            SaveChanges();
         }
 
         //Retrieves User by their email
