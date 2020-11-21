@@ -44,7 +44,7 @@ We were able to deliver and create a functioning grocery list application. We ha
   - Implemented UserController
   - Implemented login verification and account creation, as well as UI components for these
   - Partially implemented navigation bar
-* Alexis Linharn
+* Alexis Linhardt
   - Updated the FAQ section to contain relevant information
   - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
   - Examined code for code smells and removed unused files
