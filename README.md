@@ -49,6 +49,9 @@ From the final code checkpoint to the final submission, we polished our applicat
   - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
   - Deleted unused files and removed code smells
 * Tomo Bessho
+  - Ability to use the 'enter' key to submit new item/account/list requests
+  - Fixed small bugs in the UI
+  - Removed console.log() lines
 </p>
 </details>
 
