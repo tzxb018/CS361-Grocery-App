@@ -56,7 +56,6 @@ From the final code checkpoint to the final submission, we polished our applicat
 * Tomo Bessho
   - Ability to use the 'enter' key to submit new item/account/list requests
   - Fixed small bugs in the UI
-  - Removed console.log() lines
 </p>
 </details>
 
