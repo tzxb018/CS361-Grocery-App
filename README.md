@@ -42,11 +42,15 @@ To run our project, git clone this repo onto your local machine. From there, ope
 <details><summary>Final Submission (11/21/2020)</summary>
  
 ### Overview
-From the final code checkpoint to the final submission, we polished our application in a number of ways: we fixed bugs throughout our project, finished up the remaining features, implemented final testing, and added in docomentation.
+From the final code checkpoint to the final submission, we polished our application in a number of ways: we fixed bugs throughout our project, finished up the remaining features, implemented final testing, and added in documentation.
 
 ### Tasks
 * Bryce Yong
 * Alexis Linhardt
+- Implemented the Home Button in the Navigation Bar which will direct users to either the login page (if they are logged out) or the user-menu page which hosts all their available grocery lists (if they are logged in)
+  - Created an authentication variable that acts as a global variable which allows for the navigation bar to check if the user is logged in or not before deciding what to display
+  - Implemented the sign out funcitonality
+  - Created the sign out button in the navigation bar
 * Noah Anderson
 * Ryan Hruby
   - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
