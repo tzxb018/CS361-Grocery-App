@@ -31,7 +31,7 @@ After selecting a grocery list from the main page, the user will be prompted to 
 </details>
 
 ## How to Run Code
-To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site.
+To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site. If you get an Sql exception, simply rerunning the project will solve it. Sometimes, the Azure database takes a longer time to startup before the web application.
 
 ## Coding Checkpoints
 <details><summary>Final Checkpoint (11/16/2020)</summary>
