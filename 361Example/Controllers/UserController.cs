@@ -30,14 +30,7 @@ namespace _361Example.Controllers
         [HttpPost]
         public void PostItem(User user)
         {
-            if (!ModelState.IsValid)
-            {
-                //return BadRequest(ModelState);
-            }
-
             _userEngine.InsertUser(user);
-
-            //return item;
         }
 
     }

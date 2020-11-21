@@ -64,7 +64,6 @@ namespace _361Example.Controllers
         public void PostList(GList glist)
         {
             _gListEngine.InsertList(glist);
-
         }
 
         // editting a specific glist based on the id
@@ -76,8 +75,6 @@ namespace _361Example.Controllers
             var parsedId = int.Parse(id);
 
             _gListEngine.UpdateList(parsedId, glist);
-
-
         }
 
         // deleting a specific glist based by ID
@@ -105,7 +102,6 @@ namespace _361Example.Controllers
 
             // deleting the acutal list itself
             _gListEngine.DeleteList(glist.Id);
-
         }
 
     }

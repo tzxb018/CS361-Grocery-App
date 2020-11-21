@@ -32,8 +32,7 @@ export class NewAccountComponent {
 
   }
 
-
-
+  //func to check the validity of the email the user inputs when trying to create an account
   emailValid(email) {
     for (let user of this.allUsers) {
       if (!email.includes("@") && !email.includes(".com")) {
@@ -49,6 +48,7 @@ export class NewAccountComponent {
 
   }
 
+  //func for creating a new account by having the user input a valid email, a password, and then confirming their password
   createNewUser() {
     const newEmailForm = document.getElementById("newEmail") as HTMLInputElement;
     const newEmail = newEmailForm.value;
@@ -74,9 +74,6 @@ export class NewAccountComponent {
         document.getElementById("feedback").innerHTML = "Passwords do not match, please re-enter the passwords.";
       }
     }
-
-
-
 
   }
 
