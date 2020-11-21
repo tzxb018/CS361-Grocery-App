@@ -48,7 +48,7 @@ From the final code checkpoint to the final submission, we polished our applicat
   - Created the sign out button in the navigation bar
 * Noah Anderson
 * Ryan Hruby
-  - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
+  - Implemented and utilized a stored procedure in the GListAccessor GetGLists() method
   - Added documentation for interfaces, engines, accessors, and remaining testing classes
   - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
   - Deleted unused files and removed code smells
