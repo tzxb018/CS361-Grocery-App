@@ -1,4 +1,9 @@
 # CS361 Group10 Grocery App - Grociri
+![lang](https://img.shields.io/github/languages/count/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![top](https://img.shields.io/github/languages/top/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![repo](https://img.shields.io/github/repo-size/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![contributors](https://img.shields.io/github/contributors/tzxb018/CS361-Group10-Grocery-App?style=plastic)
+![rate](https://img.shields.io/github/commit-activity/m/tzxb018/CS361-Group10-Grocery-App?style=plastic)
 
 ## Authors
 * Bryce Yong - https://github.com/bryceyong
@@ -31,9 +36,37 @@ After selecting a grocery list from the main page, the user will be prompted to 
 </details>
 
 ## How to Run Code
-To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site.
+To run our project, git clone this repo onto your local machine. From there, open the project on Visual Studio (2019) and run the project. You should be prompted with the login page of our site. If you get an SQL exception telling you to wait, simply rerunning the project after a few seconds will solve it. Sometimes, since the Azure database is serverless, it takes a longer time to startup before the web application in order to unpause.
 
 ## Coding Checkpoints
+<details><summary>Final Submission (11/21/2020)</summary>
+ 
+### Overview
+From the final code checkpoint to the final submission, we polished our application in a number of ways: we fixed bugs throughout our project, finished up the remaining features, implemented final testing, and added in documentation.
+
+### Tasks
+* Bryce Yong
+  - Fixed small bugs in the front-end side
+  - Added background for home page
+  - Implemented the create new account functionality
+
+* Alexis Linhardt
+  - Implemented the Home Button in the Navigation Bar which will direct users to either the login page (if they are logged out) or the user-menu page which hosts all their available grocery lists (if they are logged in)
+  - Created an authentication variable that acts as a global variable which allows for the navigation bar to check if the user is logged in or not before deciding what to display
+  - Implemented the sign out funcitonality
+  - Created the sign out button in the navigation bar
+* Noah Anderson
+* Ryan Hruby
+  - Implemented and utilized a stored procedure in the GListEngine GetUserLists() method
+  - Added documentation for interfaces, engines, accessors, and remaining testing classes
+  - Implemented final unit tests for GetUserLists(), GetItems(), and GetGLists() in the accessor tests
+  - Deleted unused files and removed code smells
+* Tomo Bessho
+  - Ability to use the 'enter' key to submit new item/account/list requests
+  - Fixed small bugs in the UI
+</p>
+</details>
+
 <details><summary>Final Checkpoint (11/16/2020)</summary>
  
 ### Overview
@@ -44,7 +77,7 @@ We were able to deliver and create a functioning grocery list application. We ha
   - Implemented UserController
   - Implemented login verification and account creation, as well as UI components for these
   - Partially implemented navigation bar
-* Alexis Linharn
+* Alexis Linhardt
   - Updated the FAQ section to contain relevant information
   - Implemented the UI in the FAQ section to contain a background image cohesive to the main page
   - Examined code for code smells and removed unused files

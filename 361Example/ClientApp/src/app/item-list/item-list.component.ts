@@ -33,7 +33,6 @@ export class ItemListComponent {
   // function to reload the table
   refreshTable() {
     if (this.dataService.selectedGListId) {
-      console.log(this.dataService.selectedGListId);
 
       // from the selected grocery list id, retrieve the data from the service
       this.itemListService.getItemsForList(this.dataService.selectedGListId).subscribe(result => {
@@ -102,11 +101,6 @@ export class ItemListComponent {
       }
     );
 
-    //subscribe((updated) => {
-    //  console.log("updated glist timpestamp", updated);
-    //  
-    //  });
-    //}, error => console.error(error));
   }
 }
 

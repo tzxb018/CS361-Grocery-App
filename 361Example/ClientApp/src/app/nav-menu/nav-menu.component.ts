@@ -19,8 +19,6 @@ export class NavMenuComponent {
 
   }
 
-
-
   isExpanded = false;
 
   collapse() {

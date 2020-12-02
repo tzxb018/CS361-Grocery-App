@@ -22,10 +22,6 @@ export class HomeComponent {
   ngOnInit() {
     document.body.classList.add('bg');
     this.dataService.loginStatus = false;
-    // OR you can Add inline style css with the help of code below
-    // this._document.body.style.background = '#fff';
-
-
 
   }
   ngOnDestroy() {
@@ -41,9 +37,7 @@ export class HomeComponent {
 
 
   constructor(private loginService: LoginService, private router: Router, private dataService: DataService) {
-
     this.refreshTable();
-    console.log("login status", this.dataService.loginStatus);
     var iframes = document.querySelectorAll('iframe');
     for (var i = 0; i < iframes.length; i++) {
       iframes[i].parentNode.removeChild(iframes[i]);
@@ -58,7 +52,7 @@ export class HomeComponent {
 
   }
 
-
+  //func to verify that the inputted email and password is correct so that the user can login
   verifyUser() {
     const emailForm = document.getElementById("email") as HTMLInputElement;
     const email = emailForm.value;
